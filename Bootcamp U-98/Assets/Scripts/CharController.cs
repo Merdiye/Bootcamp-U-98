@@ -36,8 +36,10 @@ public class CharController : MonoBehaviour
         targetDirection += cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
         targetDirection.y = 0;
-        targetDirection = targetDirection * movementSpeed;
-        rigidbody.velocity = targetDirection;
+
+        if(targetDirection == Vector3.zero)
+            targetDirection = transform.forward;
+
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
         Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = playerRotation;
