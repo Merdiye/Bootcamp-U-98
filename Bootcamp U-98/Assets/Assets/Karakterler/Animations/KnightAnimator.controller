@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-3192396998911605674
+--- !u!1102 &-401334677788538476
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlendTree
+  m_Name: Blend Tree
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 6651213380626161014}
+  m_Motion: {fileID: 8657106089621239208}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -70,8 +70,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -3192396998911605674}
-    m_Position: {x: 330, y: 100, z: 0}
+    m_State: {fileID: -401334677788538476}
+    m_Position: {x: 342.34717, y: 139.68268, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -81,8 +81,8 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -3192396998911605674}
---- !u!206 &6651213380626161014
+  m_DefaultState: {fileID: -401334677788538476}
+--- !u!206 &8657106089621239208
 BlendTree:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 0}
+    m_Motion: {fileID: 8819464772823671264, guid: 42a4d2fdb43e0c84f8fa38c22ce88fd6, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -99,17 +99,17 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 0}
+    m_Motion: {fileID: -5599002979973759676, guid: 42a4d2fdb43e0c84f8fa38c22ce88fd6, type: 3}
     m_Threshold: 0.5
-    m_Position: {x: 0, y: 0}
+    m_Position: {x: 0, y: 0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 0}
+    m_Motion: {fileID: 1395189703230314720, guid: 42a4d2fdb43e0c84f8fa38c22ce88fd6, type: 3}
     m_Threshold: 1
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
