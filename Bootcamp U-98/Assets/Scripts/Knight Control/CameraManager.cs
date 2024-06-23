@@ -7,12 +7,14 @@ public class CameraManager : MonoBehaviour
     InputManager inputManager;
 
     public Transform target; // camera to follow
-    public Transform targetPivot; // look up and down pivot
+    public Transform cameraPivot; // look up and down pivot
     private Vector3 cameraFollowVelocity = Vector3.zero;
 
+    public float minPivotAngle = -35f;
+    private float maxPivotAngle = 35f;
     public float cameraFollowSpeed = 0.2f;
-    public float cameraLookSpeed = 2f;
-    public float cameraPivotSpeed = 2f;
+    public float cameraLookSpeed = 0.5f;
+    public float cameraPivotSpeed = 0.5f;
     public float lookAngle; // left and right angle
     public float pivotAngle; // up and down angle
 
@@ -38,6 +40,7 @@ public class CameraManager : MonoBehaviour
     {
         lookAngle += inputManager.cameraInputX * cameraLookSpeed;
         pivotAngle -= inputManager.cameraInputY * cameraPivotSpeed;
+        pivotAngle = Mathf.Clamp( pivotAngle , minPivotAngle, maxPivotAngle);
 
         Vector3 rotation = Vector3.zero;
         rotation.y = lookAngle;
@@ -48,5 +51,10 @@ public class CameraManager : MonoBehaviour
         rotation.x = pivotAngle;
         targetRotation = Quaternion.Euler(rotation);
         cameraPivot.localRotation = targetRotation;
+    }
+
+    public void HandleCameraCollisions()
+    {
+
     }
 }
