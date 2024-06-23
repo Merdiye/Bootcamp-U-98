@@ -1,0 +1,24 @@
+# Otomatik olarak metin dosyalarını algılayın ve LF normalizasyonu uygulayın
+* text=auto
+
+# Normalleştirilecek ve dönüştürülecek metin dosyalarını açıkça belirtin
+*.c text
+*.h text
+*.cpp text
+*.hpp text
+*.py text
+
+# Kontrol sırasında CRLF satır sonlarına sahip olacak dosyaları belirtin
+*.bat text eol=crlf
+
+# Kontrol sırasında LF satır sonlarına sahip olacak dosyaları belirtin
+*.sh text eol=lf
+
+# Visual Studio için özel ayarlar
+*.cs diff=csharp
+
+# Standart msysgit ayarları
+*.doc diff=astextplain
+*.DOC diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
