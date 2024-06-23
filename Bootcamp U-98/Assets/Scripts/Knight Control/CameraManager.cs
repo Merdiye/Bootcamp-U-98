@@ -16,12 +16,13 @@ public class CameraManager : MonoBehaviour
     public float minimumCollisionOffset = 0.2f;
     public float cameraCollisionRadius = 0.2f;
     public LayerMask collisionLayers;// kameranýn collide edeceði layer
-    public float cameraCollisionOffset = 0.2f;//kamera objeye çarptýðýnda sekeceði mesafe
+    public float cameraCollisionOffset = 0.4f;//kamera objeye çarptýðýnda sekeceði mesafe
 
 
 
-    public float minPivotAngle = -35f;
+    private float minPivotAngle = -35f;
     private float maxPivotAngle = 35f;
+
     public float cameraFollowSpeed = 0.2f;
     public float cameraLookSpeed = 0.5f;
     public float cameraPivotSpeed = 0.5f;
