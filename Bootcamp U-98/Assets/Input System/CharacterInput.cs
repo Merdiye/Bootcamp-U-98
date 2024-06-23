@@ -35,6 +35,15 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d68a57fd-0a6c-4e5b-b26b-1118c2cf0bc7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +156,72 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8fd9e3f3-336b-416c-ac57-05c1bdffbdf5"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Right Stick"",
+                    ""id"": ""4fee73c9-238c-4346-a1a5-80030b8b668d"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7d53e575-4917-4701-a778-9f71dd8ab0cb"",
+                    ""path"": ""<AndroidGamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""dd134710-7b97-4b70-a63f-1e7cdab775dd"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8f0c0d45-3e6b-4c1e-850e-cc9f17e39a8a"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""76fbc3b8-c38a-4793-9f76-46c93202d716"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -156,6 +231,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         // Player Movement
         m_PlayerMovement = asset.FindActionMap("Player Movement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,11 +294,13 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Movement;
+    private readonly InputAction m_PlayerMovement_Camera;
     public struct PlayerMovementActions
     {
         private @CharacterInput m_Wrapper;
         public PlayerMovementActions(@CharacterInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
+        public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -235,6 +313,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -242,6 +323,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -262,5 +346,6 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
     }
 }

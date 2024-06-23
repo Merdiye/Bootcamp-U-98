@@ -6,9 +6,11 @@ public class PlayerManager : MonoBehaviour
 {
     InputManager inputManager;
     CharController charController;
+    CameraManager cameraManager;
     private void Awake()
     {
         inputManager = GetComponent<InputManager>();
+        cameraManager = FindObjectOfType<CameraManager>();
         charController = GetComponent<CharController>();
     }
 
@@ -20,5 +22,10 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         charController.HandleAllMovement();
+    }
+
+    private void LateUpdate()
+    {
+        cameraManager.HandleAllCameraMovement();
     }
 }
