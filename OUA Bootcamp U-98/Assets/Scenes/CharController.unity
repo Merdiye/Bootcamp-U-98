@@ -2956,6 +2956,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 9120043317964928630, guid: a6f64fcf921a02247997345fa4154776, type: 3}
+      propertyPath: m_Height
+      value: 2.5603342
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120043317964928630, guid: a6f64fcf921a02247997345fa4154776, type: 3}
+      propertyPath: m_Center.y
+      value: 1.6454577
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
