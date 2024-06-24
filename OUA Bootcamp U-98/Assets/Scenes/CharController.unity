@@ -209,12 +209,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4184709585732952678, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.964
+      objectReference: {fileID: 0}
+    - target: {fileID: -4184709585732952678, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: -4184709585732952678, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.156
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cff721174532d68488e8de5a21fed339, type: 3}
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 1396427355593038087, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396427355593038087, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.269
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396427355593038087, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810184904064954510, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810184904064954510, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.622
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810184904064954510, guid: cff721174532d68488e8de5a21fed339, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.156
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -7232241048097875652, guid: cff721174532d68488e8de5a21fed339, type: 3}
+    - {fileID: -3198420049219177596, guid: cff721174532d68488e8de5a21fed339, type: 3}
+    - {fileID: -4025133613917730222, guid: cff721174532d68488e8de5a21fed339, type: 3}
+    - {fileID: 2856234247975315476, guid: cff721174532d68488e8de5a21fed339, type: 3}
+    - {fileID: 3862085102932151524, guid: cff721174532d68488e8de5a21fed339, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cff721174532d68488e8de5a21fed339, type: 3}
