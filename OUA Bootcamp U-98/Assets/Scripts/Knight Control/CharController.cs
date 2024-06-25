@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour
 {
+    PlayerManager playerManager;
     InputManager inputManager;
     Vector3 moveDirection;
     Transform cameraObject;
@@ -13,6 +14,7 @@ public class CharController : MonoBehaviour
 
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
         rigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
@@ -47,6 +49,9 @@ public class CharController : MonoBehaviour
 
     public void HandleAllMovement()
     {
+        if (playerManager.isIntracting)
+            return;
+
         HandleMovement();
         HandleRotation();
     }

@@ -7,13 +7,19 @@ public class AnimatorManager : MonoBehaviour
     Animator animator;
     int horizontal;
     int vertical;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         horizontal = Animator.StringToHash("Horizontal");
         vertical = Animator.StringToHash("Vertical");
     }
+
+    public void PlayTargetAnimation(string targetAnim, bool isIntracting) 
+    {
+        animator.SetBool("isIntracting", isIntracting);
+        animator.CrossFade(targetAnim, 0.2f);
+    }
+
     public void UpdateAnimatorValues(float horizontalMove, float verticalMove)
     {
         //animation snapping

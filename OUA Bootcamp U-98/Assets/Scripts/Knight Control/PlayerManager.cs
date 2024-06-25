@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    Animator animator;
     InputManager inputManager;
     CharController charController;
     CameraManager cameraManager;
+    public bool isIntracting;
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
         cameraManager = FindObjectOfType<CameraManager>();
         charController = GetComponent<CharController>();
@@ -27,5 +30,7 @@ public class PlayerManager : MonoBehaviour
     private void LateUpdate()
     {
         cameraManager.HandleAllCameraMovement();
+
+        isIntracting = animator.GetBool("isIntracting");
     }
 }
