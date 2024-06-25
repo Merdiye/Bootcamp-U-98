@@ -151,7 +151,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isIntracting
+  - m_Name: isInteracting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b4f857e8af8774fbee0c727668e4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteractingBool: isInteracting
+  isInteractingStatus: 0
 --- !u!1102 &3314814073152816623
 AnimatorState:
   serializedVersion: 6

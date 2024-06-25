@@ -49,10 +49,16 @@ public class CharController : MonoBehaviour
 
     public void HandleAllMovement()
     {
-        if (playerManager.isIntracting)
+        if (playerManager.isInteracting)
             return;
 
         HandleMovement();
         HandleRotation();
+    }
+
+    public void HandleFallingAndLanding()
+    {
+        RaycastHit hit;
+        Vector3 raycastOrigin = transform.position;
     }
 }

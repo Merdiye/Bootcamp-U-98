@@ -14,9 +14,9 @@ public class AnimatorManager : MonoBehaviour
         vertical = Animator.StringToHash("Vertical");
     }
 
-    public void PlayTargetAnimation(string targetAnim, bool isIntracting) 
+    public void PlayTargetAnimation(string targetAnim, bool isInteracting) 
     {
-        animator.SetBool("isIntracting", isIntracting);
+        animator.SetBool("isInteracting", isInteracting);
         animator.CrossFade(targetAnim, 0.2f);
     }
 

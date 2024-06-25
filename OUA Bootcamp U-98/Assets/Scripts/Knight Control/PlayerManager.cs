@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     InputManager inputManager;
     CharController charController;
     CameraManager cameraManager;
-    public bool isIntracting;
+    public bool isInteracting;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -31,6 +31,6 @@ public class PlayerManager : MonoBehaviour
     {
         cameraManager.HandleAllCameraMovement();
 
-        isIntracting = animator.GetBool("isIntracting");
+        isInteracting = animator.GetBool("isInteracting");
     }
 }
