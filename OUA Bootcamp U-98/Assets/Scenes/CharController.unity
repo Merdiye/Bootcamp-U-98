@@ -996,6 +996,7 @@ MonoBehaviour:
   cameraInputY: 0
   verticalInput: 0
   horizontalInput: 0
+  jumpInput: 0
 --- !u!114 &909545843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,11 +1011,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inAirTimer: 0
   fallingVelocity: 33
+  leapingVelocity: 2
   raycastHeightOffset: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
+  gravityIntensity: -15
+  jumpHeight: 3
   isGrounded: 0
+  isJumping: 0
   movementSpeed: 9
   rotationSpeed: 15
 --- !u!114 &909545844
@@ -1029,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eabdb0499d20d940850b03e03ac748f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!136 &909545845
 CapsuleCollider:
   m_ObjectHideFlags: 0
