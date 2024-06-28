@@ -17,6 +17,7 @@ public class CharController : MonoBehaviour
     public float leapingVelocity = 3f;
     public float raycastHeightOffset = 0.5f;
     public LayerMask groundLayer;
+    public float maxDistance = 1f;
 
     [Header("Jumping")]
     public float gravityIntensity = -15;
@@ -94,8 +95,9 @@ public class CharController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 raycastOrigin = transform.position;
+        Vector3 targetPosition;
         raycastOrigin.y += raycastHeightOffset; 
-
+        targetPosition = transform.position;
         if(!isGrounded && !isJumping)
         {
             if (!playerManager.isInteracting)
@@ -108,12 +110,15 @@ public class CharController : MonoBehaviour
              
         }
 
-        if(Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, 0.5f, groundLayer))
+        if(Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, maxDistance, groundLayer))
         {
             if(!isGrounded && playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Landing", true);
             }
+
+            Vector3 raycastHitPoint = hit.point;
+            targetPosition.y = raycastHitPoint.y;
 
             inAirTimer = 0;
             isGrounded = true;
@@ -123,6 +128,18 @@ public class CharController : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+
+        if(isGrounded && !isJumping)
+        {
+            if(!playerManager.isInteracting || inputManager.moveAmount > 0)
+            {
+                transform.position = Vector3.Lerp(transform.position ,targetPosition , Time.deltaTime / 0.1f);
+            }
+            else
+            {
+                transform.position = targetPosition;
+            }
         }
 
     }
