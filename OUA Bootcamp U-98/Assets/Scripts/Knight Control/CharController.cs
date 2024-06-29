@@ -14,22 +14,24 @@ public class CharController : MonoBehaviour
     [Header("Falling")]
     public float inAirTimer;
     public float fallingVelocity;
-    public float leapingVelocity = 3f;
+    public float leapingVelocity = 2f;
     public float raycastHeightOffset = 0.5f;
     public LayerMask groundLayer;
-    public float maxDistance = 1f;
+    public float maxDistance = 0.6f;
+    public float stairMaxDistance = 1.2f;
 
     [Header("Jumping")]
-    public float gravityIntensity = -15;
-    public float jumpHeight = 3;
+    public float gravityIntensity = -10;
+    public float jumpHeight = 2f;
 
     [Header("Flags")]
     public bool isGrounded;
     public bool isJumping;
-
+    public bool isOnStairs;
 
     [Header("Speeds")]
     public float movementSpeed = 7f;
+    public float stairMovementSpeed = 10f;
     public float rotationSpeed = 15f;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class CharController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
     }
+
     private void HandleMovement()
     {
         if (isJumping)
@@ -49,11 +52,17 @@ public class CharController : MonoBehaviour
         moveDirection += cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
         moveDirection.y = 0;
-        moveDirection = moveDirection * movementSpeed;
+
+        float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
+        moveDirection = moveDirection * currentSpeed;
 
         if (isGrounded && !isJumping)
         {
             Vector3 movementVelocity = moveDirection;
+            if (isOnStairs)
+            {
+                movementVelocity.y = playerRigidbody.velocity.y;
+            }
             playerRigidbody.velocity = movementVelocity;
         }
     }
@@ -98,6 +107,9 @@ public class CharController : MonoBehaviour
         Vector3 targetPosition;
         raycastOrigin.y += raycastHeightOffset; 
         targetPosition = transform.position;
+
+        float currentMaxDistance = isJumping ? maxDistance : stairMaxDistance;
+
         if(!isGrounded && !isJumping)
         {
             if (!playerManager.isInteracting)
@@ -107,10 +119,9 @@ public class CharController : MonoBehaviour
             inAirTimer += Time.deltaTime;
             playerRigidbody.AddForce(transform.forward * leapingVelocity);
             playerRigidbody.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
-             
         }
 
-        if(Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, maxDistance, groundLayer))
+        if(Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, currentMaxDistance, groundLayer))
         {
             if(!isGrounded && playerManager.isInteracting)
             {
@@ -123,11 +134,13 @@ public class CharController : MonoBehaviour
             inAirTimer = 0;
             isGrounded = true;
             playerManager.isInteracting = false;
+            isOnStairs = hit.collider.CompareTag("Stairs");
 
         }
         else
         {
             isGrounded = false;
+            isOnStairs = false;
         }
 
         if(isGrounded && !isJumping)
@@ -141,7 +154,6 @@ public class CharController : MonoBehaviour
                 transform.position = targetPosition;
             }
         }
-
     }
 
     public void HandleJumping()
@@ -158,3 +170,5 @@ public class CharController : MonoBehaviour
         }
     }
 }
+
+
