@@ -435,7 +435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteractingBool: isInteracting
+  isInteractingStatus: 0
   isUsingRootMotionBool: isUsingRootMotion
+  isUsingRootMotionStatus: 0
 --- !u!1102 &5657616969446107965
 AnimatorState:
   serializedVersion: 6

@@ -1143,6 +1143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteracting: 0
+  isUsingRootMotion: 0
 --- !u!114 &909545842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,6 +1164,7 @@ MonoBehaviour:
   verticalInput: 0
   horizontalInput: 0
   jumpInput: 0
+  dodgeInput: 0
 --- !u!114 &909545843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,6 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75f3aab9d5c5314e83cc4ac262f97f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRigidbody: {fileID: 0}
   inAirTimer: 0
   fallingVelocity: 33
   leapingVelocity: 2
@@ -1192,6 +1195,7 @@ MonoBehaviour:
   movementSpeed: 9
   stairMovementSpeed: 10
   rotationSpeed: 15
+  dodgeSpeed: 5
 --- !u!114 &909545844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6571,7 +6575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6727402498458956769, guid: 7b46b396e4b402c4faf748ab301542f0, type: 3}
       propertyPath: collisionLayers.m_Bits
-      value: 64
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
