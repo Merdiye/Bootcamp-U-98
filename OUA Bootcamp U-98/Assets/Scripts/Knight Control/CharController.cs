@@ -9,7 +9,7 @@ public class CharController : MonoBehaviour
     InputManager inputManager;
     Vector3 moveDirection;
     Transform cameraObject;
-    Rigidbody playerRigidbody;
+    public Rigidbody playerRigidbody;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -33,6 +33,7 @@ public class CharController : MonoBehaviour
     public float movementSpeed = 7f;
     public float stairMovementSpeed = 10f;
     public float rotationSpeed = 15f;
+    public float dodgeSpeed = 5f;
 
     private void Awake()
     {
@@ -59,13 +60,14 @@ public class CharController : MonoBehaviour
         if (isGrounded && !isJumping)
         {
             Vector3 movementVelocity = moveDirection;
-            if (isOnStairs)
+            if (isOnStairs && (inputManager.verticalInput != 0 || inputManager.horizontalInput != 0))
             {
                 movementVelocity.y = playerRigidbody.velocity.y;
             }
             playerRigidbody.velocity = movementVelocity;
         }
     }
+
 
     private void HandleRotation()
     {
@@ -116,6 +118,8 @@ public class CharController : MonoBehaviour
             {
                 animatorManager.PlayTargetAnimation("Falling", true);
             }
+            animatorManager.animator.SetBool("isUsingRootMotion", false);
+
             inAirTimer += Time.deltaTime;
             playerRigidbody.AddForce(transform.forward * leapingVelocity);
             playerRigidbody.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
@@ -168,6 +172,16 @@ public class CharController : MonoBehaviour
             playerVelocity.y = jumpingVelocity;
             playerRigidbody.velocity = playerVelocity;
         }
+    }
+
+    public void HandleDodge()
+    {
+        if (playerManager.isInteracting)
+            return;
+
+        animatorManager.PlayTargetAnimation("Dodge", true, true);
+        //eðer dodge atarken hasar almamak istiyorsak burada bir deðiþkeni true yapacaðýz sonra hareket bitince o deðiþken false olacak
+        //eðer true ise düþman bize hasar veremez, false ise verebilir
     }
 }
 
