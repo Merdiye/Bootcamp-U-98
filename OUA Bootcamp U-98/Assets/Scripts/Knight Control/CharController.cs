@@ -10,7 +10,6 @@ public class CharController : MonoBehaviour
     Vector3 moveDirection;
     Transform cameraObject;
     public Rigidbody playerRigidbody;
-
     [Header("Falling")]
     public float inAirTimer;
     public float fallingVelocity;
@@ -43,6 +42,7 @@ public class CharController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
     }
+
 
     private void HandleMovement()
     {
