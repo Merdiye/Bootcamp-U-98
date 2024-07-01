@@ -57,19 +57,7 @@ public class AnimatorManager : MonoBehaviour
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
-
-    /*private void OnAnimatorMove()
-    {
-        if (playerManager.isUsingRootMotion)
-        {
-            charController.playerRigidbody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
-            deltaPosition.y = 0f;
-            Vector3 velocity = deltaPosition / Time.deltaTime;
-            charController.playerRigidbody.velocity = velocity;
-        }
-    }*/
-
+    /*
     private void OnAnimatorMove()
     {
         if (playerManager.isUsingRootMotion && playerManager.isInteracting)
@@ -81,5 +69,6 @@ public class AnimatorManager : MonoBehaviour
             charController.playerRigidbody.velocity = velocity;
         }
     }
+    */
 
 }
