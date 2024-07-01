@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteracting: 0
-  isUsingRootMotion: 0
+  isUsingRootMotion: 1
 --- !u!114 &909545842
 MonoBehaviour:
   m_ObjectHideFlags: 0

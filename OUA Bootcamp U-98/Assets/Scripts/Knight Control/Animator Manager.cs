@@ -25,64 +25,40 @@ public class AnimatorManager : MonoBehaviour
         animator.CrossFade(targetAnim, 0.2f);
     }
 
+    private float SnapValue(float moveValue)
+    {
+        if (moveValue > 0.1f && moveValue < 0.55f)
+        {
+            return 0.5f;
+        }
+        else if (moveValue > 0.55f)
+        {
+            return 1f;
+        }
+        else if (moveValue < -0.1f && moveValue > -0.55f)
+        {
+            return -0.5f;
+        }
+        else if (moveValue < -0.55f)
+        {
+            return -1f;
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
     public void UpdateAnimatorValues(float horizontalMove, float verticalMove)
     {
-        //animation snapping
-        float snappedHorizontal;
-        float snappedVertical;
-
-        #region Snapped Horizontal
-        if (horizontalMove > 0.1f && horizontalMove < 0.55f)
-        {
-            snappedHorizontal = 0.5f;
-        }
-        else if(horizontalMove > 0.55f)
-        {
-            snappedHorizontal = 1f;
-        }
-        else if (horizontalMove < -0.1f && horizontalMove > -0.55f)
-        {
-            snappedHorizontal = -0.5f;
-        }
-        else if(horizontalMove < -0.55f)
-        {
-            snappedHorizontal = -1f;
-        }
-        else
-        {
-            snappedHorizontal= 0f;
-        }
-        #endregion
-
-        #region Snapped Vertical
-        if (verticalMove > 0.1f && verticalMove < 0.55f)
-        {
-            snappedVertical = 0.5f;
-        }
-        else if (verticalMove > 0.55f)
-        {
-            snappedVertical = 1f;
-        }
-        else if (verticalMove < -0.1f && verticalMove > -0.55f)
-        {
-            snappedVertical = -0.5f;
-        }
-        else if (verticalMove < -0.55f)
-        {
-            snappedVertical = -1f;
-        }
-        else
-        {
-            snappedVertical = 0f;
-        }
-        #endregion
-
+        float snappedHorizontal = SnapValue(horizontalMove);
+        float snappedVertical = SnapValue(verticalMove);
 
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
 
-    private void OnAnimatorMove()
+    /*private void OnAnimatorMove()
     {
         if (playerManager.isUsingRootMotion)
         {
@@ -92,5 +68,18 @@ public class AnimatorManager : MonoBehaviour
             Vector3 velocity = deltaPosition / Time.deltaTime;
             charController.playerRigidbody.velocity = velocity;
         }
+    }*/
+
+    private void OnAnimatorMove()
+    {
+        if (playerManager.isUsingRootMotion && playerManager.isInteracting)
+        {
+            charController.playerRigidbody.drag = 0;
+            Vector3 deltaPosition = animator.deltaPosition;
+            deltaPosition.y = 0f;
+            Vector3 velocity = deltaPosition / Time.deltaTime;
+            charController.playerRigidbody.velocity = velocity;
+        }
     }
+
 }
