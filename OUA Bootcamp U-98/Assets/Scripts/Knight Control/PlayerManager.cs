@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     CharController charController;
     CameraManager cameraManager;
     public bool isInteracting;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -19,19 +20,29 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        // Handle all player inputs
         inputManager.HandleAllInputs();
     }
 
     private void FixedUpdate()
     {
+        // Handle all movement related updates
         charController.HandleAllMovement();
     }
 
     private void LateUpdate()
     {
+        // Handle all camera related updates
         cameraManager.HandleAllCameraMovement();
 
+        // Update interaction and state flags
+        UpdateAnimatorStates();
+    }
+
+    private void UpdateAnimatorStates()
+    {
         isInteracting = animator.GetBool("isInteracting");
+        charController.isDodging = animator.GetBool("isDodging");
         charController.isJumping = animator.GetBool("isJumping");
         animator.SetBool("isGrounded", charController.isGrounded);
     }

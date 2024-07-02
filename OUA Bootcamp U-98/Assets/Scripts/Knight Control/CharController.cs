@@ -9,7 +9,7 @@ public class CharController : MonoBehaviour
     InputManager inputManager;
     Vector3 moveDirection;
     Transform cameraObject;
-    Rigidbody playerRigidbody;
+    public Rigidbody playerRigidbody;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -27,15 +27,24 @@ public class CharController : MonoBehaviour
     [Header("Flags")]
     public bool isGrounded;
     public bool isJumping;
+    public bool isDodging;
+    public bool isCanDodge;
     public bool isOnStairs;
 
     [Header("Speeds")]
     public float movementSpeed = 7f;
     public float stairMovementSpeed = 10f;
     public float rotationSpeed = 15f;
+    public float dodgeSpeed = 10f;
+
+    [Header("Timer")]
+    public float dodgeTimer;
+
 
     private void Awake()
     {
+        dodgeTimer = 1;
+        isCanDodge = true;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
@@ -45,21 +54,20 @@ public class CharController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isJumping)
+        if (isJumping || isDodging)
             return;
 
-        moveDirection = cameraObject.forward * inputManager.verticalInput;
-        moveDirection += cameraObject.right * inputManager.horizontalInput;
+        moveDirection = cameraObject.forward * inputManager.verticalInput + cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
         moveDirection.y = 0;
 
         float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
-        moveDirection = moveDirection * currentSpeed;
+        moveDirection *= currentSpeed;
 
-        if (isGrounded && !isJumping)
+        if (isGrounded)
         {
             Vector3 movementVelocity = moveDirection;
-            if (isOnStairs)
+            if (isOnStairs && (inputManager.verticalInput != 0 || inputManager.horizontalInput != 0))
             {
                 movementVelocity.y = playerRigidbody.velocity.y;
             }
@@ -69,33 +77,26 @@ public class CharController : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (isJumping)
+        if (isJumping || isDodging)
             return;
 
-        Vector3 targetDirection = Vector3.zero;
-        targetDirection = cameraObject.forward * inputManager.verticalInput;
-        targetDirection += cameraObject.right * inputManager.horizontalInput;
+        Vector3 targetDirection = cameraObject.forward * inputManager.verticalInput + cameraObject.right * inputManager.horizontalInput;
         targetDirection.Normalize();
         targetDirection.y = 0;
 
-        if(targetDirection == Vector3.zero)
+        if (targetDirection == Vector3.zero)
             targetDirection = transform.forward;
 
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        if (isGrounded && !isJumping)
-        {
-            transform.rotation = playerRotation;
-        }
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     public void HandleAllMovement()
     {
         HandleFallingAndLanding();
         if (playerManager.isInteracting && !isGrounded)
-        {
             return;
-        }
+
         HandleMovement();
         HandleRotation();
     }
@@ -103,39 +104,36 @@ public class CharController : MonoBehaviour
     private void HandleFallingAndLanding()
     {
         RaycastHit hit;
-        Vector3 raycastOrigin = transform.position;
-        Vector3 targetPosition;
-        raycastOrigin.y += raycastHeightOffset; 
-        targetPosition = transform.position;
+        Vector3 raycastOrigin = transform.position + Vector3.up * raycastHeightOffset;
+        Vector3 targetPosition = transform.position;
 
         float currentMaxDistance = isJumping ? maxDistance : stairMaxDistance;
 
-        if(!isGrounded && !isJumping)
+        if (!isGrounded && !isJumping)
         {
             if (!playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Falling", true);
             }
+            animatorManager.animator.SetBool("isDodging", false);
+
             inAirTimer += Time.deltaTime;
             playerRigidbody.AddForce(transform.forward * leapingVelocity);
-            playerRigidbody.AddForce(-Vector3.up * fallingVelocity * inAirTimer);
+            playerRigidbody.AddForce(Vector3.down * fallingVelocity * inAirTimer);
         }
 
-        if(Physics.SphereCast(raycastOrigin, 0.2f, -Vector3.up, out hit, currentMaxDistance, groundLayer))
+        if (Physics.SphereCast(raycastOrigin, 0.2f, Vector3.down, out hit, currentMaxDistance, groundLayer))
         {
-            if(!isGrounded && playerManager.isInteracting)
+            if (!isGrounded && playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Landing", true);
             }
 
-            Vector3 raycastHitPoint = hit.point;
-            targetPosition.y = raycastHitPoint.y;
-
+            targetPosition.y = hit.point.y;
             inAirTimer = 0;
             isGrounded = true;
             playerManager.isInteracting = false;
             isOnStairs = hit.collider.CompareTag("Stairs");
-
         }
         else
         {
@@ -143,25 +141,18 @@ public class CharController : MonoBehaviour
             isOnStairs = false;
         }
 
-        if(isGrounded && !isJumping)
+        if (isGrounded && !isJumping)
         {
-            if(!playerManager.isInteracting || inputManager.moveAmount > 0)
-            {
-                transform.position = Vector3.Lerp(transform.position ,targetPosition , Time.deltaTime / 0.1f);
-            }
-            else
-            {
-                transform.position = targetPosition;
-            }
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);
         }
     }
 
     public void HandleJumping()
     {
-        if(isGrounded)
+        if (isGrounded && !isDodging)
         {
             animatorManager.animator.SetBool("isJumping", true);
-            animatorManager.PlayTargetAnimation("Jumping", false);
+            animatorManager.PlayTargetAnimation("Jumping", true);
 
             float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
             Vector3 playerVelocity = moveDirection;
@@ -169,6 +160,40 @@ public class CharController : MonoBehaviour
             playerRigidbody.velocity = playerVelocity;
         }
     }
+
+    public void HandleDodge()
+    {
+        if (!isGrounded || !isCanDodge)
+            return;
+
+        dodgeTimer = 0;
+        isCanDodge = false;
+        animatorManager.animator.SetBool("isDodging", true);
+        animatorManager.PlayTargetAnimation("Dodge", true);
+
+        Vector3 dodgeDirection = -transform.forward; // Karakterin arkasýna doðru yön
+        Vector3 dodgeVelocity = dodgeDirection * dodgeSpeed;
+        playerRigidbody.velocity = dodgeVelocity;
+
+        StartCoroutine(EndDodge());
+        StartCoroutine(CooldownDodge());
+
+    }
+
+    private IEnumerator EndDodge()
+    {
+        yield return new WaitForSeconds(0.5f); // Dodge animasyonunun süresi kadar bekleyin
+        animatorManager.animator.SetBool("isDodging", false);
+    }
+
+    private IEnumerator CooldownDodge()
+    {
+        dodgeTimer += Time.deltaTime;
+        yield return new WaitForSeconds(0.75f);
+        isCanDodge = true;
+    }
 }
+
+
 
 
