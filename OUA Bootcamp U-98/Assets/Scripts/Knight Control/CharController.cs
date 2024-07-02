@@ -163,12 +163,11 @@ public class CharController : MonoBehaviour
 
     public void HandleDodge()
     {
-        if (!isGrounded || isDodging || !isCanDodge)
+        if (!isGrounded || !isCanDodge)
             return;
 
         dodgeTimer = 0;
         isCanDodge = false;
-        isDodging = true;
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
 
@@ -177,21 +176,20 @@ public class CharController : MonoBehaviour
         playerRigidbody.velocity = dodgeVelocity;
 
         StartCoroutine(EndDodge());
-
         StartCoroutine(CooldownDodge());
 
     }
 
     private IEnumerator EndDodge()
     {
-        yield return new WaitForSeconds(2.5f); // Dodge animasyonunun süresi kadar bekleyin
-        isDodging = false;
+        yield return new WaitForSeconds(0.5f); // Dodge animasyonunun süresi kadar bekleyin
+        animatorManager.animator.SetBool("isDodging", false);
     }
 
     private IEnumerator CooldownDodge()
     {
         dodgeTimer += Time.deltaTime;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.75f);
         isCanDodge = true;
     }
 }
