@@ -181,7 +181,6 @@ public class CharController : MonoBehaviour
 
         animatorManager.PlayTargetAnimation("Dodge", true, true);
         playerManager.isInteracting = true;
-        playerRigidbody.AddForce(transform.forward * -dodgeSpeed);
         //eðer dodge atarken hasar almamak istiyorsak burada bir deðiþkeni true yapacaðýz sonra hareket bitince o deðiþken false olacak
         //eðer true ise düþman bize hasar veremez, false ise verebilir
     }
