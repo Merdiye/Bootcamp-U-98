@@ -18,10 +18,9 @@ public class AnimatorManager : MonoBehaviour
         vertical = Animator.StringToHash("Vertical");
     }
 
-    public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool useRootMotion = false) 
+    public void PlayTargetAnimation(string targetAnim, bool isInteracting) 
     {
         animator.SetBool("isInteracting", isInteracting);
-        animator.SetBool("isUsingRootMotion", useRootMotion);
         animator.CrossFade(targetAnim, 0.2f);
     }
 
@@ -57,18 +56,5 @@ public class AnimatorManager : MonoBehaviour
         animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
         animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
     }
-    /*
-    private void OnAnimatorMove()
-    {
-        if (playerManager.isUsingRootMotion && playerManager.isInteracting)
-        {
-            charController.playerRigidbody.drag = 0;
-            Vector3 deltaPosition = animator.deltaPosition;
-            deltaPosition.y = 0f;
-            Vector3 velocity = deltaPosition / Time.deltaTime;
-            charController.playerRigidbody.velocity = velocity;
-        }
-    }
-    */
 
 }
