@@ -6308,6 +6308,10 @@ PrefabInstance:
       propertyPath: dodgeSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7198520306998187694, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5

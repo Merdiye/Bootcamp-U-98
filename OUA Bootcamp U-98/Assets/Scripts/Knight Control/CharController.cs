@@ -28,6 +28,7 @@ public class CharController : MonoBehaviour
     public bool isGrounded;
     public bool isJumping;
     public bool isDodging;
+    public bool isCanDodge;
     public bool isOnStairs;
 
     [Header("Speeds")]
@@ -36,8 +37,14 @@ public class CharController : MonoBehaviour
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
 
+    [Header("Timer")]
+    public float dodgeTimer;
+
+
     private void Awake()
     {
+        dodgeTimer = 1;
+        isCanDodge = true;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
@@ -142,7 +149,7 @@ public class CharController : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (isGrounded)
+        if (isGrounded && !isDodging)
         {
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAnimation("Jumping", true);
@@ -156,9 +163,11 @@ public class CharController : MonoBehaviour
 
     public void HandleDodge()
     {
-        if (!isGrounded || isDodging)
+        if (!isGrounded || isDodging || !isCanDodge)
             return;
 
+        dodgeTimer = 0;
+        isCanDodge = false;
         isDodging = true;
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
@@ -168,12 +177,22 @@ public class CharController : MonoBehaviour
         playerRigidbody.velocity = dodgeVelocity;
 
         StartCoroutine(EndDodge());
+
+        StartCoroutine(CooldownDodge());
+
     }
 
     private IEnumerator EndDodge()
     {
-        yield return new WaitForSeconds(1f); // Dodge animasyonunun süresi kadar bekleyin
+        yield return new WaitForSeconds(2.5f); // Dodge animasyonunun süresi kadar bekleyin
         isDodging = false;
+    }
+
+    private IEnumerator CooldownDodge()
+    {
+        dodgeTimer += Time.deltaTime;
+        yield return new WaitForSeconds(1f);
+        isCanDodge = true;
     }
 }
 

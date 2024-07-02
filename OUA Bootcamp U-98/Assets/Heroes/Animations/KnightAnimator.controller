@@ -208,7 +208,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dodge
-  m_Speed: 0.01
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7070169878762115331}
@@ -225,7 +225,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 650242174318006946, guid: cff721174532d68488e8de5a21fed339, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: Vertical
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: Vertical
@@ -449,8 +449,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInteractingBool: isInteracting
   isInteractingStatus: 0
-  isUsingRootMotionBool: isUsingRootMotion
-  isUsingRootMotionStatus: 0
 --- !u!1102 &5657616969446107965
 AnimatorState:
   serializedVersion: 6
