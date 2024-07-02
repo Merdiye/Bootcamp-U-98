@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1623321867220916208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.009, z: -4}
+  m_LocalPosition: {x: 0, y: 0.009, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,9 +177,9 @@ MonoBehaviour:
   cameraCollisionRadius: 0.3
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   cameraCollisionOffset: 0.4
-  cameraFollowSpeed: 0.2
+  cameraFollowSpeed: 0.05
   cameraLookSpeed: 0.5
   cameraPivotSpeed: 0.5
   lookAngle: 0

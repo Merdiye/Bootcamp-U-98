@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     CharController charController;
     CameraManager cameraManager;
     public bool isInteracting;
+    public bool isUsingRootMotion;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -32,5 +33,8 @@ public class PlayerManager : MonoBehaviour
         cameraManager.HandleAllCameraMovement();
 
         isInteracting = animator.GetBool("isInteracting");
+        isUsingRootMotion = animator.GetBool("isUsingRootMotion");
+        charController.isJumping = animator.GetBool("isJumping");
+        animator.SetBool("isGrounded", charController.isGrounded);
     }
 }

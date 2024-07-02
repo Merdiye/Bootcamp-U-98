@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     public CharacterInput charInput;
     AnimatorManager animatorManager;
+    CharController charController;
 
     public Vector2 movementInput;
     public Vector2 cameraInput;
@@ -13,13 +14,17 @@ public class InputManager : MonoBehaviour
     public float cameraInputX;
     public float cameraInputY;
 
-    private float moveAmount;
+    public float moveAmount;
     public float verticalInput;
     public float horizontalInput;
+
+    public bool jumpInput;
+    public bool dodgeInput;
 
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
+        charController = GetComponent<CharController>();
     }
 
     private void OnEnable()
@@ -29,6 +34,8 @@ public class InputManager : MonoBehaviour
             charInput = new CharacterInput();
             charInput.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             charInput.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            charInput.PlayerActions.Jump.performed += i => jumpInput = true;
+            charInput.PlayerActions.Dodge.performed += i => dodgeInput = true;
 
         }
         charInput.Enable();
@@ -42,6 +49,8 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
+        HandleJumpingInput();
+        HandleDodgeInput();
     }
 
     private void HandleMovementInput()
@@ -54,5 +63,23 @@ public class InputManager : MonoBehaviour
 
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput)); 
         animatorManager.UpdateAnimatorValues(0f, moveAmount);
+    }
+
+    private void HandleJumpingInput()
+    {
+        if (jumpInput)
+        {
+            jumpInput = false;
+            charController.HandleJumping();
+        }
+    }
+
+    private void HandleDodgeInput()
+    {
+        if(dodgeInput)
+        {
+            dodgeInput = false;
+            charController.HandleDodge();
+        }
     }
 }
