@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
 
     public bool jumpInput;
     public bool dodgeInput;
+    public bool attackInput;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class InputManager : MonoBehaviour
             charInput.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             charInput.PlayerActions.Jump.performed += i => jumpInput = true;
             charInput.PlayerActions.Dodge.performed += i => dodgeInput = true;
+            charInput.PlayerActions.Attack.performed += i => attackInput = true;
 
         }
         charInput.Enable();
@@ -48,6 +50,7 @@ public class InputManager : MonoBehaviour
 
     public void HandleAllInputs()
     {
+        HandleAttackInput();
         HandleMovementInput();
         HandleJumpingInput();
         HandleDodgeInput();
@@ -80,6 +83,15 @@ public class InputManager : MonoBehaviour
         {
             dodgeInput = false;
             charController.HandleDodge();
+        }
+    }
+
+    private void HandleAttackInput()
+    {
+        if (attackInput)
+        {
+            attackInput = false;
+            charController.HandleAttack();
         }
     }
 }
