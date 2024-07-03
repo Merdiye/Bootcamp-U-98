@@ -196,7 +196,7 @@ public class CharController : MonoBehaviour
     {
         if (!isCanDodge)
         {
-            image.fillAmount += Time.deltaTime / 3;
+            image.fillAmount += Time.deltaTime / 2;
         }
     }
 }
