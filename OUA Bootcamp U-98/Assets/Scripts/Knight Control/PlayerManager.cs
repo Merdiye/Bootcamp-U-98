@@ -22,6 +22,11 @@ public class PlayerManager : MonoBehaviour
     {
         // Handle all player inputs
         inputManager.HandleAllInputs();
+
+        if (!charController.isCanDodge)
+        {
+            charController.UpdateImage();
+        }
     }
 
     private void FixedUpdate()

@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour
 {
     AnimatorManager animatorManager;
     PlayerManager playerManager;
     InputManager inputManager;
-    DodgeSkill dodgeSkill;
     Vector3 moveDirection;
     Transform cameraObject;
     public Rigidbody playerRigidbody;
+    public Image image;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -41,7 +42,6 @@ public class CharController : MonoBehaviour
 
     private void Awake()
     {
-        dodgeSkill = GetComponent<DodgeSkill>();
         isCanDodge = true;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
@@ -164,6 +164,7 @@ public class CharController : MonoBehaviour
         if (!isGrounded || !isCanDodge)
             return;
         isCanDodge = false;
+        image.fillAmount = 0;
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
 
@@ -184,9 +185,13 @@ public class CharController : MonoBehaviour
 
     private IEnumerator CooldownDodge()
     {
-        dodgeSkill.isDodging = true;
         yield return new WaitForSeconds(2f);
         isCanDodge = true;
+    }
+
+    public void UpdateImage()
+    {
+        image.fillAmount += Time.deltaTime / 3;
     }
 }
 

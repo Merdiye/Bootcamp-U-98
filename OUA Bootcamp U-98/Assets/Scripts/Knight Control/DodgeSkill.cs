@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DodgeSkill : MonoBehaviour
 {
     public bool isDodging;
-    [SerializeField] GameObject image;
+    public Image image;
 
     private void Awake()
     {
+        image = FindObjectOfType<Image>();
         isDodging = false;
     }
 
