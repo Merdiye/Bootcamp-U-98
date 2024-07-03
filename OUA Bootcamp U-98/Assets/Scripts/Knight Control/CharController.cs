@@ -21,6 +21,7 @@ public class CharController : MonoBehaviour
     public LayerMask groundLayer;
     public float maxDistance = 0.6f;
     public float stairMaxDistance = 1.2f;
+    public float onAirMove = 1f;
 
     [Header("Jumping")]
     public float gravityIntensity = -10;
@@ -32,12 +33,16 @@ public class CharController : MonoBehaviour
     public bool isDodging;
     public bool isCanDodge;
     public bool isOnStairs;
+    public bool isAttacking;
 
     [Header("Speeds")]
     public float movementSpeed = 7f;
     public float stairMovementSpeed = 10f;
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
+
+    [Header("Attack")]
+    public float onAttackSpeed = 1;
 
     private void Awake()
     {
@@ -56,7 +61,7 @@ public class CharController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isJumping || isDodging)
+        if (isJumping || isDodging )
             return;
 
         moveDirection = cameraObject.forward * inputManager.verticalInput + cameraObject.right * inputManager.horizontalInput;
@@ -64,7 +69,7 @@ public class CharController : MonoBehaviour
         moveDirection.y = 0;
 
         float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
-        moveDirection *= currentSpeed;
+        moveDirection *= currentSpeed * onAttackSpeed;
 
         if (isGrounded)
         {
@@ -98,9 +103,9 @@ public class CharController : MonoBehaviour
         HandleFallingAndLanding();
         if (playerManager.isInteracting && !isGrounded)
             return;
-
         HandleMovement();
         HandleRotation();
+
     }
 
     private void HandleFallingAndLanding()
@@ -151,7 +156,7 @@ public class CharController : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (isGrounded && !isDodging)
+        if (!playerManager.isInteracting)
         {
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAnimation("Jumping", true);
@@ -165,7 +170,7 @@ public class CharController : MonoBehaviour
 
     public void HandleDodge()
     {
-        if (!isGrounded || !isCanDodge)
+        if (!isCanDodge || playerManager.isInteracting)
             return;
         isCanDodge = false;
         image.fillAmount = 0;
@@ -202,10 +207,24 @@ public class CharController : MonoBehaviour
 
     public void HandleAttack()
     {
-
+        if (!playerManager.isInteracting && !isAttacking)
+        {
+            onAttackSpeed = 0.4f;
+            isAttacking = true;
+            animatorManager.PlayTargetAnimation("Attack", true);
+            animatorManager.animator.SetBool("isAttacking", true);
+            StartCoroutine(EndAttack());
+        }
     }
 
+    private IEnumerator EndAttack()
+    {
+        yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
+        onAttackSpeed = 1f;
+        animatorManager.animator.SetBool("isAttacking", false);
+    }
 }
+
 
 
 
