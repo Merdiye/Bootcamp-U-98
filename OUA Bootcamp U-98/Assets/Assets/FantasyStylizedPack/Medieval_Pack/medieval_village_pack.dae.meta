@@ -3,7 +3,22 @@ guid: ada3f1341432a5f4184db7915396a5e6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arena_atlas
+    second: {fileID: 2100000, guid: 9c026ffe8b563674aabbd25123d64987, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: atlas_asia_pack
+    second: {fileID: 2100000, guid: 31b980291094a64499854f61c25c9988, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: village_atlas
+    second: {fileID: 2100000, guid: a9a97d67e20ab4741b12d7901f7886d8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
