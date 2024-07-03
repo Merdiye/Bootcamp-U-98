@@ -39,7 +39,6 @@ public class CharController : MonoBehaviour
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
 
-
     private void Awake()
     {
         isCanDodge = true;
@@ -48,6 +47,11 @@ public class CharController : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+    }
+
+    private void Update()
+    {
+        UpdateImage();
     }
 
     private void HandleMovement()
@@ -174,7 +178,6 @@ public class CharController : MonoBehaviour
 
         StartCoroutine(EndDodge());
         StartCoroutine(CooldownDodge());
-
     }
 
     private IEnumerator EndDodge()
@@ -185,15 +188,19 @@ public class CharController : MonoBehaviour
 
     private IEnumerator CooldownDodge()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f); // Dodge için bekleme süresi
         isCanDodge = true;
     }
 
     public void UpdateImage()
     {
-        image.fillAmount += Time.deltaTime / 3;
+        if (!isCanDodge)
+        {
+            image.fillAmount += Time.deltaTime / 3;
+        }
     }
 }
+
 
 
 
