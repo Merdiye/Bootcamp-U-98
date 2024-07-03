@@ -3,7 +3,12 @@ guid: 1c947e970e3a1f44d9e631acece0d5d1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DeadOakTreeTrunk
+    second: {fileID: 8630597072414247462, guid: 2f424174145ac5c42950f9d59a5ec77d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
