@@ -7,6 +7,7 @@ public class CharController : MonoBehaviour
     AnimatorManager animatorManager;
     PlayerManager playerManager;
     InputManager inputManager;
+    DodgeSkill dodgeSkill;
     Vector3 moveDirection;
     Transform cameraObject;
     public Rigidbody playerRigidbody;
@@ -37,13 +38,10 @@ public class CharController : MonoBehaviour
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
 
-    [Header("Timer")]
-    public float dodgeTimer;
-
 
     private void Awake()
     {
-        dodgeTimer = 1;
+        dodgeSkill = GetComponent<DodgeSkill>();
         isCanDodge = true;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
@@ -165,8 +163,6 @@ public class CharController : MonoBehaviour
     {
         if (!isGrounded || !isCanDodge)
             return;
-
-        dodgeTimer = 0;
         isCanDodge = false;
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
@@ -188,7 +184,7 @@ public class CharController : MonoBehaviour
 
     private IEnumerator CooldownDodge()
     {
-        dodgeTimer += Time.deltaTime;
+        dodgeSkill.isDodging = true;
         yield return new WaitForSeconds(2f);
         isCanDodge = true;
     }
