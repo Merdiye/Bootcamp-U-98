@@ -199,6 +199,12 @@ public class CharController : MonoBehaviour
             image.fillAmount += Time.deltaTime / 2;
         }
     }
+
+    public void HandleAttack()
+    {
+
+    }
+
 }
 
 
