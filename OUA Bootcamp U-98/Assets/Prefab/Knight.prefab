@@ -555,6 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 0}
+  image: {fileID: 8582487921427844692}
   inAirTimer: 0
   fallingVelocity: 33
   leapingVelocity: 2
@@ -575,7 +576,6 @@ MonoBehaviour:
   stairMovementSpeed: 10
   rotationSpeed: 15
   dodgeSpeed: 10
-  dodgeTimer: 0
 --- !u!114 &6556869764339999693
 MonoBehaviour:
   m_ObjectHideFlags: 0
