@@ -189,7 +189,7 @@ public class CharController : MonoBehaviour
     private IEnumerator CooldownDodge()
     {
         dodgeTimer += Time.deltaTime;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(2f);
         isCanDodge = true;
     }
 }
