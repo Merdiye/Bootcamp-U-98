@@ -45,12 +45,14 @@ public class CharController : MonoBehaviour
     public float onAttackSpeed = 1;
     public float damage = 1f;
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 1f;
     public LayerMask enemyLayer;
+    private int attackAnimOrder;
 
     private void Awake()
     {
         isCanDodge = true;
+        attackAnimOrder = 1;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
@@ -213,12 +215,29 @@ public class CharController : MonoBehaviour
     {
         if (!playerManager.isInteracting && !isAttacking)
         {
-            Attack();
-            onAttackSpeed = 0.4f;
-            isAttacking = true;
-            animatorManager.PlayTargetAnimation("Attack", true);
-            animatorManager.animator.SetBool("isAttacking", true);
-            StartCoroutine(EndAttack());
+            if(attackAnimOrder == 1)
+            {
+                DamageToEnemy();
+                onAttackSpeed = 0.4f;
+                isAttacking = true;
+                animatorManager.PlayTargetAnimation("Attack", true);
+                animatorManager.animator.SetBool("isAttacking", true);
+                StartCoroutine(EndAttack());
+                attackAnimOrder = 2;
+            }
+            else if (attackAnimOrder == 2)
+            {
+                DamageToEnemy();
+                onAttackSpeed = 0.4f;
+                isAttacking = true;
+                animatorManager.PlayTargetAnimation("Attack2", true);
+                animatorManager.animator.SetBool("isAttacking", true);
+                StartCoroutine(EndAttack());
+                attackAnimOrder = 1;
+            }
+
+
+            
         }
     }
 
@@ -229,7 +248,7 @@ public class CharController : MonoBehaviour
         animatorManager.animator.SetBool("isAttacking", false);
     }
 
-    void Attack()
+    void DamageToEnemy()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
