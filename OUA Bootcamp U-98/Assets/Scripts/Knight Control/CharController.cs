@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CharController : MonoBehaviour
     Vector3 moveDirection;
     Transform cameraObject;
     public Rigidbody playerRigidbody;
+    public Image image;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -19,6 +21,7 @@ public class CharController : MonoBehaviour
     public LayerMask groundLayer;
     public float maxDistance = 0.6f;
     public float stairMaxDistance = 1.2f;
+    public float onAirMove = 1f;
 
     [Header("Jumping")]
     public float gravityIntensity = -10;
@@ -30,6 +33,7 @@ public class CharController : MonoBehaviour
     public bool isDodging;
     public bool isCanDodge;
     public bool isOnStairs;
+    public bool isAttacking;
 
     [Header("Speeds")]
     public float movementSpeed = 7f;
@@ -37,13 +41,11 @@ public class CharController : MonoBehaviour
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
 
-    [Header("Timer")]
-    public float dodgeTimer;
-
+    [Header("Attack")]
+    public float onAttackSpeed = 1;
 
     private void Awake()
     {
-        dodgeTimer = 1;
         isCanDodge = true;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
@@ -52,9 +54,14 @@ public class CharController : MonoBehaviour
         cameraObject = Camera.main.transform;
     }
 
+    private void Update()
+    {
+        UpdateImage();
+    }
+
     private void HandleMovement()
     {
-        if (isJumping || isDodging)
+        if (isJumping || isDodging )
             return;
 
         moveDirection = cameraObject.forward * inputManager.verticalInput + cameraObject.right * inputManager.horizontalInput;
@@ -62,7 +69,7 @@ public class CharController : MonoBehaviour
         moveDirection.y = 0;
 
         float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
-        moveDirection *= currentSpeed;
+        moveDirection *= currentSpeed * onAttackSpeed;
 
         if (isGrounded)
         {
@@ -96,9 +103,9 @@ public class CharController : MonoBehaviour
         HandleFallingAndLanding();
         if (playerManager.isInteracting && !isGrounded)
             return;
-
         HandleMovement();
         HandleRotation();
+
     }
 
     private void HandleFallingAndLanding()
@@ -149,7 +156,7 @@ public class CharController : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (isGrounded && !isDodging)
+        if (!playerManager.isInteracting)
         {
             animatorManager.animator.SetBool("isJumping", true);
             animatorManager.PlayTargetAnimation("Jumping", true);
@@ -163,11 +170,10 @@ public class CharController : MonoBehaviour
 
     public void HandleDodge()
     {
-        if (!isGrounded || !isCanDodge)
+        if (!isCanDodge || playerManager.isInteracting)
             return;
-
-        dodgeTimer = 0;
         isCanDodge = false;
+        image.fillAmount = 0;
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
 
@@ -177,7 +183,6 @@ public class CharController : MonoBehaviour
 
         StartCoroutine(EndDodge());
         StartCoroutine(CooldownDodge());
-
     }
 
     private IEnumerator EndDodge()
@@ -188,11 +193,39 @@ public class CharController : MonoBehaviour
 
     private IEnumerator CooldownDodge()
     {
-        dodgeTimer += Time.deltaTime;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(2f); // Dodge için bekleme süresi
         isCanDodge = true;
     }
+
+    public void UpdateImage()
+    {
+        if (!isCanDodge)
+        {
+            image.fillAmount += Time.deltaTime / 2;
+        }
+    }
+
+    public void HandleAttack()
+    {
+        if (!playerManager.isInteracting && !isAttacking)
+        {
+            onAttackSpeed = 0.4f;
+            isAttacking = true;
+            animatorManager.PlayTargetAnimation("Attack", true);
+            animatorManager.animator.SetBool("isAttacking", true);
+            StartCoroutine(EndAttack());
+        }
+    }
+
+    private IEnumerator EndAttack()
+    {
+        yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
+        onAttackSpeed = 1f;
+        animatorManager.animator.SetBool("isAttacking", false);
+    }
 }
+
+
 
 
 
