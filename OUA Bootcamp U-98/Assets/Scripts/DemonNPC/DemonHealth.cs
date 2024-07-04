@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class DemonHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int maxHealth = 5;
+    private int currentHealth;
+
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+  public void TakeDamage(int amount)
     {
-        
+        currentHealth -= amount;
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Demon is dead!");
+     
+
     }
 }
