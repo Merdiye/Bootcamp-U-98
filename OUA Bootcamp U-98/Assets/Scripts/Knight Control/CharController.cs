@@ -43,10 +43,16 @@ public class CharController : MonoBehaviour
 
     [Header("Attack")]
     public float onAttackSpeed = 1;
+    public float damage = 1f;
+    public Transform attackPoint;
+    public float attackRange = 1f;
+    public LayerMask enemyLayer;
+    private int attackAnimOrder;
 
     private void Awake()
     {
         isCanDodge = true;
+        attackAnimOrder = 1;
         animatorManager = GetComponent<AnimatorManager>();
         playerManager = GetComponent<PlayerManager>();
         inputManager = GetComponent<InputManager>();
@@ -209,11 +215,29 @@ public class CharController : MonoBehaviour
     {
         if (!playerManager.isInteracting && !isAttacking)
         {
-            onAttackSpeed = 0.4f;
-            isAttacking = true;
-            animatorManager.PlayTargetAnimation("Attack", true);
-            animatorManager.animator.SetBool("isAttacking", true);
-            StartCoroutine(EndAttack());
+            if(attackAnimOrder == 1)
+            {
+                DamageToEnemy();
+                onAttackSpeed = 0.4f;
+                isAttacking = true;
+                animatorManager.PlayTargetAnimation("Attack", true);
+                animatorManager.animator.SetBool("isAttacking", true);
+                StartCoroutine(EndAttack());
+                attackAnimOrder = 2;
+            }
+            else if (attackAnimOrder == 2)
+            {
+                DamageToEnemy();
+                onAttackSpeed = 0.4f;
+                isAttacking = true;
+                animatorManager.PlayTargetAnimation("Attack2", true);
+                animatorManager.animator.SetBool("isAttacking", true);
+                StartCoroutine(EndAttack());
+                attackAnimOrder = 1;
+            }
+
+
+            
         }
     }
 
@@ -223,6 +247,31 @@ public class CharController : MonoBehaviour
         onAttackSpeed = 1f;
         animatorManager.animator.SetBool("isAttacking", false);
     }
+
+    void DamageToEnemy()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log("npc'ye vuruldu\n");
+            DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
+            if (demonHealth != null)
+            {
+                demonHealth.TakeDamage(damage);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+
 }
 
 
