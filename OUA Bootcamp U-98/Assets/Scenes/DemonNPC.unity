@@ -507,6 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1435293345}
   warrior: {fileID: 580392382}
+  isPunchingBool: 0
 --- !u!135 &1435293355
 SphereCollider:
   m_ObjectHideFlags: 0
