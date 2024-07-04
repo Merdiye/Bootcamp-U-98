@@ -241,6 +241,14 @@ public class CharController : MonoBehaviour
         }
     }*/
 
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
 
 }
 
