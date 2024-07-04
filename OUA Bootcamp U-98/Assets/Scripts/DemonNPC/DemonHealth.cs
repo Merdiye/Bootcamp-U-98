@@ -6,6 +6,7 @@ public class DemonHealth : MonoBehaviour
 {
     public float maxHealth = 5;
     private float currentHealth;
+    public Animator animator;
 
     void Start()
     {
@@ -15,16 +16,29 @@ public class DemonHealth : MonoBehaviour
   public void TakeDamage(float amount)
     {
         currentHealth -= amount;
+        StartCoroutine(HitAnimation());
         if(currentHealth <= 0)
         {
-            Die();
+             Die();
         }
+            
+        
+    }
+
+
+    private IEnumerator HitAnimation()
+    {
+        animator.SetBool("isHitted", true);
+        yield return new WaitForSeconds(1.0f); 
+        animator.SetBool("isHitted", false);
     }
 
     void Die()
     {
+        animator.SetBool("isDead", true);
         Debug.Log("Demon is dead!");
-     
+
 
     }
+    
 }
