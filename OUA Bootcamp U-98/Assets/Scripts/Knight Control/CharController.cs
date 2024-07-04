@@ -227,7 +227,7 @@ public class CharController : MonoBehaviour
         animatorManager.animator.SetBool("isAttacking", false);
     }
 
-    void Attack()
+    /*void Attack()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
@@ -239,7 +239,7 @@ public class CharController : MonoBehaviour
                 demonHealth.TakeDamage(damage);
             }
         }
-    }
+    }*/
 
 
 }
