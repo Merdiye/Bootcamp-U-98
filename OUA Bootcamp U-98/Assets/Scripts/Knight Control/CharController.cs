@@ -43,6 +43,9 @@ public class CharController : MonoBehaviour
 
     [Header("Attack")]
     public float onAttackSpeed = 1;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayer;
 
     private void Awake()
     {
@@ -223,6 +226,22 @@ public class CharController : MonoBehaviour
         onAttackSpeed = 1f;
         animatorManager.animator.SetBool("isAttacking", false);
     }
+
+    /*void Attack()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
+            if (demonHealth != null)
+            {
+                demonHealth.TakeDamage(damage);
+            }
+        }
+    }*/
+
+
 }
 
 
