@@ -43,6 +43,7 @@ public class CharController : MonoBehaviour
 
     [Header("Attack")]
     public float onAttackSpeed = 1;
+    public float damage = 1f;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
@@ -212,6 +213,7 @@ public class CharController : MonoBehaviour
     {
         if (!playerManager.isInteracting && !isAttacking)
         {
+            Attack();
             onAttackSpeed = 0.4f;
             isAttacking = true;
             animatorManager.PlayTargetAnimation("Attack", true);
@@ -227,19 +229,20 @@ public class CharController : MonoBehaviour
         animatorManager.animator.SetBool("isAttacking", false);
     }
 
-    /*void Attack()
+    void Attack()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider enemy in hitEnemies)
         {
+            Debug.Log("npc'ye vuruldu\n");
             DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
             if (demonHealth != null)
             {
                 demonHealth.TakeDamage(damage);
             }
         }
-    }*/
+    }
 
     void OnDrawGizmosSelected()
     {
