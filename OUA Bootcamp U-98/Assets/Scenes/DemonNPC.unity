@@ -183,11 +183,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b46b396e4b402c4faf748ab301542f0, type: 3}
---- !u!1 &580392382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9176161406404501705, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-  m_PrefabInstance: {fileID: 2033966291}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847293971
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +467,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435293344}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ac555e53d54d7a64798343784c35f837, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -499,7 +494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1435293345}
-  warrior: {fileID: 580392382}
   isPunchingBool: 0
 --- !u!114 &1435293359
 MonoBehaviour:
@@ -1198,6 +1192,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ac555e53d54d7a64798343784c35f837, type: 2}
     - target: {fileID: 3323196851123686440, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Layer
       value: 9

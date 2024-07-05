@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class DemonNPC : MonoBehaviour
 {
     public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileşeni
-    [SerializeField] Transform _player; // Player objesinin referansı
+    [SerializeField] public Transform _player; // Player objesinin referansı
     public LayerMask ground, player; // Zemin ve player katmanlarını belirtmek için kullanılan layer maskeleri
     public Vector3 destinationPoint; // NPC'nin devriye sırasında gideceği hedef noktayı tutan değişken
     private bool destinationPointSet; // Hedef noktanın belirlenip belirlenmediğini kontrol eden bayrak
@@ -21,6 +21,7 @@ public class DemonNPC : MonoBehaviour
 
     private void Awake()
     {
+        alreadyAttacked = false;
         demonHealth = GetComponent<DemonHealth>();
         demonAnimator = GetComponent<DemonNPCAnimator>(); // DemonNPCAnimator bileşenini al
         _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileşenini al
@@ -39,7 +40,7 @@ public class DemonNPC : MonoBehaviour
         {
             if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) Patroling(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
             if (playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) ChasePlayer(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, player'ı takip eder
-            if (playerInSightRange && playerInAttackRange) AttackPlayer(); // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
+            if (playerInSightRange && playerInAttackRange && demonAnimator.isPunchingBool) AttackPlayer(); // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
         }
     }
 
@@ -53,9 +54,7 @@ public class DemonNPC : MonoBehaviour
         if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eğer NPC hedef noktaya yeterince yakınsa, bayrağı sıfırla
 
         // NPC'nin hedefine bakmasını sağla
-        Vector3 direction = (destinationPoint - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        LookTarget(_player);
     }
 
     void SearchWalkPoint()
@@ -73,11 +72,8 @@ public class DemonNPC : MonoBehaviour
         if (!demonAnimator.isPunchingBool) // Sadece saldırı animasyonu oynanmıyorsa hareket et
         {
             _agent.SetDestination(_player.position); // Player'ın pozisyonunu NPC'nin hedef noktası olarak ayarla
-
-            // NPC'nin oyuncuya bakmasını sağla
-            Vector3 direction = (_player.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            LookTarget(_player);
+            
         }
     }
 
@@ -85,11 +81,9 @@ public class DemonNPC : MonoBehaviour
     {
         _agent.SetDestination(transform.position);
 
-        // NPC'nin oyuncuya bakmasını sağla
-        transform.LookAt(_player);
-
         if (!alreadyAttacked) // Eğer NPC daha önce saldırmadıysa
         {
+            Debug.Log("npc saldirdi\n");
             alreadyAttacked = true; // Saldırdığını belirtmek için bayrağı true yap
             // Saldırı kodu buraya yazılır (örneğin, player'ın sağlığını azaltma)
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldırı bayrağını belirtilen süre sonra sıfırlamak için zamanlayıcı başlat
@@ -99,6 +93,14 @@ public class DemonNPC : MonoBehaviour
     void ResetAttack()
     {
         alreadyAttacked = false; // Bayrağı false yaparak NPC'nin yeniden saldırmasını sağla
+    }
+
+    public void LookTarget(Transform target)
+    {
+        // NPC'nin oyuncuya bakmasını sağla
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 }
 

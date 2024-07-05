@@ -52,6 +52,7 @@ public class DemonHealth : MonoBehaviour
             {
                 colliderAfterDeath.enabled = true;
             }
+            
         }
     }
 

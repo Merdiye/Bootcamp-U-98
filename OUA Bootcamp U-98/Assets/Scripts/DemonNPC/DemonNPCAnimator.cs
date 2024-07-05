@@ -7,27 +7,31 @@ public class DemonNPCAnimator : MonoBehaviour
 {
 
     public Animator animator;
-    [SerializeField] GameObject warrior;
     public bool isPunchingBool;
-
-
-    private void Start()
+    DemonNPC npc;
+    DemonHealth npcHealth;
+    private void Awake()
     {
+        npcHealth = GetComponent<DemonHealth>();
+        npc = GetComponent<DemonNPC>();
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        if (npcHealth.isDead)
+            return;
         isPunching();
         isPunchingBool = animator.GetBool("isPunching");
     }
 
     public void isPunching()
     {
-        Vector3 distanceToWarrior = transform.position - warrior.transform.position;
+        Vector3 distanceToWarrior = transform.position - npc._player.position;
         if (distanceToWarrior.magnitude <= 4.0f)
         {
             animator.SetBool("isPunching", true);
+            npc.LookTarget(npc._player);
         }
         else
         {
