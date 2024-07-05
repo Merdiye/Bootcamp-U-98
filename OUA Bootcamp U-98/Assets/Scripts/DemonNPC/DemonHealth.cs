@@ -40,5 +40,10 @@ public class DemonHealth : MonoBehaviour
 
 
     }
-    
+
+    public void PlayTargetAnimation(string targetAnim)
+    {
+        animator.CrossFade(targetAnim, 0.2f);
+    }
+
 }
