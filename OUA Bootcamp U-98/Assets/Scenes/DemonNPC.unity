@@ -517,10 +517,11 @@ MonoBehaviour:
     m_Bits: 256
   destinationPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 2
+  isCanAttack: 0
   sphere: {fileID: 0}
-  sightRange: 20
-  attackRange: 1
+  sightRange: 15
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &1435293362
@@ -536,7 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  maxHealth: 5
+  isHitted: 0
+  maxHealth: 20
   animator: {fileID: 1435293345}
   colliderBeforeDeath: {fileID: 1435293355}
   colliderAfterDeath: {fileID: 1435293363}

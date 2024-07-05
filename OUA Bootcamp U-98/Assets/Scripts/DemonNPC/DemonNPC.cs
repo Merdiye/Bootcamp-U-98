@@ -12,16 +12,16 @@ public class DemonNPC : MonoBehaviour
     private bool destinationPointSet; // Hedef noktanın belirlenip belirlenmediğini kontrol eden bayrak
     public float walkPointRange; // NPC'nin rastgele yürüme noktası belirlerken kullanacağı mesafe aralığı
     public float timeBetweenAttacks; // NPC'nin saldırıları arasında bekleyeceği süre
-    private bool alreadyAttacked; // NPC'nin saldırıp saldırmadığını kontrol eden bayrak
+    public bool isCanAttack; // NPC'nin saldırıp saldırmadığını kontrol eden bayrak
     public GameObject sphere; // Saldırı menzili görselleştirmesi için kullanılabilecek bir nesne
-    public float sightRange, attackRange; // Görüş ve saldırı menzilleri
+    public float sightRange = 15f, attackRange = 4f; // Görüş ve saldırı menzilleri
     public bool playerInSightRange, playerInAttackRange; // Player'ın görüş veya saldırı menzilinde olup olmadığını kontrol eden bayraklar
     DemonNPCAnimator demonAnimator;
     DemonHealth demonHealth;
 
     private void Awake()
     {
-        alreadyAttacked = false;
+        isCanAttack = true;
         demonHealth = GetComponent<DemonHealth>();
         demonAnimator = GetComponent<DemonNPCAnimator>(); // DemonNPCAnimator bileşenini al
         _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileşenini al
@@ -38,9 +38,18 @@ public class DemonNPC : MonoBehaviour
         }
         else
         {
-            if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) Patroling(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
-            if (playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) ChasePlayer(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, player'ı takip eder
-            if (playerInSightRange && playerInAttackRange && demonAnimator.isPunchingBool) AttackPlayer(); // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
+            if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
+            {
+                Patroling();
+            } 
+            else if (playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) // Eğer player görüş menzilinde ve saldırı menzilinde değilse, player'ı takip eder
+            {
+                ChasePlayer(); 
+            } 
+            else if (playerInSightRange && playerInAttackRange && demonAnimator.isPunchingBool) // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
+            {
+                AttackPlayer();
+            }
         }
     }
 
@@ -73,18 +82,18 @@ public class DemonNPC : MonoBehaviour
         {
             _agent.SetDestination(_player.position); // Player'ın pozisyonunu NPC'nin hedef noktası olarak ayarla
             LookTarget(_player);
-            
         }
     }
 
     void AttackPlayer()
     {
+        demonAnimator.animator.SetBool("isCanAttack", isCanAttack);
         _agent.SetDestination(transform.position);
-
-        if (!alreadyAttacked) // Eğer NPC daha önce saldırmadıysa
+        if (isCanAttack && !demonHealth.isHitted) // Eğer NPC daha önce saldırmadıysa
         {
-            Debug.Log("npc saldirdi\n");
-            alreadyAttacked = true; // Saldırdığını belirtmek için bayrağı true yap
+            demonAnimator.animator.CrossFade("Attack", 0.2f);
+            Debug.Log("npc saldırı yaptı\n");
+            isCanAttack = false; // Saldırdığını belirtmek için bayrağı true yap
             // Saldırı kodu buraya yazılır (örneğin, player'ın sağlığını azaltma)
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldırı bayrağını belirtilen süre sonra sıfırlamak için zamanlayıcı başlat
         }
@@ -92,7 +101,7 @@ public class DemonNPC : MonoBehaviour
 
     void ResetAttack()
     {
-        alreadyAttacked = false; // Bayrağı false yaparak NPC'nin yeniden saldırmasını sağla
+        isCanAttack = true; // Bayrağı false yaparak NPC'nin yeniden saldırmasını sağla
     }
 
     public void LookTarget(Transform target)
