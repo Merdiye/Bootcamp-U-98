@@ -256,7 +256,7 @@ public class CharController : MonoBehaviour
         {
             Debug.Log("npc'ye vuruldu\n");
             DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
-            if (demonHealth != null)
+            if (demonHealth != null && !demonHealth.isDead)
             {
                 demonHealth.TakeDamage(damage);
             }

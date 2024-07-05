@@ -4,46 +4,62 @@ using UnityEngine;
 
 public class DemonHealth : MonoBehaviour
 {
+    public bool isDead;
     public float maxHealth = 5;
     private float currentHealth;
     public Animator animator;
+    public Collider colliderBeforeDeath; // Deðiþtirildi: SphereCollider yerine Collider kullanýldý
+    public Collider colliderAfterDeath;  // Deðiþtirildi: CapsuleCollider yerine Collider kullanýldý
+    DemonNPC npc;
+
+    private void Awake()
+    {
+        npc = GetComponent<DemonNPC>();
+        isDead = false;
+        animator = GetComponent<Animator>();
+        // Bu þekilde FindObjectOfType yerine GetComponent kullanýlmasý tavsiye edilir
+        colliderBeforeDeath = GetComponent<SphereCollider>();
+        colliderAfterDeath = GetComponent<CapsuleCollider>();
+
+        // Baþlangýçta, ölümden sonraki collider'ý devre dýþý býrakýyoruz
+        if (colliderAfterDeath != null)
+        {
+            colliderAfterDeath.enabled = false;
+        }
+    }
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-  public void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         StartCoroutine(HitAnimation());
-        if(currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
-             Die();
-        }
+            isDead = true;
+            Debug.Log("Demon is dead!");
+            animator.CrossFade("Death", 0.2f);
+            npc._agent.baseOffset = 0f;
             
-        
+            if (colliderBeforeDeath != null)
+            {
+                colliderBeforeDeath.enabled = false;
+            }
+            if (colliderAfterDeath != null)
+            {
+                colliderAfterDeath.enabled = true;
+            }
+        }
     }
-
 
     private IEnumerator HitAnimation()
     {
         animator.SetBool("isHitted", true);
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(1.0f);
         animator.SetBool("isHitted", false);
     }
-
-    void Die()
-    {
-        animator.SetBool("isDead", true);
-        Debug.Log("Demon is dead!");
-
-
-    }
-
-    public void PlayTargetAnimation(string targetAnim)
-    {
-        animator.CrossFade(targetAnim, 0.2f);
-    }
-
 }
+

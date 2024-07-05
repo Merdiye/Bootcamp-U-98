@@ -35,5 +35,10 @@ public class DemonNPCAnimator : MonoBehaviour
         }
     }
 
+    public void PlayTargetAnimation(string targetAnim)
+    {
+        animator.CrossFade(targetAnim, 0.2f);
+    }
+
 
 }
