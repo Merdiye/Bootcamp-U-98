@@ -17,9 +17,11 @@ public class DemonNPC : MonoBehaviour
     public float sightRange, attackRange; // Görüş ve saldırı menzilleri
     public bool playerInSightRange, playerInAttackRange; // Player'ın görüş veya saldırı menzilinde olup olmadığını kontrol eden bayraklar
     DemonNPCAnimator demonAnimator;
+    DemonHealth demonHealth;
 
     private void Awake()
     {
+        demonHealth = GetComponent<DemonHealth>();
         demonAnimator = GetComponent<DemonNPCAnimator>(); // DemonNPCAnimator bileşenini al
         _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileşenini al
     }
@@ -29,9 +31,16 @@ public class DemonNPC : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player); // Player'ın NPC'nin görüş menzilinde olup olmadığını kontrol et
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, player); // Player'ın NPC'nin saldırı menzilinde olup olmadığını kontrol et
 
-        if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) Patroling(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
-        if (playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) ChasePlayer(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, player'ı takip eder
-        if (playerInSightRange && playerInAttackRange) AttackPlayer(); // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
+        if (demonHealth.isDead)
+        {
+            return;
+        }
+        else
+        {
+            if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) Patroling(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
+            if (playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) ChasePlayer(); // Eğer player görüş menzilinde ve saldırı menzilinde değilse, player'ı takip eder
+            if (playerInSightRange && playerInAttackRange) AttackPlayer(); // Eğer player hem görüş hem de saldırı menzilindeyse, player'a saldırır
+        }
     }
 
     void Patroling()
@@ -42,6 +51,11 @@ public class DemonNPC : MonoBehaviour
         Vector3 distanceToDestinationPoint = transform.position - destinationPoint; // Hedef noktaya olan mesafeyi hesapla
 
         if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eğer NPC hedef noktaya yeterince yakınsa, bayrağı sıfırla
+
+        // NPC'nin hedefine bakmasını sağla
+        Vector3 direction = (destinationPoint - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void SearchWalkPoint()
@@ -59,13 +73,20 @@ public class DemonNPC : MonoBehaviour
         if (!demonAnimator.isPunchingBool) // Sadece saldırı animasyonu oynanmıyorsa hareket et
         {
             _agent.SetDestination(_player.position); // Player'ın pozisyonunu NPC'nin hedef noktası olarak ayarla
+
+            // NPC'nin oyuncuya bakmasını sağla
+            Vector3 direction = (_player.position - transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
     }
 
     void AttackPlayer()
     {
+        _agent.SetDestination(transform.position);
 
-        _agent.SetDestination(transform.position); 
+        // NPC'nin oyuncuya bakmasını sağla
+        transform.LookAt(_player);
 
         if (!alreadyAttacked) // Eğer NPC daha önce saldırmadıysa
         {
@@ -73,7 +94,6 @@ public class DemonNPC : MonoBehaviour
             // Saldırı kodu buraya yazılır (örneğin, player'ın sağlığını azaltma)
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldırı bayrağını belirtilen süre sonra sıfırlamak için zamanlayıcı başlat
         }
-    
     }
 
     void ResetAttack()

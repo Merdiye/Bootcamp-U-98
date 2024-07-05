@@ -541,8 +541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e713ee4dd3942cfb70a13d1e1e9f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   maxHealth: 5
   animator: {fileID: 1435293345}
+  colliderBeforeDeath: {fileID: 1435293355}
+  colliderAfterDeath: {fileID: 1435293363}
+--- !u!136 &1435293363 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
+  m_PrefabInstance: {fileID: 8188258980531986588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1518945593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,12 +1183,20 @@ PrefabInstance:
       value: 0.63548565
       objectReference: {fileID: 0}
     - target: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Center.x
-      value: -0.012278557
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Center.y
-      value: 1.6838658
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182035837787537285, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
+      propertyPath: m_Center.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3323196851123686440, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Layer
@@ -1417,6 +1433,10 @@ PrefabInstance:
     - target: {fileID: 8619772849102659299, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706086831948013537, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
+      propertyPath: m_AgentTypeID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743723461237851503, guid: e65309dd0b8a7491b916282db86270c2, type: 3}
       propertyPath: m_Layer
