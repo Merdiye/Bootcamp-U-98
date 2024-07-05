@@ -448,7 +448,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435293344}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: cff721174532d68488e8de5a21fed339, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 88331e5e22eec460c85eb5fa9da16474, type: 3}
   m_Controller: {fileID: 9100000, guid: 7e287635392c24529988d5ca5c281984, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   isHitted: 0
-  maxHealth: 20
+  maxHealth: 5
   animator: {fileID: 1435293345}
   colliderBeforeDeath: {fileID: 1435293355}
   colliderAfterDeath: {fileID: 1435293363}
