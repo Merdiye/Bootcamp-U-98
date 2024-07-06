@@ -27,6 +27,12 @@ public class DemonNPCAnimator : MonoBehaviour
 
     public void isPunching()
     {
+        if(npc.playerHealth.isDead == true)
+        {
+            animator.SetBool("isPunching", false);
+            return;
+        }
+
         Vector3 distanceToWarrior = transform.position - npc._player.position;
         if (distanceToWarrior.magnitude <= 4.0f)
         {
