@@ -6,12 +6,13 @@ public class DemonHealth : MonoBehaviour
 {
     public bool isDead;
     public bool isHitted;
-    public float maxHealth;
+    public float maxHealth = 5.0f;
     private float currentHealth;
     public Animator animator;
-    public Collider colliderBeforeDeath; // Deðiþtirildi: SphereCollider yerine Collider kullanýldý
-    public Collider colliderAfterDeath;  // Deðiþtirildi: CapsuleCollider yerine Collider kullanýldý
+    public Collider colliderBeforeDeath; // Deï¿½iï¿½tirildi: SphereCollider yerine Collider kullanï¿½ldï¿½
+    public Collider colliderAfterDeath;  // Deï¿½iï¿½tirildi: CapsuleCollider yerine Collider kullanï¿½ldï¿½
     DemonNPC npc;
+    public healthBar healthBar;
 
     private void Awake()
     {
@@ -19,11 +20,11 @@ public class DemonHealth : MonoBehaviour
         isDead = false;
         isHitted = false;
         animator = GetComponent<Animator>();
-        // Bu þekilde FindObjectOfType yerine GetComponent kullanýlmasý tavsiye edilir
+        // Bu ï¿½ekilde FindObjectOfType yerine GetComponent kullanï¿½lmasï¿½ tavsiye edilir
         colliderBeforeDeath = GetComponent<SphereCollider>();
         colliderAfterDeath = GetComponent<CapsuleCollider>();
 
-        // Baþlangýçta, ölümden sonraki collider'ý devre dýþý býrakýyoruz
+        // Baï¿½langï¿½ï¿½ta, ï¿½lï¿½mden sonraki collider'ï¿½ devre dï¿½ï¿½ï¿½ bï¿½rakï¿½yoruz
         if (colliderAfterDeath != null)
         {
             colliderAfterDeath.enabled = false;
@@ -38,6 +39,8 @@ public class DemonHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth((int)maxHealth);  // Bu satÄ±rÄ± ekleyin
+
     }
 
     public void TakeDamage(float amount)
@@ -61,6 +64,8 @@ public class DemonHealth : MonoBehaviour
             }
             
         }
+        healthBar.SetHealth((int)currentHealth);
+        
     }
 
     private IEnumerator HitAnimation()
