@@ -5,26 +5,25 @@ using UnityEngine;
 public class DemonHealth : MonoBehaviour
 {
     public bool isDead;
-    public bool isHitted;
-    public float maxHealth = 5.0f;
+    public bool isHit;
+    public float maxHealth;
     private float currentHealth;
     public Animator animator;
-    public Collider colliderBeforeDeath; // Deï¿½iï¿½tirildi: SphereCollider yerine Collider kullanï¿½ldï¿½
-    public Collider colliderAfterDeath;  // Deï¿½iï¿½tirildi: CapsuleCollider yerine Collider kullanï¿½ldï¿½
+    public Collider colliderBeforeDeath; // Deðiþtirildi: SphereCollider yerine Collider kullanýldý
+    public Collider colliderAfterDeath;  // Deðiþtirildi: CapsuleCollider yerine Collider kullanýldý
     DemonNPC npc;
-    public healthBar healthBar;
 
     private void Awake()
     {
         npc = GetComponent<DemonNPC>();
         isDead = false;
-        isHitted = false;
+        isHit = false;
         animator = GetComponent<Animator>();
-        // Bu ï¿½ekilde FindObjectOfType yerine GetComponent kullanï¿½lmasï¿½ tavsiye edilir
+        // Bu þekilde FindObjectOfType yerine GetComponent kullanýlmasý tavsiye edilir
         colliderBeforeDeath = GetComponent<SphereCollider>();
         colliderAfterDeath = GetComponent<CapsuleCollider>();
 
-        // Baï¿½langï¿½ï¿½ta, ï¿½lï¿½mden sonraki collider'ï¿½ devre dï¿½ï¿½ï¿½ bï¿½rakï¿½yoruz
+        // Baþlangýçta, ölümden sonraki collider'ý devre dýþý býrakýyoruz
         if (colliderAfterDeath != null)
         {
             colliderAfterDeath.enabled = false;
@@ -33,14 +32,12 @@ public class DemonHealth : MonoBehaviour
 
     private void Update()
     {
-        isHitted = animator.GetBool("isHitted");
+        isHit = animator.GetBool("isHit");
     }
 
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth((int)maxHealth);  // Bu satÄ±rÄ± ekleyin
-
     }
 
     public void TakeDamage(float amount)
@@ -64,15 +61,13 @@ public class DemonHealth : MonoBehaviour
             }
             
         }
-        healthBar.SetHealth((int)currentHealth);
-        
     }
 
     private IEnumerator HitAnimation()
     {
-        animator.SetBool("isHitted", true);
+        animator.SetBool("isHit", true);
         yield return new WaitForSeconds(1.0f);
-        animator.SetBool("isHitted", false);
+        animator.SetBool("isHit", false);
     }
 }
 
