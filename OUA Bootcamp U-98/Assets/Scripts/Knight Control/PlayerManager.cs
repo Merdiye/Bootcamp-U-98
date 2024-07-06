@@ -8,10 +8,12 @@ public class PlayerManager : MonoBehaviour
     InputManager inputManager;
     CharController charController;
     CameraManager cameraManager;
+    PlayerHealth playerHealth;
     public bool isInteracting;
 
     private void Awake()
     {
+        playerHealth = GetComponent<PlayerHealth>();
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
         cameraManager = FindObjectOfType<CameraManager>();
@@ -20,18 +22,21 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if(playerHealth.isDead) return;
         // Handle all player inputs
         inputManager.HandleAllInputs();
     }
 
     private void FixedUpdate()
     {
+        if (playerHealth.isDead) return;
         // Handle all movement related updates
         charController.HandleAllMovement();
     }
 
     private void LateUpdate()
     {
+        if (playerHealth.isDead) return;
         // Handle all camera related updates
         cameraManager.HandleAllCameraMovement();
 

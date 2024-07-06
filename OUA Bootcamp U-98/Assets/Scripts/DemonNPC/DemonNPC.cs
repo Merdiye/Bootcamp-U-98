@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class DemonNPC : MonoBehaviour
 {
     public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileşeni
+    [SerializeField] public GameObject playerGameObj;
+    public PlayerHealth playerHealth;
     [SerializeField] public Transform _player; // Player objesinin referansı
     public LayerMask ground, player; // Zemin ve player katmanlarını belirtmek için kullanılan layer maskeleri
     public Vector3 destinationPoint; // NPC'nin devriye sırasında gideceği hedef noktayı tutan değişken
@@ -19,8 +21,11 @@ public class DemonNPC : MonoBehaviour
     DemonNPCAnimator demonAnimator;
     DemonHealth demonHealth;
 
+    public float attackDamage = 1f;
+
     private void Awake()
     {
+        playerHealth = playerGameObj.GetComponent<PlayerHealth>();
         isCanAttack = true;
         demonHealth = GetComponent<DemonHealth>();
         demonAnimator = GetComponent<DemonNPCAnimator>(); // DemonNPCAnimator bileşenini al
@@ -38,7 +43,7 @@ public class DemonNPC : MonoBehaviour
         }
         else
         {
-            if (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool) // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
+            if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !demonAnimator.isPunchingBool)) // Eğer player görüş menzilinde ve saldırı menzilinde değilse, devriye gezer
             {
                 Patroling();
             } 
@@ -85,19 +90,33 @@ public class DemonNPC : MonoBehaviour
         }
     }
 
+
     void AttackPlayer()
     {
         demonAnimator.animator.SetBool("isCanAttack", isCanAttack);
         _agent.SetDestination(transform.position);
-        if (isCanAttack && !demonHealth.isHitted) // Eğer NPC daha önce saldırmadıysa
+        if (isCanAttack && !demonHealth.isHit && !playerHealth.isDead) // Eğer NPC daha önce saldırmadıysa
         {
             demonAnimator.animator.CrossFade("Attack", 0.2f);
             Debug.Log("npc saldırı yaptı\n");
+
+            // PlayerHealth script'ini al ve TakeDamage metodunu çağır
+            
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(attackDamage);
+            }
+            else
+            {
+                Debug.LogError("PlayerHealth script'i playerGameObj üzerinde bulunamadı!");
+            }
+
             isCanAttack = false; // Saldırdığını belirtmek için bayrağı true yap
-            // Saldırı kodu buraya yazılır (örneğin, player'ın sağlığını azaltma)
+                                 // Saldırı kodu buraya yazılır (örneğin, player'ın sağlığını azaltma)
             Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldırı bayrağını belirtilen süre sonra sıfırlamak için zamanlayıcı başlat
         }
     }
+
 
     void ResetAttack()
     {
