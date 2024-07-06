@@ -68,8 +68,9 @@ public class DemonNPC : MonoBehaviour
         if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eğer NPC hedef noktaya yeterince yakınsa, bayrağı sıfırla
 
         // NPC'nin hedefine bakmasını sağla
-        LookTarget(_player);
+        LookTarget(destinationPoint);
     }
+
 
     void SearchWalkPoint()
     {
@@ -130,6 +131,15 @@ public class DemonNPC : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
+
+    public void LookTarget(Vector3 target)
+    {
+        // NPC'nin hedefe bakmasını sağla
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
 }
 
 
