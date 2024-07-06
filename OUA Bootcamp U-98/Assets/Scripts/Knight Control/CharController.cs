@@ -235,9 +235,6 @@ public class CharController : MonoBehaviour
                 StartCoroutine(EndAttack());
                 attackAnimOrder = 1;
             }
-
-
-            
         }
     }
 

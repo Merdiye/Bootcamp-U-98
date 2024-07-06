@@ -5,7 +5,7 @@ using UnityEngine;
 public class DemonHealth : MonoBehaviour
 {
     public bool isDead;
-    public bool isHitted;
+    public bool isHit;
     public float maxHealth;
     private float currentHealth;
     public Animator animator;
@@ -17,7 +17,7 @@ public class DemonHealth : MonoBehaviour
     {
         npc = GetComponent<DemonNPC>();
         isDead = false;
-        isHitted = false;
+        isHit = false;
         animator = GetComponent<Animator>();
         // Bu þekilde FindObjectOfType yerine GetComponent kullanýlmasý tavsiye edilir
         colliderBeforeDeath = GetComponent<SphereCollider>();
@@ -32,7 +32,7 @@ public class DemonHealth : MonoBehaviour
 
     private void Update()
     {
-        isHitted = animator.GetBool("isHitted");
+        isHit = animator.GetBool("isHit");
     }
 
     void Start()
@@ -65,9 +65,9 @@ public class DemonHealth : MonoBehaviour
 
     private IEnumerator HitAnimation()
     {
-        animator.SetBool("isHitted", true);
+        animator.SetBool("isHit", true);
         yield return new WaitForSeconds(1.0f);
-        animator.SetBool("isHitted", false);
+        animator.SetBool("isHit", false);
     }
 }
 
