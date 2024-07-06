@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:OUA Bootcamp U-98/Assets/Assets/DemonHealthBar.meta
 guid: 9d09635d36e734424ae52a0cd96db7fb
 folderAsset: yes
+========
+guid: c8c36664e9c1c024ebb0550b6da601e0
+>>>>>>>> 36e6f9bc7602507e504aa1791549e52607c00f2d:OUA Bootcamp U-98/Assets/Scenes/main.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
