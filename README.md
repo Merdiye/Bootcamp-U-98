@@ -33,8 +33,8 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 
 ---
 # **Sprint 1**
-- Sprint içinde tamamlanması tahmin edilen puan 21 Puan olarak belirlenmiştir ve hedefe ulaşılmıştır.
-- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 68 puanlık backlog bulunmaktadır. İlk sprint için bitirilmesi gereken puan 15 olarak belirlenmiştir.
+- Sprint içinde tamamlanması tahmin edilen puan 21 Puan olarak belirlenmiştir.
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 68 puanlık backlog bulunmaktadır. İlk sprint için bitirilmesi gereken puan iş yüküne oranla 21 olarak belirlenmiştir ve hedefe ulaşılmıştır.
 - **Daily Scrum:** Daily Scrum toplantıları düzenli olarak Whatsapp ve Discord üzerinden sağlanmıştır.
   
 [Daily Scrum Chats](https://imgur.com/gallery/u-98-daily-scrums-acfILDw)
