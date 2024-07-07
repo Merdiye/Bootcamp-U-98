@@ -1378,7 +1378,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5736231844221078811, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1525,6 +1525,14 @@ PrefabInstance:
       propertyPath: playerGameObj
       value: 
       objectReference: {fileID: 942318391}
+    - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
+      propertyPath: playerInAttackRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147942639010697004, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7781919115659087334, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
       propertyPath: m_Name
       value: NpcNew
