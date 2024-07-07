@@ -1,0 +1,143 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class NpcAI : MonoBehaviour
+{
+    public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileþeni
+    [SerializeField] public GameObject playerGameObj;
+    public PlayerHealth playerHealth;
+    [SerializeField] public Transform _player; // Player objesinin referansý
+    public LayerMask ground, player; // Zemin ve player katmanlarýný belirtmek için kullanýlan layer maskeleri
+    public Vector3 destinationPoint; // NPC'nin devriye sýrasýnda gideceði hedef noktayý tutan deðiþken
+    private bool destinationPointSet; // Hedef noktanýn belirlenip belirlenmediðini kontrol eden bayrak
+    public float walkPointRange; // NPC'nin rastgele yürüme noktasý belirlerken kullanacaðý mesafe aralýðý
+    public float timeBetweenAttacks; // NPC'nin saldýrýlarý arasýnda bekleyeceði süre
+    public bool isCanAttack; // NPC'nin saldýrýp saldýrmadýðýný kontrol eden bayrak
+    public GameObject sphere; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
+    public float sightRange = 15f, attackRange = 4f; // Görüþ ve saldýrý menzilleri
+    public bool playerInSightRange, playerInAttackRange; // Player'ýn görüþ veya saldýrý menzilinde olup olmadýðýný kontrol eden bayraklar
+    NpcAnimator npcAnimator;
+    NpcHealth npcHealth;
+
+    public float attackDamage = 1f;
+
+    private void Awake()
+    {
+        playerHealth = playerGameObj.GetComponent<PlayerHealth>();
+        isCanAttack = true;
+        npcHealth = GetComponent<NpcHealth>();
+        npcAnimator = GetComponent<NpcAnimator>(); // DemonNPCAnimator bileþenini al
+        _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileþenini al
+    }
+
+    private void Update()
+    {
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player); // Player'ýn NPC'nin görüþ menzilinde olup olmadýðýný kontrol et
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, player); // Player'ýn NPC'nin saldýrý menzilinde olup olmadýðýný kontrol et
+
+        if (npcHealth.isDead)
+        {
+            return;
+        }
+        else
+        {
+            if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool)) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, devriye gezer
+            {
+                Patroling();
+            }
+            else if (playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, player'ý takip eder
+            {
+                ChasePlayer();
+            }
+            else if (playerInSightRange && playerInAttackRange && npcAnimator.isPunchingBool) // Eðer player hem görüþ hem de saldýrý menzilindeyse, player'a saldýrýr
+            {
+                AttackPlayer();
+            }
+        }
+    }
+
+    void Patroling()
+    {
+        if (!destinationPointSet) SearchWalkPoint(); // Eðer hedef nokta belirlenmemiþse, yeni bir yürüyüþ noktasý bul
+        if (destinationPointSet) _agent.SetDestination(destinationPoint); // Eðer hedef nokta belirlenmiþse, NPC'yi oraya doðru hareket ettir
+
+        Vector3 distanceToDestinationPoint = transform.position - destinationPoint; // Hedef noktaya olan mesafeyi hesapla
+
+        if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eðer NPC hedef noktaya yeterince yakýnsa, bayraðý sýfýrla
+
+        // NPC'nin hedefine bakmasýný saðla
+        LookTarget(destinationPoint);
+    }
+
+
+    void SearchWalkPoint()
+    {
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yürüyüþ noktasý aralýðýnda rastgele X koordinatý üret
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yürüyüþ noktasý aralýðýnda rastgele Z koordinatý üret
+
+        destinationPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ); // Rastgele koordinatlarla hedef noktayý belirle
+
+        if (Physics.Raycast(destinationPoint, -transform.up, 2.0f, ground)) destinationPointSet = true; // Hedef noktanýn zeminde olup olmadýðýný kontrol et
+    }
+
+    void ChasePlayer()
+    {
+        if (!npcAnimator.isPunchingBool) // Sadece saldýrý animasyonu oynanmýyorsa hareket et
+        {
+            _agent.SetDestination(_player.position); // Player'ýn pozisyonunu NPC'nin hedef noktasý olarak ayarla
+            LookTarget(_player);
+        }
+    }
+
+
+    void AttackPlayer()
+    {
+        npcAnimator.animator.SetBool("isCanAttack", isCanAttack);
+        _agent.SetDestination(transform.position);
+        if (isCanAttack && !npcHealth.isHit && !playerHealth.isDead) // Eðer NPC daha önce saldýrmadýysa
+        {
+            npcAnimator.animator.CrossFade("Attack", 0.2f);
+            Debug.Log("npc saldýrý yaptý\n");
+
+            // PlayerHealth script'ini al ve TakeDamage metodunu çaðýr
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(attackDamage);
+            }
+            else
+            {
+                Debug.LogError("PlayerHealth script'i playerGameObj üzerinde bulunamadý!");
+            }
+
+            isCanAttack = false; // Saldýrdýðýný belirtmek için bayraðý true yap
+                                 // Saldýrý kodu buraya yazýlýr (örneðin, player'ýn saðlýðýný azaltma)
+            Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldýrý bayraðýný belirtilen süre sonra sýfýrlamak için zamanlayýcý baþlat
+        }
+    }
+
+
+    void ResetAttack()
+    {
+        isCanAttack = true; // Bayraðý false yaparak NPC'nin yeniden saldýrmasýný saðla
+    }
+
+    public void LookTarget(Transform target)
+    {
+        // NPC'nin oyuncuya bakmasýný saðla
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    public void LookTarget(Vector3 target)
+    {
+        // NPC'nin hedefe bakmasýný saðla
+        Vector3 direction = (target - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+}

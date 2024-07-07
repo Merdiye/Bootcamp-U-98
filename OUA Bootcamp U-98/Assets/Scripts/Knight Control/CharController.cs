@@ -252,10 +252,11 @@ public class CharController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("npc'ye vuruldu\n");
-            DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
-            if (demonHealth != null && !demonHealth.isDead)
+            NpcHealth npcHealth = enemy.GetComponent<NpcHealth>();
+            //DemonHealth demonHealth = enemy.GetComponent<DemonHealth>();
+            if (npcHealth != null && !npcHealth.isDead)
             {
-                demonHealth.TakeDamage(damage);
+                npcHealth.TakeDamage(damage);
             }
         }
     }
