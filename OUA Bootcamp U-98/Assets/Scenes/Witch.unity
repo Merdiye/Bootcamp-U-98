@@ -163,60 +163,6 @@ CapsuleCollider:
   m_Height: 2.364403
   m_Direction: 1
   m_Center: {x: -0.006498039, y: 1.182882, z: 0.009377003}
---- !u!195 &812342275
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812342268}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &812342276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812342268}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb1a067037224c9587ef20a3ed40625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  witchAgent: {fileID: 0}
-  playerGameObj: {fileID: 0}
-  playerHealth: {fileID: 0}
-  _player: {fileID: 0}
-  ground:
-    serializedVersion: 2
-    m_Bits: 0
-  player:
-    serializedVersion: 2
-    m_Bits: 0
-  destinationPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  timeBetweenAttacks: 0
-  isCanAttack: 0
-  attackObj: {fileID: 0}
-  sightRange: 0
-  attackRange: 0
-  playerInAttackRange: 0
-  playerInSightRange: 0
-  attackDamage: 1
 --- !u!1 &1453121760
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,12 +636,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5862903446436553505, guid: 998273d9be4e54fc8955a99604093de8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 812342274}
-    - targetCorrespondingSourceObject: {fileID: 5862903446436553505, guid: 998273d9be4e54fc8955a99604093de8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 812342276}
-    - targetCorrespondingSourceObject: {fileID: 5862903446436553505, guid: 998273d9be4e54fc8955a99604093de8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 812342275}
   m_SourcePrefab: {fileID: 100100000, guid: 998273d9be4e54fc8955a99604093de8, type: 3}
 --- !u!1001 &3369634614222830295
 PrefabInstance:
