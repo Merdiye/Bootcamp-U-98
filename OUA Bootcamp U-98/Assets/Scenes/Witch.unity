@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &244765553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+  m_PrefabInstance: {fileID: 1495955935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &812342268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5862903446436553505, guid: 998273d9be4e54fc8955a99604093de8, type: 3}
@@ -279,7 +284,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.245645
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -287,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.300785
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -525,6 +530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6312768033489145910, guid: 7b46b396e4b402c4faf748ab301542f0, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 244765553}
     - target: {fileID: 8197666388397045060, guid: 7b46b396e4b402c4faf748ab301542f0, type: 3}
       propertyPath: m_Name
       value: Camera Manager
