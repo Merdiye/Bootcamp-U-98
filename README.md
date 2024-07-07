@@ -28,3 +28,20 @@ xxxxxxxxxxxxxxx
 
 ---
 # **Sprint 1**
+- Sprint içinde tamamlanması tahmin edilen puan: 15 Puan
+- **Puan tamamlama mantığı:** Toplamda proje boyunca tamamlanması gereken 68 puanlık backlog bulunmaktadır. İlk sprint için bitirilmesi gereken puan 15 olarak belirlenmiştir.
+- **Daily Scrum:** Daily Scrum toplantıları düzenli olarak Whatsapp ve Discord üzerinden sağlanmıştır.
+  
+[Daily Scrum Chats](https://imgur.com/gallery/u98-daily-scrum-whw6yAD)
+  
+- **Sprint 1 board update**: Sprint Board Screenshot:
+
+
+- **Ürün Durumu**: Ekran Görüntüleri:
+
+
+ **Sprint Review**:
+  ---
+    
+ **Sprint Retrospective:**
+  --- 
