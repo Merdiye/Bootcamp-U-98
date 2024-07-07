@@ -41,6 +41,7 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 
   
 - **Sprint 1 board update**: Sprint Board Screenshot:
+  
 ![image](https://github.com/merdiyeari/Bootcamp-U-98/assets/65374437/f1dcc234-76f9-42aa-988b-b23525903a5e)
 
 
