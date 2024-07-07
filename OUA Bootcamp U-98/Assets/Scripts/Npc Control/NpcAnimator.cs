@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class NpcAnimator : MonoBehaviour
 {
-
+    public float maxRange = 4f;
+    public float minRange = 0f;
     public Animator animator;
     public bool isPunchingBool;
     NpcAI npc;
@@ -34,7 +35,7 @@ public class NpcAnimator : MonoBehaviour
         }
 
         Vector3 distanceToWarrior = transform.position - npc._player.position;
-        if (distanceToWarrior.magnitude <= 4.0f)
+        if (minRange <= distanceToWarrior.magnitude && distanceToWarrior.magnitude <= maxRange)
         {
             animator.SetBool("isPunching", true);
             npc.LookTarget(npc._player);
