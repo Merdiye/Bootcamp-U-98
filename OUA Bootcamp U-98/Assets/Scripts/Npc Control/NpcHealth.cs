@@ -61,7 +61,7 @@ public class NpcHealth : MonoBehaviour
             {
                 colliderAfterDeath.enabled = true;
             }
-            
+            Invoke(nameof(DestroyEnemy), 5f);
         }
         healthBar.SetHealth((int)currentHealth);
     }
@@ -71,5 +71,10 @@ public class NpcHealth : MonoBehaviour
         animator.SetBool("isHit", true);
         yield return new WaitForSeconds(1.0f);
         animator.SetBool("isHit", false);
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }

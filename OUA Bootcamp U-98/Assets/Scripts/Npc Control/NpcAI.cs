@@ -20,11 +20,13 @@ public class NpcAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange; // Player'ýn görüþ veya saldýrý menzilinde olup olmadýðýný kontrol eden bayraklar
     NpcAnimator npcAnimator;
     NpcHealth npcHealth;
+    public bool isRunningAway;
 
     public float attackDamage = 1f;
 
     private void Awake()
     {
+        isRunningAway = false;
         playerHealth = playerGameObj.GetComponent<PlayerHealth>();
         isCanAttack = true;
         npcHealth = GetComponent<NpcHealth>();
@@ -41,6 +43,12 @@ public class NpcAI : MonoBehaviour
         {
             return;
         }
+        else if (isRunningAway)
+        {
+            RunAway();
+            return;
+        }
+
         else
         {
             if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool)) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, devriye gezer
@@ -69,6 +77,22 @@ public class NpcAI : MonoBehaviour
 
         // NPC'nin hedefine bakmasýný saðla
         LookTarget(destinationPoint);
+    }
+
+    void RunAway()
+    {
+        float distance = Vector3.Distance(transform.position, _player.position);
+
+        if(distance < npcAnimator.minRange)
+        {
+            Vector3 dirToPlayer = transform.position - _player.position;
+
+            Vector3 newPos = transform.position + dirToPlayer;
+
+            _agent.SetDestination(newPos);
+
+
+        }
     }
 
 

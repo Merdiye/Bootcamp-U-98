@@ -37,11 +37,18 @@ public class NpcAnimator : MonoBehaviour
         Vector3 distanceToWarrior = transform.position - npc._player.position;
         if (minRange <= distanceToWarrior.magnitude && distanceToWarrior.magnitude <= maxRange)
         {
+            npc.isRunningAway = false;
             animator.SetBool("isPunching", true);
             npc.LookTarget(npc._player);
         }
+        else if (distanceToWarrior.magnitude < minRange)
+        {
+            Debug.Log("Running Away!");
+            npc.isRunningAway = true;
+        }
         else
         {
+            npc.isRunningAway = false;
             animator.SetBool("isPunching", false);
         }
     }
