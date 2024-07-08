@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.Shapes;
 
 public class NpcAI : MonoBehaviour
 {
@@ -129,16 +130,20 @@ public class NpcAI : MonoBehaviour
 
             if (projectile != null)
             {
-                GameObject thrownSphere = Instantiate(projectile, transform.position, Quaternion.identity); // Sphere nesnesini oluþtur
+                Vector3 spawnPosition = transform.position + transform.forward * 1.5f + new Vector3(0, 1.5f, 0); // NPC'nin biraz önünde ve yukarýsýnda bir pozisyon
+                GameObject thrownSphere = Instantiate(projectile, spawnPosition, Quaternion.identity); // Sphere nesnesini oluþtur
                 Rigidbody rb = thrownSphere.AddComponent<Rigidbody>(); // Sphere nesnesine Rigidbody ekle
+
+                // Yerçekimi ölçeðini azalt veya yerçekimini tamamen devre dýþý býrak
+                rb.useGravity = false;
+                // Alternatif olarak, yerçekimi ölçeðini ayarla
+                // rb.gravityScale = 0.1f; 
+
                 Vector3 direction = (_player.position - transform.position).normalized; // Player'a doðru olan yönü hesapla
-                rb.velocity = direction * 10f; // Sphere nesnesini player'a doðru fýrlat (10f hýzýnda)
-                Destroy(thrownSphere, 1f); // 1 saniye sonra sphere nesnesini yok et
+                rb.velocity = direction * projectileThrowSpeed; // Sphere nesnesini player'a doðru fýrlat (10f hýzýnda)
+                Destroy(thrownSphere, 3f); // 1 saniye sonra sphere nesnesini yok et
             }
-
-            // PlayerHealth script'ini al ve TakeDamage metodunu çaðýr
-
-            if (playerHealth != null)
+            else if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
             }
