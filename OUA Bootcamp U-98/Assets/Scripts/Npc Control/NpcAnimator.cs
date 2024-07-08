@@ -43,7 +43,6 @@ public class NpcAnimator : MonoBehaviour
         }
         else if (distanceToWarrior.magnitude < minRange)
         {
-            Debug.Log("Running Away!");
             npc.isRunningAway = true;
         }
         else

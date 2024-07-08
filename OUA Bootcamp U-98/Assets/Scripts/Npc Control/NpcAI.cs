@@ -15,12 +15,14 @@ public class NpcAI : MonoBehaviour
     public float walkPointRange; // NPC'nin rastgele yürüme noktasý belirlerken kullanacaðý mesafe aralýðý
     public float timeBetweenAttacks; // NPC'nin saldýrýlarý arasýnda bekleyeceði süre
     public bool isCanAttack; // NPC'nin saldýrýp saldýrmadýðýný kontrol eden bayrak
-    public GameObject sphere; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
+    public GameObject projectile; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
     public float sightRange = 15f, attackRange = 4f; // Görüþ ve saldýrý menzilleri
     public bool playerInSightRange, playerInAttackRange; // Player'ýn görüþ veya saldýrý menzilinde olup olmadýðýný kontrol eden bayraklar
     NpcAnimator npcAnimator;
     NpcHealth npcHealth;
     public bool isRunningAway;
+    public float projectileThrowSpeed = 20f; // Sphere fýrlatma hýzý için public deðiþken
+
 
     public float attackDamage = 1f;
 
@@ -124,6 +126,15 @@ public class NpcAI : MonoBehaviour
         {
             npcAnimator.animator.CrossFade("Attack", 0.2f);
             Debug.Log("npc saldýrý yaptý\n");
+
+            if (projectile != null)
+            {
+                GameObject thrownSphere = Instantiate(projectile, transform.position, Quaternion.identity); // Sphere nesnesini oluþtur
+                Rigidbody rb = thrownSphere.AddComponent<Rigidbody>(); // Sphere nesnesine Rigidbody ekle
+                Vector3 direction = (_player.position - transform.position).normalized; // Player'a doðru olan yönü hesapla
+                rb.velocity = direction * 10f; // Sphere nesnesini player'a doðru fýrlat (10f hýzýnda)
+                Destroy(thrownSphere, 1f); // 1 saniye sonra sphere nesnesini yok et
+            }
 
             // PlayerHealth script'ini al ve TakeDamage metodunu çaðýr
 
