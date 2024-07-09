@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.Shapes;
 
 public class NpcAI : MonoBehaviour
 {
@@ -15,16 +16,20 @@ public class NpcAI : MonoBehaviour
     public float walkPointRange; // NPC'nin rastgele yürüme noktasý belirlerken kullanacaðý mesafe aralýðý
     public float timeBetweenAttacks; // NPC'nin saldýrýlarý arasýnda bekleyeceði süre
     public bool isCanAttack; // NPC'nin saldýrýp saldýrmadýðýný kontrol eden bayrak
-    public GameObject sphere; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
+    public GameObject projectile; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
     public float sightRange = 15f, attackRange = 4f; // Görüþ ve saldýrý menzilleri
     public bool playerInSightRange, playerInAttackRange; // Player'ýn görüþ veya saldýrý menzilinde olup olmadýðýný kontrol eden bayraklar
     NpcAnimator npcAnimator;
     NpcHealth npcHealth;
+    public bool isRunningAway;
+    public float projectileThrowSpeed = 20f; // Sphere fýrlatma hýzý için public deðiþken
+
 
     public float attackDamage = 1f;
 
     private void Awake()
     {
+        isRunningAway = false;
         playerHealth = playerGameObj.GetComponent<PlayerHealth>();
         isCanAttack = true;
         npcHealth = GetComponent<NpcHealth>();
@@ -41,6 +46,12 @@ public class NpcAI : MonoBehaviour
         {
             return;
         }
+        else if (isRunningAway)
+        {
+            RunAway();
+            return;
+        }
+
         else
         {
             if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool)) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, devriye gezer
@@ -69,6 +80,22 @@ public class NpcAI : MonoBehaviour
 
         // NPC'nin hedefine bakmasýný saðla
         LookTarget(destinationPoint);
+    }
+
+    void RunAway()
+    {
+        float distance = Vector3.Distance(transform.position, _player.position);
+
+        if(distance < npcAnimator.minRange)
+        {
+            Vector3 dirToPlayer = transform.position - _player.position;
+
+            Vector3 newPos = transform.position + dirToPlayer;
+
+            _agent.SetDestination(newPos);
+
+
+        }
     }
 
 
@@ -101,9 +128,22 @@ public class NpcAI : MonoBehaviour
             npcAnimator.animator.CrossFade("Attack", 0.2f);
             Debug.Log("npc saldýrý yaptý\n");
 
-            // PlayerHealth script'ini al ve TakeDamage metodunu çaðýr
+            if (projectile != null)
+            {
+                Vector3 spawnPosition = transform.position + transform.forward * 1.5f + new Vector3(0, 1.5f, 0); // NPC'nin biraz önünde ve yukarýsýnda bir pozisyon
+                GameObject thrownSphere = Instantiate(projectile, spawnPosition, Quaternion.identity); // Sphere nesnesini oluþtur
+                Rigidbody rb = thrownSphere.AddComponent<Rigidbody>(); // Sphere nesnesine Rigidbody ekle
 
-            if (playerHealth != null)
+                // Yerçekimi ölçeðini azalt veya yerçekimini tamamen devre dýþý býrak
+                rb.useGravity = false;
+                // Alternatif olarak, yerçekimi ölçeðini ayarla
+                // rb.gravityScale = 0.1f; 
+
+                Vector3 direction = (_player.position - transform.position).normalized; // Player'a doðru olan yönü hesapla
+                rb.velocity = direction * projectileThrowSpeed; // Sphere nesnesini player'a doðru fýrlat (10f hýzýnda)
+                Destroy(thrownSphere, 3f); // 1 saniye sonra sphere nesnesini yok et
+            }
+            else if (playerHealth != null)
             {
                 playerHealth.TakeDamage(attackDamage);
             }
