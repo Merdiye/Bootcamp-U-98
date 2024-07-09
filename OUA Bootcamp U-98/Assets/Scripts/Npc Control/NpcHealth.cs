@@ -13,6 +13,7 @@ public class NpcHealth : MonoBehaviour
     public Collider colliderAfterDeath;  // De�i�tirildi: CapsuleCollider yerine Collider kullan�ld�
     NpcAI npc;
     public healthBar healthBar;
+    public float offsetAfterDeath = 0f;
 
     private void Awake()
     {
@@ -23,8 +24,6 @@ public class NpcHealth : MonoBehaviour
         // Bu �ekilde FindObjectOfType yerine GetComponent kullan�lmas� tavsiye edilir
         colliderBeforeDeath = GetComponent<SphereCollider>();
         colliderAfterDeath = GetComponent<CapsuleCollider>();
-
-        // Ba�lang��ta, �l�mden sonraki collider'� devre d��� b�rak�yoruz
         if (colliderAfterDeath != null)
         {
             colliderAfterDeath.enabled = false;
@@ -51,7 +50,7 @@ public class NpcHealth : MonoBehaviour
             isDead = true;
             Debug.Log("NPC is dead!");
             animator.CrossFade("Death", 0.2f);
-            npc._agent.baseOffset = 0f;
+            npc._agent.baseOffset = offsetAfterDeath;
             
             if (colliderBeforeDeath != null)
             {
@@ -61,7 +60,7 @@ public class NpcHealth : MonoBehaviour
             {
                 colliderAfterDeath.enabled = true;
             }
-            Invoke(nameof(DestroyEnemy), 5f);
+            //Invoke(nameof(DestroyEnemy), 5f);
         }
         healthBar.SetHealth((int)currentHealth);
     }
