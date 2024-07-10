@@ -60,7 +60,7 @@ public class NpcHealth : MonoBehaviour
             {
                 colliderAfterDeath.enabled = true;
             }
-            //Invoke(nameof(DestroyEnemy), 5f);
+            Invoke(nameof(DestroyEnemy), 5f);
         }
         healthBar.SetHealth((int)currentHealth);
     }
