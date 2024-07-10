@@ -12,7 +12,7 @@ public class DemonHealth : MonoBehaviour
     public Collider colliderBeforeDeath; // De�i�tirildi: SphereCollider yerine Collider kullan�ld�
     public Collider colliderAfterDeath;  // De�i�tirildi: CapsuleCollider yerine Collider kullan�ld�
     DemonNPC npc;
-    public healthBar healthBar;
+    public HealthBar healthBar;
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class DemonHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth((int)maxHealth);
+        healthBar.SetMaxHealth((float)maxHealth);
     }
 
     public void TakeDamage(float amount)
