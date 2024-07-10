@@ -2233,6 +2233,7 @@ MonoBehaviour:
   colliderBeforeDeath: {fileID: 3016893468407970093}
   colliderAfterDeath: {fileID: 3508248544908573047}
   healthBar: {fileID: 8495189090443169714}
+  offsetAfterDeath: 0
 --- !u!114 &2463033559744268480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,6 +2246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01b5cbffdc91724fbc2b4e5192ca986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxRange: 4
+  minRange: 0
   animator: {fileID: 0}
   isPunchingBool: 0
 --- !u!114 &3808044674499266924
@@ -2273,11 +2276,13 @@ MonoBehaviour:
   walkPointRange: 20
   timeBetweenAttacks: 2
   isCanAttack: 0
-  sphere: {fileID: 0}
-  sightRange: 15
+  projectile: {fileID: 0}
+  sightRange: 10
   attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
+  isRunningAway: 0
+  projectileThrowSpeed: 20
   attackDamage: 1
 --- !u!1 &7876640203179086204
 GameObject:
