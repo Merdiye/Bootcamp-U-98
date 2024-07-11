@@ -12,7 +12,7 @@ public class NpcHealth : MonoBehaviour
     public Collider colliderBeforeDeath; // De�i�tirildi: SphereCollider yerine Collider kullan�ld�
     public Collider colliderAfterDeath;  // De�i�tirildi: CapsuleCollider yerine Collider kullan�ld�
     NpcAI npc;
-    public healthBar healthBar;
+    public HealthBar healthBar;
     public float offsetAfterDeath = 0f;
 
     private void Awake()
@@ -38,7 +38,7 @@ public class NpcHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth((int)maxHealth);
+        healthBar.SetMaxHealth((float)maxHealth);
     }
 
     public void TakeDamage(float amount)
@@ -60,9 +60,9 @@ public class NpcHealth : MonoBehaviour
             {
                 colliderAfterDeath.enabled = true;
             }
-            //Invoke(nameof(DestroyEnemy), 5f);
+            Invoke(nameof(DestroyEnemy), 5f);
         }
-        healthBar.SetHealth((int)currentHealth);
+        healthBar.SetHealth((float)currentHealth);
     }
 
     private IEnumerator HitAnimation()
