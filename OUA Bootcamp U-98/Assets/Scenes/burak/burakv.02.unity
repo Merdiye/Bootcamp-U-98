@@ -121,7 +121,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 27cdf59ea20d5bf41b785e082fa946a2, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1001 &18611502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3421,10 +3421,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_07 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2357419356555822539, guid: c98daec75a106b44eb3c749aa912142e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: c98daec75a106b44eb3c749aa912142e, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.9111378
@@ -4997,10 +4993,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_08 (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 138836365270009319, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 767562868964138845, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6855911
@@ -5193,10 +5185,6 @@ PrefabInstance:
     - target: {fileID: 138836365270009319, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
       propertyPath: m_Name
       value: PP_Meadow_08 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 138836365270009319, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 767562868964138845, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
       propertyPath: m_LocalScale.x
@@ -6479,10 +6467,6 @@ PrefabInstance:
     - target: {fileID: 138836365270009319, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
       propertyPath: m_Name
       value: PP_Meadow_08
-      objectReference: {fileID: 0}
-    - target: {fileID: 138836365270009319, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 767562868964138845, guid: b870c0849dc84dc409d5a8ade508ae8f, type: 3}
       propertyPath: m_LocalScale.y
@@ -13614,10 +13598,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_07 (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 2357419356555822539, guid: c98daec75a106b44eb3c749aa912142e, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3169668576073457521, guid: c98daec75a106b44eb3c749aa912142e, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.3425686
@@ -13880,10 +13860,6 @@ PrefabInstance:
     - target: {fileID: 8082612214144964267, guid: 9324b43aba510fa459dc672929f1ceca, type: 3}
       propertyPath: m_Name
       value: PP_Meadow_Path_05 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8082612214144964267, guid: 9324b43aba510fa459dc672929f1ceca, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: 9324b43aba510fa459dc672929f1ceca, type: 3}
       propertyPath: m_LocalScale.x
@@ -16077,10 +16053,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PP_Meadow_Path_05
       objectReference: {fileID: 0}
-    - target: {fileID: 8082612214144964267, guid: 9324b43aba510fa459dc672929f1ceca, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8890356699427785745, guid: 9324b43aba510fa459dc672929f1ceca, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3408146
@@ -18144,17 +18116,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2146431531174499846, guid: d58b7cde959ef134a9f31af7801e6ba4, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2146431531174499849, guid: d58b7cde959ef134a9f31af7801e6ba4, type: 3}
       propertyPath: m_Name
       value: PP_Rock_Pile_Forest_Moss_10 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2146431531174499849, guid: d58b7cde959ef134a9f31af7801e6ba4, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
