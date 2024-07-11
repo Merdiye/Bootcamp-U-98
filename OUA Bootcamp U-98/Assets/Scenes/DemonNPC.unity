@@ -851,6 +851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 8038265873450346476, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9000398827091743617, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1054,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 5080660560032973764, guid: 67d05b887a0e44448898eed31821606d, type: 3}
+      objectReference: {fileID: 5080660560032973764, guid: 531ac8948e4c04e6a9df438b69817681, type: 3}
     - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
       propertyPath: sightRange
       value: 25
