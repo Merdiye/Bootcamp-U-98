@@ -3,7 +3,32 @@ guid: 20b169cd1f7676a42aa745a0dcffbbd1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Axe
+    second: {fileID: 2100000, guid: 33a2e7b02843a9a44b6b04bc05bf19bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: f78898cdc23baf54aac061836aa454bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beer with Foam
+    second: {fileID: 2100000, guid: 72b3e649111287d428d598c63522f60f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BigBottle
+    second: {fileID: 2100000, guid: 8ff4de68b5547724e9e411b458698358, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table
+    second: {fileID: 2100000, guid: e818cb6e1af5efb478eba788ceb168ed, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
