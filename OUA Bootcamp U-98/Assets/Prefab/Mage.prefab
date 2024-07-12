@@ -168,7 +168,7 @@ RectTransform:
   m_Father: {fileID: 8476562598772424958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -492,15 +492,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.73744
+      value: -28.81908
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8399992
+      value: 0.389
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.85402
+      value: -32.96666
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1728280593283003582, guid: 96d9731938c50334a97f514ebee5ff7c, type: 3}
       propertyPath: m_Layer
@@ -926,7 +926,7 @@ MonoBehaviour:
   walkPointRange: 20
   timeBetweenAttacks: 4
   isCanAttack: 0
-  projectile: {fileID: 4817202624020897147, guid: 1d0f0727ba6657d4180f36294364a919, type: 3}
+  projectile: {fileID: 386440245902467216, guid: e394b537159bc85408643ea81b6c83e0, type: 3}
   sightRange: 35
   attackRange: 20
   playerInSightRange: 0
