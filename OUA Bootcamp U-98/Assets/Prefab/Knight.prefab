@@ -7627,7 +7627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3043889238466988762
 Transform:
   m_ObjectHideFlags: 0
@@ -8294,6 +8294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 0}
   image: {fileID: 8582487921427844692}
+  slashEffect: {fileID: 7734979501733578567}
   inAirTimer: 0
   fallingVelocity: 33
   leapingVelocity: 2
