@@ -7,9 +7,9 @@ using UnityEngine.ProBuilder.Shapes;
 public class NpcAI : MonoBehaviour
 {
     public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileþeni
-    [SerializeField] public GameObject playerGameObj;
+    public GameObject playerGameObj;
     public PlayerHealth playerHealth;
-    [SerializeField] public Transform _player; // Player objesinin referansý
+    public Transform _player; // Player objesinin referansý
     public LayerMask ground, player; // Zemin ve player katmanlarýný belirtmek için kullanýlan layer maskeleri
     public Vector3 destinationPoint; // NPC'nin devriye sýrasýnda gideceði hedef noktayý tutan deðiþken
     private bool destinationPointSet; // Hedef noktanýn belirlenip belirlenmediðini kontrol eden bayrak
@@ -30,12 +30,25 @@ public class NpcAI : MonoBehaviour
     private void Awake()
     {
         isRunningAway = false;
-        playerHealth = playerGameObj.GetComponent<PlayerHealth>();
         isCanAttack = true;
+
+        // "Knight" adlý objeyi sahneden bul ve atamalarýný yap
+        playerGameObj = GameObject.Find("Knight");
+        if (playerGameObj != null)
+        {
+            playerHealth = playerGameObj.GetComponent<PlayerHealth>();
+            _player = playerGameObj.transform;
+        }
+        else
+        {
+            Debug.LogError("Knight adlý obje bulunamadý!");
+        }
+
         npcHealth = GetComponent<NpcHealth>();
         npcAnimator = GetComponent<NpcAnimator>(); // DemonNPCAnimator bileþenini al
         _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileþenini al
     }
+
 
     private void Update()
     {

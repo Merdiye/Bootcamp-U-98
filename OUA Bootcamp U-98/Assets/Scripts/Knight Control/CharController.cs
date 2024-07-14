@@ -12,6 +12,7 @@ public class CharController : MonoBehaviour
     Transform cameraObject;
     public Rigidbody playerRigidbody;
     public Image image;
+    public GameObject slashEffect;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -215,6 +216,8 @@ public class CharController : MonoBehaviour
     {
         if (!playerManager.isInteracting && !isAttacking)
         {
+            slashEffect.SetActive(true);
+
             if(attackAnimOrder == 1)
             {
                 DamageToEnemy();
@@ -242,6 +245,7 @@ public class CharController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
         onAttackSpeed = 1f;
+        slashEffect.SetActive(false);
         animatorManager.animator.SetBool("isAttacking", false);
     }
 
