@@ -85,14 +85,20 @@ public class NpcAI : MonoBehaviour
     void Patroling()
     {
         if (!destinationPointSet) SearchWalkPoint(); // Eðer hedef nokta belirlenmemiþse, yeni bir yürüyüþ noktasý bul
-        if (destinationPointSet) _agent.SetDestination(destinationPoint); // Eðer hedef nokta belirlenmiþse, NPC'yi oraya doðru hareket ettir
+
+        if (destinationPointSet)
+        {
+            _agent.SetDestination(destinationPoint);   // Eðer hedef nokta belirlenmiþse, NPC'yi oraya doðru hareket ettir
+
+            // NPC'nin hedefine bakmasýný saðla
+            LookTarget(destinationPoint);
+        }
+        
 
         Vector3 distanceToDestinationPoint = transform.position - destinationPoint; // Hedef noktaya olan mesafeyi hesapla
 
         if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eðer NPC hedef noktaya yeterince yakýnsa, bayraðý sýfýrla
 
-        // NPC'nin hedefine bakmasýný saðla
-        LookTarget(destinationPoint);
     }
 
     void RunAway()

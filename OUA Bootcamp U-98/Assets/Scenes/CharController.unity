@@ -1459,18 +1459,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
-      propertyPath: ground.m_Bits
-      value: 129
-      objectReference: {fileID: 0}
-    - target: {fileID: 3808044674499266924, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
-      propertyPath: playerGameObj
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7781919115659087334, guid: 653fc83244cc8da4d8993ac519ba1e4f, type: 3}
       propertyPath: m_Name
       value: NpcNew
