@@ -7111,7 +7111,7 @@ Transform:
   m_GameObject: {fileID: 6238019116854992190}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8287,8 +8287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 7.700012, y: 7.2}
-  m_SizeDelta: {x: 145.7388, y: 127.77}
+  m_AnchoredPosition: {x: 7.700012, y: 0.3}
+  m_SizeDelta: {x: 177.3413, y: 152.7073}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7962294406920449378
 CanvasRenderer:
@@ -8311,14 +8311,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.7830189, g: 0.6832948, b: 0.6832948, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 66941d87e74956f4ea1eb163f1d7797b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: caeb43223a84646c498d08614c6ca20c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8488,7 +8488,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 129
   maxDistance: 0.5
-  stairMaxDistance: 1.2
+  stairMaxDistance: 1.8
   onAirMove: 1
   gravityIntensity: -4
   jumpHeight: 2
@@ -8498,10 +8498,12 @@ MonoBehaviour:
   isCanDodge: 0
   isOnStairs: 0
   isAttacking: 0
-  movementSpeed: 9
+  isSprinting: 0
   stairMovementSpeed: 10
   rotationSpeed: 15
   dodgeSpeed: 10
+  runningSpeed: 2
+  movementSpeed: 6
   onAttackSpeed: 1
   damage: 1
   attackPoint: {fileID: 5342225646319380246}
@@ -8531,6 +8533,7 @@ MonoBehaviour:
   jumpInput: 0
   dodgeInput: 0
   attackInput: 0
+  sprintInput: 0
 --- !u!114 &4174052762628161848
 MonoBehaviour:
   m_ObjectHideFlags: 0
