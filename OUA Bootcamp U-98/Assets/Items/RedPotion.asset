@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa99876cc1a6d3a4ab439db7a220e40e, type: 3}
   m_Name: RedPotion
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  value: 0
-  icon: {fileID: 0}
+  id: 2
+  itemName: Red Potion
+  value: 20
+  icon: {fileID: 21300000, guid: 8f45b0e02c6829a4ea4556e3c5d8994b, type: 3}
