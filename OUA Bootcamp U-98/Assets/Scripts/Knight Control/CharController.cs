@@ -35,12 +35,14 @@ public class CharController : MonoBehaviour
     public bool isCanDodge;
     public bool isOnStairs;
     public bool isAttacking;
+    public bool isSprinting;
 
     [Header("Speeds")]
-    public float movementSpeed = 7f;
     public float stairMovementSpeed = 10f;
     public float rotationSpeed = 15f;
     public float dodgeSpeed = 10f;
+    public float runningSpeed = 2f;
+    public float movementSpeed = 5f;
 
     [Header("Attack")]
     public float onAttackSpeed = 1;
@@ -74,6 +76,11 @@ public class CharController : MonoBehaviour
         moveDirection = cameraObject.forward * inputManager.verticalInput + cameraObject.right * inputManager.horizontalInput;
         moveDirection.Normalize();
         moveDirection.y = 0;
+
+        if(isSprinting && inputManager.moveAmount >= 0.5f)
+        {
+            moveDirection *= runningSpeed;
+        }
 
         float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
         moveDirection *= currentSpeed * onAttackSpeed;

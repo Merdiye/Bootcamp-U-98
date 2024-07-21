@@ -2268,7 +2268,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   ground:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 129
   player:
     serializedVersion: 2
     m_Bits: 256

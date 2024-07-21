@@ -8488,7 +8488,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 129
   maxDistance: 0.5
-  stairMaxDistance: 1.2
+  stairMaxDistance: 1.8
   onAirMove: 1
   gravityIntensity: -4
   jumpHeight: 2
@@ -8498,10 +8498,12 @@ MonoBehaviour:
   isCanDodge: 0
   isOnStairs: 0
   isAttacking: 0
-  movementSpeed: 9
+  isSprinting: 0
   stairMovementSpeed: 10
   rotationSpeed: 15
   dodgeSpeed: 10
+  runningSpeed: 2
+  movementSpeed: 6
   onAttackSpeed: 1
   damage: 1
   attackPoint: {fileID: 5342225646319380246}
@@ -8531,6 +8533,7 @@ MonoBehaviour:
   jumpInput: 0
   dodgeInput: 0
   attackInput: 0
+  sprintInput: 0
 --- !u!114 &4174052762628161848
 MonoBehaviour:
   m_ObjectHideFlags: 0
