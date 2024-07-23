@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerHealth.isDead) return;
+        if (playerHealth.isDead ) return;
         // Handle all movement related updates
         charController.HandleAllMovement();
     }

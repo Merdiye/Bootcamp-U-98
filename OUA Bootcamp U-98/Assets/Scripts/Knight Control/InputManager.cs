@@ -22,9 +22,11 @@ public class InputManager : MonoBehaviour
     public bool dodgeInput;
     public bool attackInput;
     public bool sprintInput;
+    public bool inventoryInput;
 
     private void Awake()
     {
+        inventoryInput = false;
         animatorManager = GetComponent<AnimatorManager>();
         charController = GetComponent<CharController>();
     }
@@ -33,14 +35,17 @@ public class InputManager : MonoBehaviour
     {
         if(charInput == null)
         {
+
             charInput = new CharacterInput();
-            charInput.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             charInput.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            charInput.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             charInput.PlayerActions.Jump.performed += i => jumpInput = true;
             charInput.PlayerActions.Dodge.performed += i => dodgeInput = true;
             charInput.PlayerActions.Attack.performed += i => attackInput = true;
             charInput.PlayerActions.Sprint.performed += i => sprintInput = true;
             charInput.PlayerActions.Sprint.canceled += i => sprintInput = false;
+            charInput.PlayerActions.InventoryButton.performed += i => inventoryInput = true;
+            charInput.PlayerActions.InventoryButton.canceled += i => inventoryInput = false;
 
         }
         charInput.Enable();
@@ -58,6 +63,7 @@ public class InputManager : MonoBehaviour
         HandleJumpingInput();
         HandleDodgeInput();
         HandleSprintInput();
+        //HandleInventoryInput();
     }
 
     private void HandleMovementInput()
@@ -108,6 +114,15 @@ public class InputManager : MonoBehaviour
         else 
         {
             charController.isSprinting = false;
+        }
+    }
+
+    private void HandleInventoryInput()
+    {
+        if (inventoryInput)
+        {
+            Debug.Log("envanter açýlmasý lazým");
+            charController.OpenInventory();
         }
     }
 }

@@ -62,3 +62,49 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
  **Sprint Retrospective:**
   - Takım içindeki görev dağılımıyla ilgili düzenleme yapılması kararı alınmıştır
   - Level Design için ayrılan saat/efor arttırılmalı
+
+
+# Sprint 2
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 25 Puan
+
+- **Daily Scrum**: Daily Scrum toplantıları whatsapp üzerinden devam etmiştir. Haftada birkaç gün discord üzerinden toplantılar yapılmıştır. İlerleyiş değişerek, Trello board yerine excel üzerinden WBS hazırlanmıştır.
+
+- **WBS(Work Breakdown Structure) Mantığı**: Görevler kişilere assign edilerek günlere bölünmüş, efor tahmini hazırlanmış ve bu sayede kalan günleri ve yapılan işler daha kolay takip edilebilir hale gelmiştir. Herkese görevler için bir renk atanmış, bitenler ise yeşile boyanmıştır. Tablodaki kırmızı üçgenler toplantı gününü, oklar bağlantılı görevleri ifade eder.
+
+- **Sprint 2 board update**:
+   -   [Sprint 2 Trello Board](https://imgur.com/a/VDuidi5)
+   -   [Work Breakdown Structure (WBS)](https://1drv.ms/x/c/e321bf7803bc3e6b/ESxOAyY4PLZLrNIu7IG1uwABK2t886f9gD72K3dpaHOnyw?e=V2qAtd)
+
+- **Toplantı ve Whatsapp ScreenShotları**:
+  - [Sprint 2 Daily Scrum Chats](https://imgur.com/a/qZBeOzT)
+
+
+- **Ürün Durumu**: Ekran Görüntüleri:
+![image](https://github.com/user-attachments/assets/caad7131-5294-45e0-902c-3a6897339d7c)
+
+![image](https://github.com/user-attachments/assets/10b20080-3c97-4501-b0a7-fe7a4945780b)
+
+![image](https://github.com/user-attachments/assets/bfff4bab-1434-4554-a6bc-6f33410b4e44)
+
+![image](https://github.com/user-attachments/assets/bf5519ab-34f9-4cd2-8c09-ed5f3860cbdf)
+
+![image](https://github.com/user-attachments/assets/3a6d786f-b293-4627-9beb-bce0aecb09e5)
+
+![İsimsiz video ‐ Clipchamp ile yapıldı (1)](https://github.com/user-attachments/assets/1a1a7447-c5a4-4bd4-8aaa-938fca49b0a8)
+
+
+
+
+
+ - **Sprint Review:**
+    - Sprint 2 sonunda ekip ile bir araya gelinmiş ve sprint gözden geçirilmiştir. Sahnelerdeki dekor amaçlı çevre süslemeleri hariç bütün hedeflere ulaşılmıştır.
+    - Sprint Review Katılımcıları: Muhammed Burak Soydan, Mert Uz, Melisa İdeci, Melike Savaş, Merdiye Arı
+
+- **Sprint Retrospective:**
+    - Sprint 2 için alınan puan 22'dir. Çevre detaylarını eklemek bir sonraki sprinte kalmıştır.
+    - Ekip üyelerinin gelecek sprintte daha aktif olmaları vurgulanmıştır.
+    - Toplam 5 farklı sahnenin yeterli olduğu kararına varılmıştır.
+    - Developing kısmı ve diğer teknik detaylara odaklanılma kararı alınmıştır.
+
+

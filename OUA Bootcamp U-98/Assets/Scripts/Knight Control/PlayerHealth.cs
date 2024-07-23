@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth Instance;
+
     public float currentHealth;
     public float maxHealth = 10f;
     public bool isDead;
@@ -15,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         animator = GetComponent<Animator>();
         animatorManager = GetComponent<AnimatorManager>();
         isDead = false;
@@ -52,6 +55,19 @@ public class PlayerHealth : MonoBehaviour
         animatorManager.PlayTargetAnimation("GetHit", true);
         yield return new WaitForSeconds(1.0f);
         animator.SetBool("isHit", false);
+    }
+
+    public void RestoreHealth(float healthValue)
+    {
+        currentHealth += healthValue;
+
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        healthBarScript.SetHealth(currentHealth);
+
     }
 }
 

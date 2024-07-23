@@ -13,6 +13,10 @@ public class CharController : MonoBehaviour
     public Rigidbody playerRigidbody;
     public Image image;
     public GameObject slashEffect;
+    public GameObject Inventory;
+
+    public GameObject inventoryManager;
+    private InventoryManager inventoryComponent;
 
     [Header("Falling")]
     public float inAirTimer;
@@ -54,6 +58,14 @@ public class CharController : MonoBehaviour
 
     private void Awake()
     {
+        if (inventoryManager != null)
+        {
+            inventoryComponent = inventoryManager.GetComponent<InventoryManager>();
+        }
+        else
+        {
+            Debug.LogError("Inventory Manager GameObject is not assigned in the inspector.");
+        }
         isCanDodge = true;
         attackAnimOrder = 1;
         animatorManager = GetComponent<AnimatorManager>();
@@ -278,6 +290,30 @@ public class CharController : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void OpenInventory()
+    {
+        if (Inventory != null)
+        {
+            Inventory.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Inventory GameObject is not assigned in the inspector.");
+        }
+
+        if (inventoryComponent != null)
+        {
+            inventoryComponent.ListItems();
+        }
+        else
+        {
+            Debug.LogError("inventoryComponent is not assigned.");
+        }
+
+        Debug.Log("Envanter listelendi.");
+        Time.timeScale = 0f;
     }
 
 
