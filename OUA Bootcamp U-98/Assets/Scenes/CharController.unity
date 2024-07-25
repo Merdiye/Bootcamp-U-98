@@ -445,18 +445,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5927131393491569445, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5927131393491569445, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 386440245902467216, guid: e394b537159bc85408643ea81b6c83e0, type: 3}
-    - target: {fileID: 5927131393491569445, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
-      propertyPath: playerGameObj
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7261624033607122262, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65.73744
@@ -500,10 +488,6 @@ PrefabInstance:
     - target: {fileID: 8038265873450346476, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
       propertyPath: m_Name
       value: Mage
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038265873450346476, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9000398827091743617, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
       propertyPath: m_AnchorMax.x
