@@ -9,17 +9,6 @@ public class InventoryItemController : MonoBehaviour
 
     public Button removeButton;
 
-    private void Update()
-    {
-        if(item != null)
-        {
-            Debug.Log(item.name);
-        }
-        else
-        {
-            Debug.Log("item null");
-        }
-    }
 
     public void removeItem()
     {
