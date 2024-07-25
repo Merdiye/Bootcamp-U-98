@@ -1,6 +1,23 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:OUA Bootcamp U-98/Assets/Prefab/InventorySystem/InventoryManager.prefab.meta
+guid: 0855eee9e5c9a5147ac077134bcac211
+PrefabImporter:
+========
+guid: d77aae09c7f309c4b821db63fb799fc0
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> Stashed changes:OUA Bootcamp U-98/Assets/Audios/TavernAudio.meta
+=======
+<<<<<<<< HEAD:OUA Bootcamp U-98/Assets/Audios/RPG Music Starter Pack.meta
+guid: e9a456502aff0a8449269a9ad4e4bb14
+folderAsset: yes
+DefaultImporter:
+========
 guid: af9195db75c6cb34c9b7b1e9e87c8b5d
 PrefabImporter:
+>>>>>>>> 34694a13c0dec2d0d6767eba0d39c153874e2e01:OUA Bootcamp U-98/Assets/Prefab/InventorySystem/InventoryManager.prefab.meta
+>>>>>>> Stashed changes
   externalObjects: {}
   userData: 
   assetBundleName: 
