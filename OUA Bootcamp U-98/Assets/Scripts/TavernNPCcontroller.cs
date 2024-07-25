@@ -47,7 +47,7 @@ public class TavernNPCcontroller : MonoBehaviour
             }
             else
             {
-                transform.Rotate(new Vector3(-90, 0, 0), Space.Self);//***//
+                
                 isSitting = true;//***//
                 animator.SetBool("isSitting", true);
                 //index = 0;
