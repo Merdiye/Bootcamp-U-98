@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
     public bool attackInput;
     public bool sprintInput;
     public bool inventoryInput;
+    public bool interactInput;
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class InputManager : MonoBehaviour
             charInput.PlayerActions.Sprint.performed += i => sprintInput = true;
             charInput.PlayerActions.Sprint.canceled += i => sprintInput = false;
             charInput.PlayerActions.InventoryButton.performed += i => inventoryInput = true;
-            charInput.PlayerActions.InventoryButton.canceled += i => inventoryInput = false;
+            charInput.PlayerActions.Interact.performed += i => interactInput = true;
 
         }
         charInput.Enable();
@@ -63,7 +64,8 @@ public class InputManager : MonoBehaviour
         HandleJumpingInput();
         HandleDodgeInput();
         HandleSprintInput();
-        //HandleInventoryInput();
+        HandleInventoryInput();
+        HandleInteractInput();
     }
 
     private void HandleMovementInput()
@@ -121,8 +123,18 @@ public class InputManager : MonoBehaviour
     {
         if (inventoryInput)
         {
-            Debug.Log("envanter açýlmasý lazým");
+            Debug.Log("ohh listele paþam listele");
             charController.OpenInventory();
+            inventoryInput = false;
+        }
+    }
+
+    private void HandleInteractInput()
+    {
+        if (interactInput)
+        {
+            charController.Interact();
+            interactInput = false;
         }
     }
 }

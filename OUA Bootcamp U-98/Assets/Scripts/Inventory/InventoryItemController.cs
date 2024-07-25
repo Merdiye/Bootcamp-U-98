@@ -9,6 +9,7 @@ public class InventoryItemController : MonoBehaviour
 
     public Button removeButton;
 
+
     public void removeItem()
     {
         InventoryManager.Instance.Remove(item);
@@ -23,6 +24,12 @@ public class InventoryItemController : MonoBehaviour
 
     public void UseItem()
     {
+        if (item == null)
+        {
+            Debug.LogError("Item is null in UseItem method");
+            return;
+        }
+
         PlayerHealth.Instance.RestoreHealth(item.value);
 
         removeItem();

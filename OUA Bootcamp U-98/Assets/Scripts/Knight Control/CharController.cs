@@ -13,11 +13,10 @@ public class CharController : MonoBehaviour
     public Rigidbody playerRigidbody;
     public Image image;
     public GameObject slashEffect;
-    public GameObject Inventory;
+    public GameObject inventory;
 
-    public GameObject inventoryManager;
-    private InventoryManager inventoryComponent;
-
+    public GameObject dodgeImage;
+    public GameObject minimap;
     [Header("Falling")]
     public float inAirTimer;
     public float fallingVelocity;
@@ -49,23 +48,22 @@ public class CharController : MonoBehaviour
     public float movementSpeed = 5f;
 
     [Header("Attack")]
-    public float onAttackSpeed = 1;
+    public float onActionSpeed = 1;
     public float damage = 1f;
     public Transform attackPoint;
     public float attackRange = 1f;
     public LayerMask enemyLayer;
     private int attackAnimOrder;
 
+    [Header("Inventory")]
+    public Transform pickUpCenter;
+    public float boxLen;
+    public LayerMask collectableLayer;
+
+
+
     private void Awake()
     {
-        if (inventoryManager != null)
-        {
-            inventoryComponent = inventoryManager.GetComponent<InventoryManager>();
-        }
-        else
-        {
-            Debug.LogError("Inventory Manager GameObject is not assigned in the inspector.");
-        }
         isCanDodge = true;
         attackAnimOrder = 1;
         animatorManager = GetComponent<AnimatorManager>();
@@ -95,7 +93,7 @@ public class CharController : MonoBehaviour
         }
 
         float currentSpeed = isOnStairs ? stairMovementSpeed : movementSpeed;
-        moveDirection *= currentSpeed * onAttackSpeed;
+        moveDirection *= currentSpeed * onActionSpeed;
 
         if (isGrounded)
         {
@@ -240,7 +238,7 @@ public class CharController : MonoBehaviour
             if(attackAnimOrder == 1)
             {
                 DamageToEnemy();
-                onAttackSpeed = 0.4f;
+                onActionSpeed = 0.4f;
                 isAttacking = true;
                 animatorManager.PlayTargetAnimation("Attack", true);
                 animatorManager.animator.SetBool("isAttacking", true);
@@ -250,7 +248,7 @@ public class CharController : MonoBehaviour
             else if (attackAnimOrder == 2)
             {
                 DamageToEnemy();
-                onAttackSpeed = 0.4f;
+                onActionSpeed = 0.4f;
                 isAttacking = true;
                 animatorManager.PlayTargetAnimation("Attack2", true);
                 animatorManager.animator.SetBool("isAttacking", true);
@@ -263,7 +261,7 @@ public class CharController : MonoBehaviour
     private IEnumerator EndAttack()
     {
         yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
-        onAttackSpeed = 1f;
+        onActionSpeed = 1f;
         slashEffect.SetActive(false);
         animatorManager.animator.SetBool("isAttacking", false);
     }
@@ -286,6 +284,8 @@ public class CharController : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        Gizmos.DrawWireCube(pickUpCenter.position, new Vector3(boxLen, boxLen, boxLen));
+
         if (attackPoint == null)
             return;
 
@@ -294,28 +294,52 @@ public class CharController : MonoBehaviour
 
     public void OpenInventory()
     {
-        if (Inventory != null)
-        {
-            Inventory.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("Inventory GameObject is not assigned in the inspector.");
-        }
-
-        if (inventoryComponent != null)
-        {
-            inventoryComponent.ListItems();
-        }
-        else
-        {
-            Debug.LogError("inventoryComponent is not assigned.");
-        }
-
-        Debug.Log("Envanter listelendi.");
+        InventoryManager.Instance.ListItems();
+        dodgeImage.SetActive(false);
+        minimap.SetActive(false);
+        inventory.SetActive(true);
         Time.timeScale = 0f;
     }
 
+    public void Interact()
+    {
+        if (PickUpItems())
+        {
+            onActionSpeed = 0f;
+            animatorManager.PlayTargetAnimation("PickUp", true);
+            StartCoroutine(EndPickUp());
+        }
+    }
+
+    private IEnumerator EndPickUp()
+    {
+        yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
+        onActionSpeed = 1f;
+    }
+
+
+
+    public bool PickUpItems()
+    {
+        bool canpickUp = false;
+
+        Vector3 boxCenter = pickUpCenter.position;
+
+        Quaternion orientation = Quaternion.identity;
+
+        Vector3 halfExtents = new Vector3(boxLen, boxLen, boxLen);
+
+        Collider[] itemsInRange = Physics.OverlapBox(boxCenter, halfExtents, orientation, collectableLayer);
+
+        foreach (Collider item in itemsInRange)
+        {
+            ItemPickup collidedItem = item.GetComponent<ItemPickup>();
+            collidedItem.PickUp();
+            canpickUp = true;
+        }
+
+        return canpickUp;
+    }
 
 }
 

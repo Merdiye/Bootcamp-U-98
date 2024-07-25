@@ -273,6 +273,15 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfddf7db-a862-4b71-9401-8ccad5920ac1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -341,6 +350,17 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
                     ""action"": ""InventoryButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f32ad4a-68a8-47be-b609-514e1a81a7e6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -358,6 +378,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         m_PlayerActions_Attack = m_PlayerActions.FindAction("Attack", throwIfNotFound: true);
         m_PlayerActions_Sprint = m_PlayerActions.FindAction("Sprint", throwIfNotFound: true);
         m_PlayerActions_InventoryButton = m_PlayerActions.FindAction("InventoryButton", throwIfNotFound: true);
+        m_PlayerActions_Interact = m_PlayerActions.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -478,6 +499,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Attack;
     private readonly InputAction m_PlayerActions_Sprint;
     private readonly InputAction m_PlayerActions_InventoryButton;
+    private readonly InputAction m_PlayerActions_Interact;
     public struct PlayerActionsActions
     {
         private @CharacterInput m_Wrapper;
@@ -487,6 +509,7 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_PlayerActions_Attack;
         public InputAction @Sprint => m_Wrapper.m_PlayerActions_Sprint;
         public InputAction @InventoryButton => m_Wrapper.m_PlayerActions_InventoryButton;
+        public InputAction @Interact => m_Wrapper.m_PlayerActions_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -511,6 +534,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @InventoryButton.started += instance.OnInventoryButton;
             @InventoryButton.performed += instance.OnInventoryButton;
             @InventoryButton.canceled += instance.OnInventoryButton;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -530,6 +556,9 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
             @InventoryButton.started -= instance.OnInventoryButton;
             @InventoryButton.performed -= instance.OnInventoryButton;
             @InventoryButton.canceled -= instance.OnInventoryButton;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -559,5 +588,6 @@ public partial class @CharacterInput: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInventoryButton(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
