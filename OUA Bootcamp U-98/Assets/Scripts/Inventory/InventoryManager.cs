@@ -17,7 +17,22 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if(Instance == null)
+        {
+            Debug.Log("Instance is null");
+        }
     }
 
     public void Add(Item item)
@@ -48,10 +63,10 @@ public class InventoryManager : MonoBehaviour
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
 
-             if(enableRemove.isOn)
+            if (enableRemove.isOn)
             {
                 removeButton.gameObject.SetActive(true);
-            }  
+            }
 
         }
 
@@ -80,7 +95,7 @@ public class InventoryManager : MonoBehaviour
     {
         inventoryItems = itemContent.GetComponentsInChildren<InventoryItemController>();
 
-        for(int i = 0;  i < items.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             inventoryItems[i].AddItem(items[i]);
         }

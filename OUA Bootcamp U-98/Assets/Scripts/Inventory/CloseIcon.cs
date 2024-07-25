@@ -8,4 +8,9 @@ public class CloseIcon : MonoBehaviour
     {
         Time.timeScale = 1.0f;
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
 }
