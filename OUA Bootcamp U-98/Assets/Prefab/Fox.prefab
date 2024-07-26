@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22925
+      value: 0.24871333
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22925
+      value: 0.24871333
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22925
+      value: 0.24871333
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 90.60459
+      value: -25.143
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9487064
+      value: -0.026793
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 79.078064
+      value: 25.648
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -80,6 +80,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7873836948627947199}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1507560808926332387}
   m_SourcePrefab: {fileID: 100100000, guid: 937c5ebf1cbca8742b9c3c92629a3f3b, type: 3}
 --- !u!1 &8975630387045765798 stripped
 GameObject:
@@ -168,5 +171,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a5fcc5d53453f43a72478b83de5bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 50
-  wanderTimer: 8
+  wanderRadius: 200
+  wanderTimer: 6
+--- !u!95 &1507560808926332387
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975630387045765798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c136297210995f4ea3b497593b185e0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
