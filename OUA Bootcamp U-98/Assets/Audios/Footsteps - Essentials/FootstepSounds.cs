@@ -17,42 +17,54 @@ public class FootstepSounds : MonoBehaviour
     public MovementSounds grassSounds;
     public MovementSounds concreteSounds;
     public MovementSounds sandSounds;
-    public MovementSounds dirtSounds; 
+    public MovementSounds dirtSounds;
 
     public AudioSource audioSource;
 
-    private CharacterController controller;
+    private CharController controller;
     private string currentSurface = "";
     private bool isJumping = false;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharController>();
+        Debug.Log("FootstepSounds script started. CharController: " + (controller != null));
     }
 
     void Update()
     {
-        if (controller.isGrounded && controller.velocity.magnitude > 2f && !audioSource.isPlaying && !isJumping)
+        Debug.Log("Update called. isGrounded: " + controller.isGrounded + ", velocity: " + controller.playerRigidbody.velocity.magnitude);
+
+        if (controller.isGrounded && controller.playerRigidbody.velocity.magnitude > 2f && !audioSource.isPlaying && !isJumping)
         {
+            Debug.Log("PlayFootstepSound çaðrýldý");
             PlayFootstepSound();
         }
 
         if (!controller.isGrounded && !isJumping)
         {
             isJumping = true;
+            Debug.Log("PlayJumpSound çaðrýldý");
             PlayJumpSound();
         }
 
         if (controller.isGrounded && isJumping)
         {
             isJumping = false;
+            Debug.Log("PlayLandSound çaðrýldý");
             PlayLandSound();
         }
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter(Collision collision)
     {
-        currentSurface = hit.collider.tag;
+        currentSurface = collision.collider.tag;
+        Debug.Log("Çarpýþma oldu: " + currentSurface);
+
+        if (string.IsNullOrEmpty(currentSurface))
+        {
+            Debug.LogWarning("Çarpýþma olan nesnenin etiketi boþ: " + collision.collider.name);
+        }
     }
 
     void PlayFootstepSound()
@@ -72,6 +84,7 @@ public class FootstepSounds : MonoBehaviour
         if (clip != null)
         {
             audioSource.PlayOneShot(clip);
+            Debug.Log("Footstep ses çalýndý: " + clip.name);
         }
     }
 
@@ -81,6 +94,7 @@ public class FootstepSounds : MonoBehaviour
         if (clip != null)
         {
             audioSource.PlayOneShot(clip);
+            Debug.Log("Jump ses çalýndý: " + clip.name);
         }
     }
 
@@ -90,11 +104,13 @@ public class FootstepSounds : MonoBehaviour
         if (clip != null)
         {
             audioSource.PlayOneShot(clip);
+            Debug.Log("Land ses çalýndý: " + clip.name);
         }
     }
 
     MovementSounds GetCurrentMovementSounds()
     {
+        Debug.Log("Current surface: " + currentSurface);
         switch (currentSurface)
         {
             case "Wood":
@@ -105,9 +121,10 @@ public class FootstepSounds : MonoBehaviour
                 return concreteSounds;
             case "Sand":
                 return sandSounds;
-            case "Dirt": 
+            case "Dirt":
                 return dirtSounds;
             default:
+                Debug.LogWarning("Bilinmeyen zemin türü: " + currentSurface);
                 return new MovementSounds();
         }
     }
