@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Stairs
+  - Wood
+  - Concrete
+  - Grass
+  - Dirt
+  - Sand
   layers:
   - Default
   - TransparentFX

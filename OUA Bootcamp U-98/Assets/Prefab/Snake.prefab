@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48eac6b68a815cf4cb553ac92ee6334b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.39976
+      value: -29.054728
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48eac6b68a815cf4cb553ac92ee6334b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9540824
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48eac6b68a815cf4cb553ac92ee6334b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 83.11929
+      value: 28.173084
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 48eac6b68a815cf4cb553ac92ee6334b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a5fcc5d53453f43a72478b83de5bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderRadius: 50
-  wanderTimer: 8
+  wanderRadius: 200
+  wanderTimer: 6
 --- !u!195 &8630598574278574237
 NavMeshAgent:
   m_ObjectHideFlags: 0
