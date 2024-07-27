@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
+    public UnityEvent inventoryEvent;
+
     public CharacterInput charInput;
     AnimatorManager animatorManager;
     CharController charController;
@@ -123,8 +126,8 @@ public class InputManager : MonoBehaviour
     {
         if (inventoryInput)
         {
-            Debug.Log("ohh listele paþam listele");
-            charController.OpenInventory();
+            inventoryEvent.Invoke();
+            //charController.OpenInventory();
             inventoryInput = false;
         }
     }

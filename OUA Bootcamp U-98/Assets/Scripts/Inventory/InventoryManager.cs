@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,14 +45,17 @@ public class InventoryManager : MonoBehaviour
     {
         items.Remove(item);
     }
-
-    public void ListItems()
+    public void CleanContent()
     {
         foreach (Transform child in itemContent)
         {
             Destroy(child.gameObject);
         }
+    }
 
+
+    public void ListItems()
+    {
         foreach (var item in items)
         {
             GameObject obj = Instantiate(inventoryItem, itemContent);
