@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class dialogueTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public dialogue dialogue;
 
-    // Update is called once per frame
-    void Update()
+    public void TiggerDialogue()
     {
-        
-    }
+        DialogueManager manager = FindObjectOfType<DialogueManager>();
+        if (manager != null)
+        {
+            manager.StartDialogue(dialogue);
+        }
+        else
+        {
+            Debug.LogWarning("DialogueManager bulunamadı!");
+
+        }
+
+     
+
+        }
 }
