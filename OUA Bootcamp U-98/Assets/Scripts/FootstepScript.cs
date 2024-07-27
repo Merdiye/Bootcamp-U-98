@@ -136,11 +136,11 @@ public class FootstepScript : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f))
         {
             string tag = hit.collider.tag;
-            Debug.Log("Detected Tag: " + tag); // Tag’in doğru alındığını kontrol edin
+            //Debug.Log("Detected Tag: " + tag); // Tag’in doğru alındığını kontrol edin
             return tag;
         }
 
-        Debug.Log("No Tag Detected");
+       // Debug.Log("No Tag Detected");
         return "Unknown";
     }
 }
