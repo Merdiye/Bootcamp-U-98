@@ -14,6 +14,8 @@ public class CharController : MonoBehaviour
     public Image image;
     public GameObject slashEffect;
     public GameObject inventory;
+    
+
 
     public GameObject dodgeImage;
     public GameObject minimap;
@@ -60,6 +62,7 @@ public class CharController : MonoBehaviour
     public float boxLen;
     public LayerMask collectableLayer;
 
+  
 
 
     private void Awake()
@@ -71,11 +74,16 @@ public class CharController : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
+  
     }
 
     private void Update()
     {
         UpdateImage();
+        
+
+
+
     }
 
     private void HandleMovement()
@@ -201,7 +209,7 @@ public class CharController : MonoBehaviour
         animatorManager.animator.SetBool("isDodging", true);
         animatorManager.PlayTargetAnimation("Dodge", true);
 
-        Vector3 dodgeDirection = -transform.forward; // Karakterin arkasýna doðru yön
+        Vector3 dodgeDirection = -transform.forward; // Karakterin arkasï¿½na doï¿½ru yï¿½n
         Vector3 dodgeVelocity = dodgeDirection * dodgeSpeed;
         playerRigidbody.velocity = dodgeVelocity;
 
@@ -211,13 +219,13 @@ public class CharController : MonoBehaviour
 
     private IEnumerator EndDodge()
     {
-        yield return new WaitForSeconds(0.5f); // Dodge animasyonunun süresi kadar bekleyin
+        yield return new WaitForSeconds(0.5f); // Dodge animasyonunun sï¿½resi kadar bekleyin
         animatorManager.animator.SetBool("isDodging", false);
     }
 
     private IEnumerator CooldownDodge()
     {
-        yield return new WaitForSeconds(2f); // Dodge için bekleme süresi
+        yield return new WaitForSeconds(2f); // Dodge iï¿½in bekleme sï¿½resi
         isCanDodge = true;
     }
 
@@ -260,7 +268,7 @@ public class CharController : MonoBehaviour
 
     private IEnumerator EndAttack()
     {
-        yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
+        yield return new WaitForSeconds(1f); // Attack animasyonunun sï¿½resi kadar bekleyin
         onActionSpeed = 1f;
         slashEffect.SetActive(false);
         animatorManager.animator.SetBool("isAttacking", false);
@@ -313,7 +321,7 @@ public class CharController : MonoBehaviour
 
     private IEnumerator EndPickUp()
     {
-        yield return new WaitForSeconds(1f); // Attack animasyonunun süresi kadar bekleyin
+        yield return new WaitForSeconds(1f); // Attack animasyonunun sï¿½resi kadar bekleyin
         onActionSpeed = 1f;
     }
 

@@ -6,24 +6,24 @@ using UnityEngine.ProBuilder.Shapes;
 
 public class NpcAI : MonoBehaviour
 {
-    public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileþeni
+    public NavMeshAgent _agent; // NPC'nin hareketini kontrol edecek NavMeshAgent bileï¿½eni
     public GameObject playerGameObj;
     public PlayerHealth playerHealth;
-    public Transform _player; // Player objesinin referansý
-    public LayerMask ground, player; // Zemin ve player katmanlarýný belirtmek için kullanýlan layer maskeleri
-    public Vector3 destinationPoint; // NPC'nin devriye sýrasýnda gideceði hedef noktayý tutan deðiþken
-    private bool destinationPointSet; // Hedef noktanýn belirlenip belirlenmediðini kontrol eden bayrak
-    public float walkPointRange; // NPC'nin rastgele yürüme noktasý belirlerken kullanacaðý mesafe aralýðý
-    public float timeBetweenAttacks; // NPC'nin saldýrýlarý arasýnda bekleyeceði süre
-    public bool isCanAttack; // NPC'nin saldýrýp saldýrmadýðýný kontrol eden bayrak
-    public GameObject projectile; // Saldýrý menzili görselleþtirmesi için kullanýlabilecek bir nesne
-    public float sightRange = 15f, attackRange = 4f; // Görüþ ve saldýrý menzilleri
-    public bool playerInSightRange, playerInAttackRange; // Player'ýn görüþ veya saldýrý menzilinde olup olmadýðýný kontrol eden bayraklar
+    public Transform _player; // Player objesinin referansï¿½
+    public LayerMask ground, player; // Zemin ve player katmanlarï¿½nï¿½ belirtmek iï¿½in kullanï¿½lan layer maskeleri
+    public Vector3 destinationPoint; // NPC'nin devriye sï¿½rasï¿½nda gideceï¿½i hedef noktayï¿½ tutan deï¿½iï¿½ken
+    private bool destinationPointSet; // Hedef noktanï¿½n belirlenip belirlenmediï¿½ini kontrol eden bayrak
+    public float walkPointRange; // NPC'nin rastgele yï¿½rï¿½me noktasï¿½ belirlerken kullanacaï¿½ï¿½ mesafe aralï¿½ï¿½ï¿½
+    public float timeBetweenAttacks; // NPC'nin saldï¿½rï¿½larï¿½ arasï¿½nda bekleyeceï¿½i sï¿½re
+    public bool isCanAttack; // NPC'nin saldï¿½rï¿½p saldï¿½rmadï¿½ï¿½ï¿½nï¿½ kontrol eden bayrak
+    public GameObject projectile; // Saldï¿½rï¿½ menzili gï¿½rselleï¿½tirmesi iï¿½in kullanï¿½labilecek bir nesne
+    public float sightRange = 15f, attackRange = 4f; // Gï¿½rï¿½ï¿½ ve saldï¿½rï¿½ menzilleri
+    public bool playerInSightRange, playerInAttackRange; // Player'ï¿½n gï¿½rï¿½ï¿½ veya saldï¿½rï¿½ menzilinde olup olmadï¿½ï¿½ï¿½nï¿½ kontrol eden bayraklar
     NpcAnimator npcAnimator;
     NpcHealth npcHealth;
     public bool isRunningAway;
-    public float projectileThrowSpeed = 20f; // Sphere fýrlatma hýzý için public deðiþken
-
+    public float projectileThrowSpeed = 20f; // Sphere fï¿½rlatma hï¿½zï¿½ iï¿½in public deï¿½iï¿½ken
+    
 
     public float attackDamage = 1f;
 
@@ -32,7 +32,7 @@ public class NpcAI : MonoBehaviour
         isRunningAway = false;
         isCanAttack = true;
 
-        // "Knight" adlý objeyi sahneden bul ve atamalarýný yap
+        // "Knight" adlï¿½ objeyi sahneden bul ve atamalarï¿½nï¿½ yap
         playerGameObj = GameObject.Find("Knight");
         if (playerGameObj != null)
         {
@@ -41,19 +41,19 @@ public class NpcAI : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Knight adlý obje bulunamadý!");
+            Debug.LogError("Knight adlï¿½ obje bulunamadï¿½!");
         }
 
         npcHealth = GetComponent<NpcHealth>();
-        npcAnimator = GetComponent<NpcAnimator>(); // DemonNPCAnimator bileþenini al
-        _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileþenini al
+        npcAnimator = GetComponent<NpcAnimator>(); // DemonNPCAnimator bileï¿½enini al
+        _agent = GetComponent<NavMeshAgent>(); // NavMeshAgent bileï¿½enini al
     }
 
 
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player); // Player'ýn NPC'nin görüþ menzilinde olup olmadýðýný kontrol et
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, player); // Player'ýn NPC'nin saldýrý menzilinde olup olmadýðýný kontrol et
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, player); // Player'ï¿½n NPC'nin gï¿½rï¿½ï¿½ menzilinde olup olmadï¿½ï¿½ï¿½nï¿½ kontrol et
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, player); // Player'ï¿½n NPC'nin saldï¿½rï¿½ menzilinde olup olmadï¿½ï¿½ï¿½nï¿½ kontrol et
 
         if (npcHealth.isDead)
         {
@@ -67,15 +67,15 @@ public class NpcAI : MonoBehaviour
 
         else
         {
-            if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool)) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, devriye gezer
+            if (playerHealth.isDead || (!playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool)) // Eï¿½er player gï¿½rï¿½ï¿½ menzilinde ve saldï¿½rï¿½ menzilinde deï¿½ilse, devriye gezer
             {
                 Patroling();
             }
-            else if (playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool) // Eðer player görüþ menzilinde ve saldýrý menzilinde deðilse, player'ý takip eder
+            else if (playerInSightRange && !playerInAttackRange && !npcAnimator.isPunchingBool) // Eï¿½er player gï¿½rï¿½ï¿½ menzilinde ve saldï¿½rï¿½ menzilinde deï¿½ilse, player'ï¿½ takip eder
             {
                 ChasePlayer();
             }
-            else if (playerInSightRange && playerInAttackRange && npcAnimator.isPunchingBool) // Eðer player hem görüþ hem de saldýrý menzilindeyse, player'a saldýrýr
+            else if (playerInSightRange && playerInAttackRange && npcAnimator.isPunchingBool) // Eï¿½er player hem gï¿½rï¿½ï¿½ hem de saldï¿½rï¿½ menzilindeyse, player'a saldï¿½rï¿½r
             {
                 AttackPlayer();
             }
@@ -84,20 +84,20 @@ public class NpcAI : MonoBehaviour
 
     void Patroling()
     {
-        if (!destinationPointSet) SearchWalkPoint(); // Eðer hedef nokta belirlenmemiþse, yeni bir yürüyüþ noktasý bul
+        if (!destinationPointSet) SearchWalkPoint(); // Eï¿½er hedef nokta belirlenmemiï¿½se, yeni bir yï¿½rï¿½yï¿½ï¿½ noktasï¿½ bul
 
         if (destinationPointSet)
         {
-            _agent.SetDestination(destinationPoint);   // Eðer hedef nokta belirlenmiþse, NPC'yi oraya doðru hareket ettir
+            _agent.SetDestination(destinationPoint);   // Eï¿½er hedef nokta belirlenmiï¿½se, NPC'yi oraya doï¿½ru hareket ettir
 
-            // NPC'nin hedefine bakmasýný saðla
+            // NPC'nin hedefine bakmasï¿½nï¿½ saï¿½la
             LookTarget(destinationPoint);
         }
         
 
         Vector3 distanceToDestinationPoint = transform.position - destinationPoint; // Hedef noktaya olan mesafeyi hesapla
 
-        if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eðer NPC hedef noktaya yeterince yakýnsa, bayraðý sýfýrla
+        if (distanceToDestinationPoint.magnitude < 1.0f) destinationPointSet = false; // Eï¿½er NPC hedef noktaya yeterince yakï¿½nsa, bayraï¿½ï¿½ sï¿½fï¿½rla
 
     }
 
@@ -120,19 +120,19 @@ public class NpcAI : MonoBehaviour
 
     void SearchWalkPoint()
     {
-        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yürüyüþ noktasý aralýðýnda rastgele X koordinatý üret
-        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yürüyüþ noktasý aralýðýnda rastgele Z koordinatý üret
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yï¿½rï¿½yï¿½ï¿½ noktasï¿½ aralï¿½ï¿½ï¿½nda rastgele X koordinatï¿½ ï¿½ret
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange); // Yï¿½rï¿½yï¿½ï¿½ noktasï¿½ aralï¿½ï¿½ï¿½nda rastgele Z koordinatï¿½ ï¿½ret
 
-        destinationPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ); // Rastgele koordinatlarla hedef noktayý belirle
+        destinationPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ); // Rastgele koordinatlarla hedef noktayï¿½ belirle
 
-        if (Physics.Raycast(destinationPoint, -transform.up, 2.0f, ground)) destinationPointSet = true; // Hedef noktanýn zeminde olup olmadýðýný kontrol et
+        if (Physics.Raycast(destinationPoint, -transform.up, 2.0f, ground)) destinationPointSet = true; // Hedef noktanï¿½n zeminde olup olmadï¿½ï¿½ï¿½nï¿½ kontrol et
     }
 
     void ChasePlayer()
     {
-        if (!npcAnimator.isPunchingBool) // Sadece saldýrý animasyonu oynanmýyorsa hareket et
+        if (!npcAnimator.isPunchingBool) // Sadece saldï¿½rï¿½ animasyonu oynanmï¿½yorsa hareket et
         {
-            _agent.SetDestination(_player.position); // Player'ýn pozisyonunu NPC'nin hedef noktasý olarak ayarla
+            _agent.SetDestination(_player.position); // Player'ï¿½n pozisyonunu NPC'nin hedef noktasï¿½ olarak ayarla
             LookTarget(_player);
         }
     }
@@ -142,24 +142,24 @@ public class NpcAI : MonoBehaviour
     {
         npcAnimator.animator.SetBool("isCanAttack", isCanAttack);
         _agent.SetDestination(transform.position);
-        if (isCanAttack && !npcHealth.isHit && !playerHealth.isDead) // Eðer NPC daha önce saldýrmadýysa
+        if (isCanAttack && !npcHealth.isHit && !playerHealth.isDead) // Eï¿½er NPC daha ï¿½nce saldï¿½rmadï¿½ysa
         {
             npcAnimator.animator.CrossFade("Attack", 0.2f);
-            Debug.Log("npc saldýrý yaptý\n");
+            Debug.Log("npc saldï¿½rï¿½ yaptï¿½\n");
 
             if (projectile != null)
             {
-                Vector3 spawnPosition = transform.position + transform.forward * 1.5f + new Vector3(0, 1.5f, 0); // NPC'nin biraz önünde ve yukarýsýnda bir pozisyon
-                GameObject thrownSphere = Instantiate(projectile, spawnPosition, Quaternion.identity); // Sphere nesnesini oluþtur
+                Vector3 spawnPosition = transform.position + transform.forward * 1.5f + new Vector3(0, 1.5f, 0); // NPC'nin biraz ï¿½nï¿½nde ve yukarï¿½sï¿½nda bir pozisyon
+                GameObject thrownSphere = Instantiate(projectile, spawnPosition, Quaternion.identity); // Sphere nesnesini oluï¿½tur
                 Rigidbody rb = thrownSphere.AddComponent<Rigidbody>(); // Sphere nesnesine Rigidbody ekle
 
-                // Yerçekimi ölçeðini azalt veya yerçekimini tamamen devre dýþý býrak
+                // Yerï¿½ekimi ï¿½lï¿½eï¿½ini azalt veya yerï¿½ekimini tamamen devre dï¿½ï¿½ï¿½ bï¿½rak
                 rb.useGravity = false;
-                // Alternatif olarak, yerçekimi ölçeðini ayarla
+                // Alternatif olarak, yerï¿½ekimi ï¿½lï¿½eï¿½ini ayarla
                 // rb.gravityScale = 0.1f; 
 
-                Vector3 direction = (_player.position - transform.position).normalized; // Player'a doðru olan yönü hesapla
-                rb.velocity = direction * projectileThrowSpeed; // Sphere nesnesini player'a doðru fýrlat (10f hýzýnda)
+                Vector3 direction = (_player.position - transform.position).normalized; // Player'a doï¿½ru olan yï¿½nï¿½ hesapla
+                rb.velocity = direction * projectileThrowSpeed; // Sphere nesnesini player'a doï¿½ru fï¿½rlat (10f hï¿½zï¿½nda)
                 Destroy(thrownSphere, 3f); // 1 saniye sonra sphere nesnesini yok et
             }
             else if (playerHealth != null)
@@ -168,24 +168,24 @@ public class NpcAI : MonoBehaviour
             }
             else
             {
-                Debug.LogError("PlayerHealth script'i playerGameObj üzerinde bulunamadý!");
+                Debug.LogError("PlayerHealth script'i playerGameObj ï¿½zerinde bulunamadï¿½!");
             }
 
-            isCanAttack = false; // Saldýrdýðýný belirtmek için bayraðý true yap
-                                 // Saldýrý kodu buraya yazýlýr (örneðin, player'ýn saðlýðýný azaltma)
-            Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldýrý bayraðýný belirtilen süre sonra sýfýrlamak için zamanlayýcý baþlat
+            isCanAttack = false; // Saldï¿½rdï¿½ï¿½ï¿½nï¿½ belirtmek iï¿½in bayraï¿½ï¿½ true yap
+                                 // Saldï¿½rï¿½ kodu buraya yazï¿½lï¿½r (ï¿½rneï¿½in, player'ï¿½n saï¿½lï¿½ï¿½ï¿½nï¿½ azaltma)
+            Invoke(nameof(ResetAttack), timeBetweenAttacks); // Saldï¿½rï¿½ bayraï¿½ï¿½nï¿½ belirtilen sï¿½re sonra sï¿½fï¿½rlamak iï¿½in zamanlayï¿½cï¿½ baï¿½lat
         }
     }
 
 
     void ResetAttack()
     {
-        isCanAttack = true; // Bayraðý false yaparak NPC'nin yeniden saldýrmasýný saðla
+        isCanAttack = true; // Bayraï¿½ï¿½ false yaparak NPC'nin yeniden saldï¿½rmasï¿½nï¿½ saï¿½la
     }
 
     public void LookTarget(Transform target)
     {
-        // NPC'nin oyuncuya bakmasýný saðla
+        // NPC'nin oyuncuya bakmasï¿½nï¿½ saï¿½la
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
@@ -193,7 +193,7 @@ public class NpcAI : MonoBehaviour
 
     public void LookTarget(Vector3 target)
     {
-        // NPC'nin hedefe bakmasýný saðla
+        // NPC'nin hedefe bakmasï¿½nï¿½ saï¿½la
         Vector3 direction = (target - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);

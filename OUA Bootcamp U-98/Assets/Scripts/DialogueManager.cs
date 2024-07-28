@@ -9,16 +9,28 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nametext;
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
+    public Animator animator;
+    public LayerMask player;
+  
+
 
     private void Start()
     {
         sentences = new Queue<string>();
          
     }
+    
+
+
+
 
     public void StartDialogue(dialogue dialogue)
     {
-        
+       
+        animator.SetBool("isOpen", true);
+
+        animator.SetBool("IsOpen", false);
+
 
         nametext.text = dialogue.name;
 
@@ -40,12 +52,23 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentence));
+    }
+
+    IEnumerator TypeSentence (string sentence)
+    {
+        dialogueText.text = "";
+        foreach(char letter in sentence.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return null;
+        }
     }
 
     void EndDialogue()
     {
-        Debug.Log("end of conversation");
+        animator.SetBool("isOpen", false);
     }
         
 }
