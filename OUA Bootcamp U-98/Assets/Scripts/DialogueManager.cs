@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     public LayerMask player;
   
 
+
+    public UnityEvent setMission;
 
     private void Start()
     {
@@ -68,7 +71,12 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+
         animator.SetBool("isOpen", false);
+
+        setMission.Invoke();
+        Debug.Log("end of conversation");
+
     }
         
 }
