@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI nametext;
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
+
+    public UnityEvent setMission;
 
     private void Start()
     {
@@ -45,6 +48,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        setMission.Invoke();
         Debug.Log("end of conversation");
     }
         
