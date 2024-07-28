@@ -5,7 +5,7 @@ using UnityEngine;
 public class dialogueTrigger : MonoBehaviour
 {
     public dialogue dialogue;
-
+    
     public void TiggerDialogue()
     {
         DialogueManager manager = FindObjectOfType<DialogueManager>();
@@ -18,6 +18,8 @@ public class dialogueTrigger : MonoBehaviour
             Debug.LogWarning("DialogueManager bulunamadı!");
 
         }
+
+
 
      
 
