@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -18,14 +19,21 @@ public class SpawnManager : MonoBehaviour
     // Sahnedeki mevcut nesnelerin listesi
     private List<GameObject> spawnedObjects = new List<GameObject>();
 
-    void Start()
+    public float cooldownPeriod;
+    private bool cooldownBool;
+
+    private void Awake()
+    {
+        cooldownBool = true;
+    }
+    /*void Start()
     {
         // Ýlk nesneleri spawn et
         for (int i = 0; i < maxObjects; i++)
         {
             SpawnObjectAtCurrentPoint();
         }
-    }
+    }*/
 
     void Update()
     {
@@ -33,9 +41,10 @@ public class SpawnManager : MonoBehaviour
         spawnedObjects.RemoveAll(item => item == null);
 
         // Eðer mevcut nesne sayýsý maksimumdan az ise yeni nesne spawn et
-        if (spawnedObjects.Count < maxObjects)
+        if (spawnedObjects.Count < maxObjects && cooldownBool)
         {
             SpawnObjectAtCurrentPoint();
+            StartCoroutine(SpawnCooldown());
         }
     }
 
@@ -53,5 +62,12 @@ public class SpawnManager : MonoBehaviour
 
         // Bir sonraki spawn noktasýna geç
         currentSpawnIndex++;
+    }
+
+    private IEnumerator SpawnCooldown()
+    {
+        cooldownBool = false;
+        yield return new WaitForSeconds(cooldownPeriod);
+        cooldownBool = true;
     }
 }
