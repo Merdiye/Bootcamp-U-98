@@ -7,76 +7,68 @@ using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TextMeshProUGUI nametext;
-    public TextMeshProUGUI dialogueText;
-    private Queue<string> sentences;
+    public Image actorImage;
+    public Text actorName;
+    public Text messageText;
+    public RectTransform backgroundBox;
     public Animator animator;
-    public LayerMask player;
-  
 
+    Message[] currentMessages;
+    Actor[] currentActors;
+    int activeMessage = 0;
+    public static bool isActive = false;
 
-    public UnityEvent setMission;
+    public void OpenDialogue(Message[] messages, Actor[] actors)
+    {
+        currentActors = actors;
+        currentMessages = messages;
+        activeMessage = 0;
+        isActive = true;
+        animator.SetBool("IsOpen", true);
+
+        Debug.Log("Started Conversation Loaded messages:" + messages.Length);
+        DisplayMessage();
+        
+    }
+
+    void DisplayMessage()
+    {
+        Message messageToDisplay = currentMessages[activeMessage];
+        messageText.text = messageToDisplay.message;
+
+        Actor actorToDisplay = currentActors[messageToDisplay.actorId];
+        actorName.text = actorToDisplay.name;
+        actorImage.sprite = actorToDisplay.sprite;
+    }
+
+    public void NextMessage()
+    {
+        activeMessage++;
+        if (activeMessage < currentMessages.Length)
+        {
+            DisplayMessage();
+        }
+        else
+        {
+            Debug.Log("Conversation Ended!");
+            animator.SetBool("IsOpen", false);
+        }
+        
+        isActive = false;
+
+    }
 
     private void Start()
     {
-        sentences = new Queue<string>();
-         
-    }
-    
-
-
-
-
-    public void StartDialogue(dialogue dialogue)
-    {
-       
-        animator.SetBool("isOpen", true);
-
-        animator.SetBool("IsOpen", false);
-
-
-        nametext.text = dialogue.name;
-
-        sentences.Clear();
-
-        foreach(string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-        DisplayNextSentence();
-
-    }
-
-    public void DisplayNextSentence()
-    {
-        if(sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
-    }
-
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
-        {
-            dialogueText.text += letter;
-            yield return null;
-        }
-    }
-
-    void EndDialogue()
-    {
-
-        animator.SetBool("isOpen", false);
-
-        setMission.Invoke();
-        Debug.Log("end of conversation");
-
-    }
         
+    }
+
+    private void Update()
+    {
+        //if(Input.GetKeyDown(KeyCode.Space) && isActive == false)
+        //{
+        //    NextMessage();
+        //}
+    }
+
 }

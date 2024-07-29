@@ -4,24 +4,33 @@ using UnityEngine;
 
 public class dialogueTrigger : MonoBehaviour
 {
-    public dialogue dialogue;
-    
-    public void TiggerDialogue()
+    public Message[] messages;
+    public Actor[] actors;
+
+    public void StartDialogue()
     {
-        DialogueManager manager = FindObjectOfType<DialogueManager>();
-        if (manager != null)
+        DialogueManager[] managers = FindObjectsOfType<DialogueManager>();
+        if (managers.Length > 0)
         {
-            manager.StartDialogue(dialogue);
+            managers[0].OpenDialogue(messages, actors);
         }
         else
         {
-            Debug.LogWarning("DialogueManager bulunamadı!");
-
+            Debug.LogError("No DialogueManager found in the scene.");
         }
+    }
+}
 
+[System.Serializable]
+public class Message
+{
+    public int actorId;
+    public string message;
+}
 
-
-     
-
-        }
+[System.Serializable]
+public class Actor
+{
+    public string name;
+    public Sprite sprite;
 }
