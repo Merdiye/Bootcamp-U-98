@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     public RectTransform backgroundBox;
     public Animator animator;
 
+    public UnityEvent setMission;
+
     Message[] currentMessages;
     Actor[] currentActors;
     int activeMessage = 0;
@@ -50,6 +52,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            setMission.Invoke();
             Debug.Log("Conversation Ended!");
             animator.SetBool("IsOpen", false);
         }
