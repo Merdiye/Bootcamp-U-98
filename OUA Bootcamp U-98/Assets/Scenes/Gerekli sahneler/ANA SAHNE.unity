@@ -1760,6 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a303023496eca4bb848e85ce76bf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eButton: {fileID: 921633467}
   checkPoint: {fileID: 1789641428}
 --- !u!65 &127034715
 BoxCollider:
@@ -14541,7 +14542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &921633466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14690,7 +14691,7 @@ PrefabInstance:
 <<<<<<< HEAD
     - target: {fileID: 8385658567355778862, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
 =======
 >>>>>>> parent of 231cbab9 (village&village road decoration)
@@ -15883,7 +15884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7142038642873879948, guid: 16e00ea221f14473584539db3b4b96c9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7205800794372948568, guid: 16e00ea221f14473584539db3b4b96c9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15983,7 +15984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9204124837041775991, guid: 16e00ea221f14473584539db3b4b96c9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
