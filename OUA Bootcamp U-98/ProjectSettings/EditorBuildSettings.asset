@@ -4,11 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/UI Start.unity
-    guid: 3a05c9584c4eb0d4f90372c0f162465f
-  - enabled: 1
-    path: Assets/Scenes/Gerekli sahneler/ANA SAHNE.unity
-    guid: 73e7e8baa5e8d4f73b2a848427a66057
+  m_Scenes: []
   m_configObjects: {}
