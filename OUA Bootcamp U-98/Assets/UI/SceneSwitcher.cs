@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-                                                      // Sahneyi ad ile yükle
-    public void LoadSceneByName()
+    // "LoadingScene" sahnesini yüklemek için çaðrýlacak fonksiyon
+    public void StartGame()
     {
-        SceneManager.LoadScene("ANA SAHNE");
+        SceneManager.LoadScene("LoadingScene");
     }
 }
-
-
