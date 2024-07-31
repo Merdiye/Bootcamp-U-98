@@ -564,6 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56315510}
   - component: {fileID: 56315511}
+  - component: {fileID: 56315512}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -602,6 +603,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19ee8762d02cda84b9af88e3a248c475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &56315512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56315509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f0dd9b1d420ec49998d5a2075fd62a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &96593251
@@ -2865,7 +2878,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cfcca7400268d0d418646d3306c52eb1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3842,7 +3855,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 904390852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 56315512}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &904390852
 MonoBehaviour:
   m_ObjectHideFlags: 0
