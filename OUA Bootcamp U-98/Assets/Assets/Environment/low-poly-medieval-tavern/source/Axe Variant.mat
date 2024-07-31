@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Axe Variant
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: -7990188794910336688, guid: 20b169cd1f7676a42aa745a0dcffbbd1, type: 3}
+  m_Parent: {fileID: 2100000, guid: 33a2e7b02843a9a44b6b04bc05bf19bc, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
