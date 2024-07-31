@@ -14,6 +14,8 @@ public class CharController : MonoBehaviour
     public Image image;
     public GameObject slashEffect;
     public GameObject inventory;
+    public LayerMask loadPointLayer;
+    private Transform currentLoadPoint;
     
 
 
@@ -41,6 +43,8 @@ public class CharController : MonoBehaviour
     public bool isOnStairs;
     public bool isAttacking;
     public bool isSprinting;
+    public bool isCanLoadScene;
+
 
     [Header("Speeds")]
     public float stairMovementSpeed = 10f;
@@ -317,6 +321,26 @@ public class CharController : MonoBehaviour
             animatorManager.PlayTargetAnimation("PickUp", true);
             StartCoroutine(EndPickUp());
         }
+
+        if (LoadScene())
+        {
+            // Coroutine kullanarak ışınlanma işlemini gerçekleştirin
+            StartCoroutine(HandleLoadScene());
+        }
+    }
+
+    private IEnumerator HandleLoadScene()
+    {
+        // Animasyonun veya işlemin bitmesini bekleyin
+        yield return new WaitForSeconds(0.1f);
+
+        // Işınlanma işlemi
+        playerRigidbody.isKinematic = true; // Fizik motorunu geçici olarak devre dışı bırak
+        transform.position = currentLoadPoint.position;
+        playerRigidbody.isKinematic = false; // Fizik motorunu yeniden etkinleştir
+
+        // Işınlanma işlemi tamamlandıktan sonra gerekli işlemler
+        playerManager.isInteracting = false;
     }
 
     private IEnumerator EndPickUp()
@@ -347,6 +371,28 @@ public class CharController : MonoBehaviour
         }
 
         return canpickUp;
+    }
+
+    public bool LoadScene()
+    {
+        isCanLoadScene = false;
+
+        Vector3 boxCenter = pickUpCenter.position;
+
+        Quaternion orientation = Quaternion.identity;
+
+        Vector3 halfExtents = new Vector3(boxLen, boxLen, boxLen);
+
+        Collider[] LoadPointInRange = Physics.OverlapBox(boxCenter, halfExtents, orientation, loadPointLayer);
+
+        foreach (Collider points in LoadPointInRange)
+        {
+            GoToCheckpoint loadpoint = points.GetComponent<GoToCheckpoint>();
+            currentLoadPoint = loadpoint.checkPoint;
+            isCanLoadScene = true;
+        }
+
+        return isCanLoadScene;
     }
 
 }
