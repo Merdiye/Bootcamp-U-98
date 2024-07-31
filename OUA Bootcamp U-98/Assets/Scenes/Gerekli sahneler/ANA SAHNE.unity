@@ -14621,7 +14621,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2971941817974224093, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_AnchoredPosition.y
+<<<<<<< HEAD
       value: 450
+=======
+      value: 476.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864159131322085195, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+      propertyPath: missionString
+      value: "Ormandaki Yarat\u0131klar\u0131 \xF6ld\xFCr"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929213089487821376, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+      propertyPath: loadPointLayer.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957777037891287444, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957777037891287444, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+>>>>>>> parent of 231cbab9 (village&village road decoration)
       objectReference: {fileID: 0}
     - target: {fileID: 6957777037891287444, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -14667,10 +14687,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 8385658567355778862, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 231cbab9 (village&village road decoration)
     - target: {fileID: 9176161406404501705, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
       propertyPath: m_Name
       value: Knight
