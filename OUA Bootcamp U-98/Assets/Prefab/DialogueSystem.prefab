@@ -28,8 +28,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4042405845203362891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -756}
-  m_LocalScale: {x: 18.20475, y: 10.903259, z: 1.5037}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
+  m_LocalScale: {x: 15.469486, y: 9.265044, z: 1.2777691}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7867962471942141449}
@@ -40,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -56, y: 13}
+  m_AnchoredPosition: {x: -56, y: 41}
   m_SizeDelta: {x: -1820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5256867194108194037
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb1c74b0f6d460cba9965a6a73c50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actorImage: {fileID: 8411892687180239183}
+  actorImage: {fileID: 2473287395243115846}
   actorName: {fileID: 380179722193753624}
   messageText: {fileID: 3785374383176984084}
   backgroundBox: {fileID: 1329980190222986733}
@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2679470577056181344}
   - component: {fileID: 3255659919896883198}
-  - component: {fileID: 8411892687180239183}
+  - component: {fileID: 2473287395243115846}
   m_Layer: 5
   m_Name: Avatar
   m_TagString: Untagged
@@ -483,7 +483,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221463446743570617}
   m_CullTransparentMesh: 1
---- !u!114 &8411892687180239183
+--- !u!114 &2473287395243115846
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
