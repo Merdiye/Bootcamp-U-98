@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class Mission : MonoBehaviour
 {
+    public static Mission Instance;
     public TextMeshProUGUI missionText; // TextMeshPro nesnesi
     private float currentKill;
     public float targetKill;
@@ -23,16 +24,6 @@ public class Mission : MonoBehaviour
     {
         currentKill++;
         currentKillText.text = currentKill.ToString();
-
-        if (currentKill >= targetKill)
-        {
-            missionText.text = "Görev yok";
-            currentKill = 0;
-            targetKill = 0;
-            targetKillText.text = targetKill.ToString();
-            currentKillText.text = currentKill.ToString();
-            Destroy(this.gameObject);
-        }
     }
 
     // Bu fonksiyon çaðrýldýðýnda missionString deðerini missionText'e aktarýr

@@ -10,7 +10,6 @@ TagManager:
   - Grass
   - Dirt
   - Sand
-  - LoadPoint
   layers:
   - Default
   - TransparentFX
@@ -24,7 +23,7 @@ TagManager:
   - Enemy
   - chair
   - Collectable
-  - LoadPoint
+  - 
   - 
   - 
   - 

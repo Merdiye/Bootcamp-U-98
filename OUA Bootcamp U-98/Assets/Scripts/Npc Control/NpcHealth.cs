@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NpcHealth : MonoBehaviour
 {
+    public UnityEvent missionAddKill;
     public bool isDead;
     public bool isHit;
     public float maxHealth;
@@ -61,6 +63,11 @@ public class NpcHealth : MonoBehaviour
                 colliderAfterDeath.enabled = true;
             }
             Invoke(nameof(DestroyEnemy), 5f);
+            if(Mission.Instance != null)
+            {
+                Debug.Log("kill eklendi");
+                Mission.Instance.addKill();
+            }
         }
         healthBar.SetHealth((float)currentHealth);
     }

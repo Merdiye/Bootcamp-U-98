@@ -219,92 +219,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f4dd20ba27e94dfd895d295b65e05e2, type: 3}
---- !u!1001 &813006762
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1399434015385560787, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1399434015385560787, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 69.886925
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.9510474
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 123.13819
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.36921978
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.92934215
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -136.665
-      objectReference: {fileID: 0}
-    - target: {fileID: 8364194418530712179, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176161406404501705, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      propertyPath: m_Name
-      value: Knight
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9176161406404501705, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 813006764}
-  m_SourcePrefab: {fileID: 100100000, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
---- !u!1 &813006763 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9176161406404501705, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
-  m_PrefabInstance: {fileID: 813006762}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &813006764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813006763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3bf163bbf832a48be233c4f24ccff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!1001 &3479495976212603553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,10 +231,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: orman
       objectReference: {fileID: 0}
-    - target: {fileID: 4275488347325772094, guid: 16e00ea221f14473584539db3b4b96c9, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 813006764}
     - target: {fileID: 6806534202719278129, guid: 16e00ea221f14473584539db3b4b96c9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -388,4 +298,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 3479495976212603553}
   - {fileID: 49747306}
-  - {fileID: 813006762}
