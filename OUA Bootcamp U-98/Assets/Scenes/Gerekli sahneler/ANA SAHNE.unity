@@ -24035,6 +24035,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1569322513412993609, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3699603478678778749, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: playerCanvas
       value: 
@@ -24045,7 +24049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5781344379462563442, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788509505955554066, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_LocalPosition.x

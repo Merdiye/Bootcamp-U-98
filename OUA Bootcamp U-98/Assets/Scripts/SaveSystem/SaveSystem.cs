@@ -58,13 +58,6 @@ public class SaveSystem : MonoBehaviour
                     isSprinting = player.isSprinting,
                 };
 
-                // Envanteri kaydet
-                data.inventoryItems = new List<SerializableItem>();
-                foreach (Item item in InventoryManager.Instance.items)
-                {
-                    data.inventoryItems.Add(new SerializableItem(item));
-                }
-
                 BinaryFormatter formatter = new BinaryFormatter();
                 string path = Application.persistentDataPath + "/savefile.fun";
                 using (FileStream stream = new FileStream(path, FileMode.Create))
@@ -111,21 +104,6 @@ public class SaveSystem : MonoBehaviour
                     player.interactInput = data.interactInput;
                     player.isGrounded = data.isGrounded;
                     player.isSprinting = data.isSprinting;
-
-                    // Envanteri yükle
-                    InventoryManager.Instance.CleanContent();
-                    InventoryManager.Instance.items.Clear();
-                    foreach (SerializableItem itemData in data.inventoryItems)
-                    {
-                        Item item = ScriptableObject.CreateInstance<Item>();
-                        item.id = itemData.id;
-                        item.itemName = itemData.itemName;
-                        item.value = itemData.value;
-                        InventoryManager.Instance.Add(item);
-                    }
-                    InventoryManager.Instance.ListItems();
-
-                 
 
                     PlayerManager playerManager = player.GetComponent<PlayerManager>();
                     PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();

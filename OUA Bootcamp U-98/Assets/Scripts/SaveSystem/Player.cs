@@ -14,10 +14,6 @@ public class Player : MonoBehaviour
     public bool isGrounded;
     public bool isSprinting;
 
-    // Envanter ve görev bilgileri
-    public InventoryManager inventoryManager; // Envanter yöneticisi referansý
-    public Mission mission; // Görev yöneticisi referansý
-
     public void SavePlayerData(PlayerManager playerManager, PlayerHealth playerHealth, InputManager inputManager, CharController charController)
     {
         health = playerHealth.currentHealth;
@@ -48,21 +44,5 @@ public class Player : MonoBehaviour
         charController.isSprinting = isSprinting;
 
         Debug.Log("Player data loaded.");
-    }
-
-    // Envanteri yüklemek için
-    public void LoadInventory(List<SerializableItem> inventoryItems)
-    {
-        inventoryManager.CleanContent();
-        inventoryManager.items.Clear();
-        foreach (SerializableItem itemData in inventoryItems)
-        {
-            Item item = ScriptableObject.CreateInstance<Item>();
-            item.id = itemData.id;
-            item.itemName = itemData.itemName;
-            item.value = itemData.value;
-            inventoryManager.Add(item);
-        }
-        inventoryManager.ListItems();
     }
 }
