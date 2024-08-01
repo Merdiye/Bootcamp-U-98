@@ -23045,7 +23045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7660662938858181856, guid: b46a28995a56c466bae24aa3e7eb8722, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27229,6 +27229,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -9039762778864771596, guid: 8129946dc4101448996befa4347e1db2, type: 3}
+--- !u!1 &1504884440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 923889271677069218, guid: 1d865fad912e8b943a23cdf690609f6c, type: 3}
+  m_PrefabInstance: {fileID: 2010869922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1505556461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2286412604243651456, guid: dec17ef7f558c4dd5ac82e1244a8d986, type: 3}
@@ -29261,14 +29266,14 @@ PrefabInstance:
     - target: {fileID: 3699603478678778749, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: playerCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1504884440}
     - target: {fileID: 5781344379462563442, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
     - target: {fileID: 5781344379462563442, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788509505955554066, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_LocalPosition.x
