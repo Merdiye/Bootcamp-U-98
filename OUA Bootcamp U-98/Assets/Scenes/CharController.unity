@@ -494,6 +494,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 9000398827091743617, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000398827091743617, guid: 0a465d011259d8646b0075d991f4dd04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2006,17 +2014,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  mana: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  isInteracting: 0
+  isDead: 0
+  isHit: 0
   movementInput: {x: 0, y: 0}
   cameraInput: {x: 0, y: 0}
+  moveAmount: 0
   verticalInput: 0
   horizontalInput: 0
+  jumpInput: 0
+  dodgeInput: 0
+  attackInput: 0
   sprintInput: 0
   inventoryInput: 0
   interactInput: 0
   isGrounded: 0
+  isJumping: 0
+  isDodging: 0
+  isAttacking: 0
   isSprinting: 0
-  inventoryManager: {fileID: 0}
-  mission: {fileID: 0}
 --- !u!1001 &1176854664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7592,6 +7611,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1569322513412993609, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1131213362}
     - target: {fileID: 3699603478678778749, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: playerCanvas
       value: 
@@ -7599,10 +7622,6 @@ PrefabInstance:
     - target: {fileID: 5781344379462563442, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_Name
       value: Pause
-      objectReference: {fileID: 0}
-    - target: {fileID: 5781344379462563442, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6788509505955554066, guid: 4c0aaa8bc8a1ab74caeffd33ffe1de06, type: 3}
       propertyPath: m_LocalPosition.x

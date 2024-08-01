@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -29,8 +27,6 @@ public class SaveSystem : MonoBehaviour
 
     public void SavePlayer()
     {
-        Debug.Log("Starting SavePlayer.");
-
         if (player != null)
         {
             PlayerManager playerManager = player.GetComponent<PlayerManager>();
@@ -41,29 +37,36 @@ public class SaveSystem : MonoBehaviour
             if (playerManager != null && playerHealth != null && inputManager != null && charController != null)
             {
                 player.SavePlayerData(playerManager, playerHealth, inputManager, charController);
-
+                string path = Application.persistentDataPath + "/savefile.json";
                 PlayerData data = new PlayerData
                 {
                     health = player.health,
-                    position = new SerializableVector3(player.transform.position),
-                    rotation = new SerializableVector3(player.transform.eulerAngles),
-                    movementInput = new SerializableVector2(player.movementInput),
-                    cameraInput = new SerializableVector2(player.cameraInput),
+                    mana = player.mana,
+                    position = player.position,
+                    rotation = player.rotation,
+                    isInteracting = player.isInteracting,
+                    isDead = player.isDead,
+                    isHit = player.isHit,
+                    movementInput = player.movementInput,
+                    cameraInput = player.cameraInput,
+                    moveAmount = player.moveAmount,
                     verticalInput = player.verticalInput,
                     horizontalInput = player.horizontalInput,
+                    jumpInput = player.jumpInput,
+                    dodgeInput = player.dodgeInput,
+                    attackInput = player.attackInput,
                     sprintInput = player.sprintInput,
                     inventoryInput = player.inventoryInput,
                     interactInput = player.interactInput,
                     isGrounded = player.isGrounded,
-                    isSprinting = player.isSprinting,
+                    isJumping = player.isJumping,
+                    isDodging = player.isDodging,
+                    isAttacking = player.isAttacking,
+                    isSprinting = player.isSprinting
                 };
 
-                BinaryFormatter formatter = new BinaryFormatter();
-                string path = Application.persistentDataPath + "/savefile.fun";
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    formatter.Serialize(stream, data);
-                }
+                string json = JsonUtility.ToJson(data);
+                File.WriteAllText(path, json);
 
                 Debug.Log("Game Saved!");
             }
@@ -80,51 +83,62 @@ public class SaveSystem : MonoBehaviour
 
     public void LoadPlayer()
     {
-        Debug.Log("Starting LoadPlayer.");
-
-        string path = Application.persistentDataPath + "/savefile.fun";
+        string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream stream = new FileStream(path, FileMode.Open))
+            string json = File.ReadAllText(path);
+            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
+
+            if (player != null)
             {
-                PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                player.health = data.health;
+                player.mana = data.mana;
+                player.position = data.position;
+                player.rotation = data.rotation;
+                player.isInteracting = data.isInteracting;
+                player.isDead = data.isDead;
+                player.isHit = data.isHit;
+                player.movementInput = data.movementInput;
+                player.cameraInput = data.cameraInput;
+                player.moveAmount = data.moveAmount;
+                player.verticalInput = data.verticalInput;
+                player.horizontalInput = data.horizontalInput;
+                player.jumpInput = data.jumpInput;
+                player.dodgeInput = data.dodgeInput;
+                player.attackInput = data.attackInput;
+                player.sprintInput = data.sprintInput;
+                player.inventoryInput = data.inventoryInput;
+                player.interactInput = data.interactInput;
+                player.isGrounded = data.isGrounded;
+                player.isJumping = data.isJumping;
+                player.isDodging = data.isDodging;
+                player.isAttacking = data.isAttacking;
+                player.isSprinting = data.isSprinting;
 
-                if (player != null)
+                PlayerManager playerManager = player.GetComponent<PlayerManager>();
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                InputManager inputManager = player.GetComponent<InputManager>();
+                CharController charController = player.GetComponent<CharController>();
+
+                if (playerManager != null && playerHealth != null && inputManager != null && charController != null)
                 {
-                    player.health = data.health;
-                    player.transform.position = data.position.ToVector3();
-                    player.transform.eulerAngles = data.rotation.ToVector3();
-                    player.movementInput = data.movementInput.ToVector2();
-                    player.cameraInput = data.cameraInput.ToVector2();
-                    player.verticalInput = data.verticalInput;
-                    player.horizontalInput = data.horizontalInput;
-                    player.sprintInput = data.sprintInput;
-                    player.inventoryInput = data.inventoryInput;
-                    player.interactInput = data.interactInput;
-                    player.isGrounded = data.isGrounded;
-                    player.isSprinting = data.isSprinting;
+                    player.LoadPlayerData(playerManager, playerHealth, inputManager, charController);
 
-                    PlayerManager playerManager = player.GetComponent<PlayerManager>();
-                    PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-                    InputManager inputManager = player.GetComponent<InputManager>();
-                    CharController charController = player.GetComponent<CharController>();
-
-                    if (playerManager != null && playerHealth != null && inputManager != null && charController != null)
-                    {
-                        player.LoadPlayerData(playerManager, playerHealth, inputManager, charController);
-                        Debug.Log("Game Loaded!");
-                    }
-                    else
-                    {
-                        Debug.LogError("One or more required components are missing from the Player object.");
-                    }
+                    Debug.Log("Game Loaded!");
                 }
                 else
                 {
-                    Debug.LogError("Player reference is missing.");
+                    Debug.LogError("One or more required components are missing from the Player object.");
                 }
             }
+            else
+            {
+                Debug.LogError("Player reference is missing.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
         }
     }
 }
