@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class Mission : MonoBehaviour
 {
+    public static Mission Instance;
     public TextMeshProUGUI missionText; // TextMeshPro nesnesi
     private float currentKill;
     public float targetKill;

@@ -13,7 +13,7 @@ public class GoToCheckpoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        eButton.gameObject.SetActive(false); // Baþlangýçta E butonu görünür olmasýn
+        //eButton.gameObject.SetActive(false); // Baþlangýçta E butonu görünür olmasýn
     }
 
     // Update is called once per frame

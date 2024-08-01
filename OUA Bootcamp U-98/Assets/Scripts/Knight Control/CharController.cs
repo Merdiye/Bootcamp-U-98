@@ -14,7 +14,7 @@ public class CharController : MonoBehaviour
     public Image image;
     public GameObject slashEffect;
     public GameObject inventory;
-    
+
 
 
     public GameObject dodgeImage;
@@ -287,6 +287,8 @@ public class CharController : MonoBehaviour
             {
                 npcHealth.TakeDamage(damage);
             }
+
+            
         }
     }
 

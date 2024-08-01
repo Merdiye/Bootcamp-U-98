@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class DialogueManager : MonoBehaviour
 {
+    public UnityEvent missionEvent;
     public Image actorImage;
     public Text actorName;
     public Text messageText;
@@ -50,6 +51,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            missionEvent.Invoke();
             Debug.Log("Conversation Ended!");
             animator.SetBool("IsOpen", false);
         }
