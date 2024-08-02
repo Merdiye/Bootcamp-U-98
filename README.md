@@ -6,10 +6,10 @@ U-98 Unity Takımı
 Takım Üyeleri
 ---------------------
 - ***Mert Uz*** - Product Owner <a href="https://www.linkedin.com/in/mert-uz/" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-- ***Muhammed Burak Soydan*** - Scrum Master 
-- ***Melike Savaş*** - Developer
-- ***Merdiye Arı*** - Developer
-- ***Melisa İdeci*** - Developer
+- ***Muhammed Burak Soydan*** - Scrum Master <a href="https://www.linkedin.com/in/muhammed-burak-soydan-58223928a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+- ***Melike Savaş*** - Developer <a href="https://www.linkedin.com/in/melikesava%C5%9F2003" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+- ***Merdiye Arı*** - Developer <a href="www.linkedin.com/in/merdiye-ari" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+- ***Melisa İdeci*** - Developer <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
   
 
 ## Oyun İsmi
