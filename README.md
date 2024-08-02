@@ -3,7 +3,7 @@
 
 U-98 Unity Takımı
 
-##Takım Üyeleri
+## Takım Üyeleri
 <table>
     <tr>
       <th></th>
@@ -12,8 +12,7 @@ U-98 Unity Takımı
       <th>Socials</th>
     </tr>
     <tr>
-      <td><img src="https://drive.google.com/uc?export=view&id=1DYxTnYL6areCDPUXrDSRZLdgSHK_6uFj
-" width="50" height="50" /></td>
+      <td><img src="https://drive.google.com/uc?export=view&id=1VREDtnUWSQXf1MoeTH9vradGr287dgZd" width="70" height="70" /></td>
       <td>Mert Uz</td>
       <td>Product Owner</td>
       <td>
@@ -21,7 +20,7 @@ U-98 Unity Takımı
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/arda.png" width="50" height="50" /></td>
+      <td><img src="https://drive.google.com/uc?export=view&id=1oqHF199wDJPiE19sWQYgRMeAMwsF6aEw" width="70" height="70" /></td>
       <td>Muhammed Burak Soydan</td>
       <td>Scrum Master</td>
       <td>
@@ -29,7 +28,7 @@ U-98 Unity Takımı
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/hazal.png" width="50" height="50" /></td>
+      <td><img src="https://drive.google.com/uc?export=view&id=1BEYZjXrnEliGbCCjuzcxMd-JZAbFAxL6" width="70" height="70" /></td>
       <td>Melike Savaş</td>
       <td>Developer</td>
       <td>
@@ -45,7 +44,7 @@ U-98 Unity Takımı
       </td>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/onur.png" width="50" height="50" /></td>
+      <td><img src="https://drive.google.com/uc?export=view&id=1jrQl4Nz2dx-7YtJnO6urqSa4tB1J6zEl" width="70" height="70" /></td>
       <td>Melisa İdeci</td>
       <td>Developer</td>
       <td>
