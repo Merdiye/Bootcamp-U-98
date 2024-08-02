@@ -111,21 +111,29 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 
  # Sprint 3
 
-- **Sprint içinde tamamlanması tahmin edilen puan**: İkinci sprintte online sistemini entegre edilemediğinden dolayı üçüncü sprint  puanı 25 olarak belirlenmiştir.
+- **Sprint içinde tamamlanması tahmin edilen puan 25**: İkinci sprintte online sistemini entegre edilemediğinden dolayı üçüncü sprint  puanı 25 olarak belirlenmiştir.
 
-- **Daily Scrum**: Daily Scrum toplantılarını hem Discord'dayaptığımız görüşmelerle ve Whatsapp üzerinden konuşmalar sağlanmıştır.
+- **Daily Scrum**: Daily Scrum toplantıları hem Discord üzerinden yaptığımız görüşmelerle ve Whatsapp üzerinden konuşmalar sağlanmıştır.
  [Sprint 3 Daily Scrum Chats](https://imgur.com/a/SKoeT7m)
 
-- **Sprint board update**: Sprint board screenshotı: 
-![Sprint 3 Trello Board]
+- **Sprint board update**:![Sprint 3 Trello Board](https://github.com/user-attachments/assets/66d68688-421d-4993-a729-b5aa3ba3144e)
+
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
+![image](https://github.com/user-attachments/assets/fe371ab7-d435-496c-a233-f3377eda94a4)
+![image](https://github.com/user-attachments/assets/6f4e9902-23c7-49d3-b5f7-4fd1beb37d9b)
+![image](https://github.com/user-attachments/assets/5f1d658d-e25a-4c32-af1c-a7a16379c63c)
+![image](https://github.com/user-attachments/assets/496483b4-5644-417a-bf14-566ee95bd82b)
+![image](https://github.com/user-attachments/assets/1f08c522-733b-4882-ab53-7cb4f9dd7029)
+![image](https://github.com/user-attachments/assets/cdf2be56-1839-4fb4-baa5-21a9826b4087)
 
 
-** Final Video**:
-[![Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)]
+
+
+**Final Video**:
+[[Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)]
 
 
 
