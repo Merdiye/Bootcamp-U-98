@@ -12,11 +12,12 @@ U-98 Unity Takımı
       <th>Socials</th>
     </tr>
     <tr>
-      <td><img src="bootcampFiles/general/squarepics/burak.png" width="50" height="50" /></td>
+      <td><img src="https://drive.google.com/uc?export=view&id=1DYxTnYL6areCDPUXrDSRZLdgSHK_6uFj
+" width="50" height="50" /></td>
       <td>Mert Uz</td>
       <td>Product Owner</td>
       <td>
-        <a href="https://www.linkedin.com/in/mert-uz/" target="_blank" ><img src="bootcampFiles/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/mert-uz/" target="_blank" ><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -24,7 +25,7 @@ U-98 Unity Takımı
       <td>Muhammed Burak Soydan</td>
       <td>Scrum Master</td>
       <td>
-        <a href="https://www.linkedin.com/in/muhammed-burak-soydan-58223928a/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/muhammed-burak-soydan-58223928a/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -32,7 +33,7 @@ U-98 Unity Takımı
       <td>Melike Savaş</td>
       <td>Developer</td>
       <td>
-        <a href="https://www.linkedin.com/in/melikesava%C5%9F2003" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/melikesava%C5%9F2003" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -40,7 +41,7 @@ U-98 Unity Takımı
       <td>Merdiye Arı</td>
       <td>Developer</td>
       <td>
-        <a href="http://www.linkedin.com/in/merdiye-ari" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="http://www.linkedin.com/in/merdiye-ari" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="20" height="20" /></a>
       </td>
     </tr>
     <tr>
@@ -48,7 +49,7 @@ U-98 Unity Takımı
       <td>Melisa İdeci</td>
       <td>Developer</td>
       <td>
-        <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+        <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" width="20" height="20" /></a>
       </td>
   </tr>
   </table>
