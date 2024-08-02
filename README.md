@@ -1,3 +1,4 @@
+
 ## Takım İsmi
 
 U-98 Unity Takımı
@@ -20,6 +21,7 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 ## Oyun Özellikleri
 - 3D
 - Tek oyunculu (Single Player)
+- RPG
   
 
 ## Hedef Kitle
@@ -130,14 +132,14 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 - **Sprint Review**: 
 
   - Proje süreci boyunca ara vermeden özveriyle çalışıldığı için tüm takım birbirini tebrik etti.
-  - 5 Farklı harita tasarımı, 8+ Görev dizaynı, birden fazla NPC animasyonu ve hareketi, uzun soluklu oyun hikayesi, görevlerin sıralanışı ve tamamlanması, UI ekranları ve inventory eklenmiştir.
+  - 5 Farklı harita tasarımı, 8+ Görev dizaynı, birden fazla NPC animasyonu ve hareketi,save&quit mekaniği, uzun soluklu oyun hikayesi, görevlerin sıralanışı ve tamamlanması, UI ekranları ve inventory eklenmiştir.
   - Tamamlanması gereken 25 puanlık backlog online sistem yetişmediğinden dolayı 19 puan alınarak tamamlanmıştır. Bu gecikme daha önce yapılan risk toplantısında öngörülmüş, bu nedenle diğer sistemlere daha çok odaklanılmıştır.
   - Sprint Review Katılımcıları: Muhammed Burak Soydan, Mert Uz, Melisa İdeci, Melike Savaş, Merdiye Arı
 
 
 - **Sprint Retrospective:**
 
-  - Gelecek projelerde iletişimde kalınacağına dair konuşmalar yapıldı.
+  - Gelecek projelerde iletişimde kalınacağına dair konuşuldu.
  
     
 ---
