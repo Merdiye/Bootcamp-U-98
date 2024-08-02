@@ -3,13 +3,63 @@
 
 U-98 Unity Takımı
 
-Takım Üyeleri
----------------------
-- ***Mert Uz*** - Product Owner <a href="https://www.linkedin.com/in/mert-uz/" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-- ***Muhammed Burak Soydan*** - Scrum Master <a href="https://www.linkedin.com/in/muhammed-burak-soydan-58223928a?originalSubdomain=tr" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-- ***Melike Savaş*** - Developer <a href="https://www.linkedin.com/in/melikesava%C5%9F2003" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-- ***Merdiye Arı*** - Developer <a href="www.linkedin.com/in/merdiye-ari" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
-- ***Melisa İdeci*** - Developer <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="bootcampFiles/general/social/github.png" width="20" height="20"/></a>
+##Takım Üyeleri
+<table>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Socials</th>
+    </tr>
+    <tr>
+      <td><img src="bootcampFiles/general/squarepics/burak.png" width="50" height="50" /></td>
+      <td>Mert Uz</td>
+      <td>Product Owner</td>
+      <td>
+        <a href="https://www.linkedin.com/in/mert-uz/" target="_blank" ><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="bootcampFiles/general/squarepics/arda.png" width="50" height="50" /></td>
+      <td>Muhammed Burak Soydan</td>
+      <td>Scrum Master</td>
+      <td>
+        <a href="https://www.linkedin.com/in/muhammed-burak-soydan-58223928a/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="bootcampFiles/general/squarepics/hazal.png" width="50" height="50" /></td>
+      <td>Melike Savaş</td>
+      <td>Developer</td>
+      <td>
+        <a href="https://www.linkedin.com/in/melikesava%C5%9F2003" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="bootcampFiles/general/squarepics/merve.png" width="50" height="50" /></td>
+      <td>Merdiye Arı</td>
+      <td>Developer</td>
+      <td>
+        <a href="http://www.linkedin.com/in/merdiye-ari" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+      <td><img src="bootcampFiles/general/squarepics/onur.png" width="50" height="50" /></td>
+      <td>Melisa İdeci</td>
+      <td>Developer</td>
+      <td>
+        <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
+      </td>
+    </tr>
+    <tr>
+    <td><img src="bootcampFiles/general/squarepics/appicon.png" width="50" height="50" /></td>
+    <td>zaten</td>
+    <td>Startup</td>
+    <td>
+
+    </td>
+  </tr>
+  </table>
   
 
 ## Oyun İsmi
@@ -149,7 +199,7 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 
 
 **Final Video**:
-[Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)]
+[Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)
 
 
 - **Sprint Review**: 
