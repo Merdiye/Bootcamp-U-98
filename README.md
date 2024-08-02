@@ -138,11 +138,18 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 ![image](https://github.com/user-attachments/assets/cdf2be56-1839-4fb4-baa5-21a9826b4087)
 
 
-**Oyun Hikayesi**:[Game Story](https://1drv.ms/w/c/e321bf7803bc3e6b/EQxbggFuIOhKn5sPWKxEpYYBCEkUHm3Pmg3MIQVs0U04Pw?e=BKY1su)
+
+
+
+
+**Oyun Hikayesi**: [Game Story](https://1drv.ms/w/c/e321bf7803bc3e6b/EQxbggFuIOhKn5sPWKxEpYYBCEkUHm3Pmg3MIQVs0U04Pw?e=BKY1su)
+
+
+
 
 
 **Final Video**:
-[[Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)]
+[Rise of The Little Knight Trailer](https://www.youtube.com/watch?v=kNfqWYAeqKg)]
 
 
 - **Sprint Review**: 
