@@ -114,7 +114,7 @@ Rise of The Little Knight, oyuncuların kaybolan maceracı babalarını bulmak i
 - **Sprint içinde tamamlanması tahmin edilen puan**: İkinci sprintte online sistemini entegre edilemediğinden dolayı üçüncü sprint  puanı 25 olarak belirlenmiştir.
 
 - **Daily Scrum**: Daily Scrum toplantılarını hem Discord'dayaptığımız görüşmelerle ve Whatsapp üzerinden konuşmalar sağlanmıştır.
- [Sprint 3 Daily Scrum Chats](
+ [Sprint 3 Daily Scrum Chats](https://imgur.com/a/SKoeT7m)
 
 - **Sprint board update**: Sprint board screenshotı: 
 ![Sprint 3 Trello Board]
