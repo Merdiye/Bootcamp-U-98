@@ -6,6 +6,7 @@ U-98 Unity Takımı
 Takım Üyeleri
 ---------------------
 - ***Mert Uz*** - Product Owner
+  <a href="https://www.linkedin.com/in/burakcevheroglu/" target="_blank" ><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
 - ***Muhammed Burak Soydan*** - Scrum Master 
 - ***Melike Savaş*** - Developer
 - ***Merdiye Arı*** - Developer
