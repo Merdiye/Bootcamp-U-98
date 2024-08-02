@@ -50,14 +50,6 @@ U-98 Unity Takımı
       <td>
         <a href="https://www.linkedin.com/in/melisa-ideci-3a8737250/" target="_blank"><img src="bootcampFiles/general/social/linkedin.png" width="20" height="20" /></a>
       </td>
-    </tr>
-    <tr>
-    <td><img src="bootcampFiles/general/squarepics/appicon.png" width="50" height="50" /></td>
-    <td>zaten</td>
-    <td>Startup</td>
-    <td>
-
-    </td>
   </tr>
   </table>
   
