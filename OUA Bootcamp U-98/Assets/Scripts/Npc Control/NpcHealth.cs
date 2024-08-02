@@ -30,6 +30,8 @@ public class NpcHealth : MonoBehaviour
         {
             colliderAfterDeath.enabled = false;
         }
+
+        
     }
 
     private void Update()
@@ -45,6 +47,8 @@ public class NpcHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+
+
         currentHealth -= amount;
         StartCoroutine(HitAnimation());
         if (currentHealth <= 0 && !isDead)
@@ -53,7 +57,7 @@ public class NpcHealth : MonoBehaviour
             Debug.Log("NPC is dead!");
             animator.CrossFade("Death", 0.2f);
             npc._agent.baseOffset = offsetAfterDeath;
-            
+
             if (colliderBeforeDeath != null)
             {
                 colliderBeforeDeath.enabled = false;
@@ -63,13 +67,14 @@ public class NpcHealth : MonoBehaviour
                 colliderAfterDeath.enabled = true;
             }
             Invoke(nameof(DestroyEnemy), 5f);
-            if(Mission.Instance != null)
+            if (Mission.Instance != null)
             {
-                Debug.Log("kill eklendi");
+                Debug.Log("Kill eklendi");
                 Mission.Instance.addKill();
+                
             }
         }
-        healthBar.SetHealth((float)currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     private IEnumerator HitAnimation()

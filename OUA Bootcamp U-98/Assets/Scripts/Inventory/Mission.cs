@@ -13,20 +13,39 @@ public class Mission : MonoBehaviour
     public TextMeshProUGUI targetKillText;
     public TextMeshProUGUI currentKillText;
 
-    public string missionString; // Editörde ayarlayacaðýnýz cümle
+
+    public string missionString; // Editï¿½rde ayarlayacaï¿½ï¿½nï¿½z cï¿½mle
 
     private void Awake()
     {
+      
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
         currentKill = 0f;
+
+     
+  
     }
 
     public void addKill()
     {
         currentKill++;
         currentKillText.text = currentKill.ToString();
+        if (currentKill >= targetKill)
+        {
+            Debug.Log("GÃ¶rev TamamlandÄ±!");
+         
+        }
     }
 
-    // Bu fonksiyon çaðrýldýðýnda missionString deðerini missionText'e aktarýr
+    // Bu fonksiyon ï¿½aï¿½rï¿½ldï¿½ï¿½ï¿½nda missionString deï¿½erini missionText'e aktarï¿½r
     public void SetMissionText()
     {
         targetKillText.text = targetKill.ToString();

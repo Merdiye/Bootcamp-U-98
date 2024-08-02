@@ -8659,7 +8659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 2312935717221280945}
-  targetKill: 20
+  targetKill: 5
   targetKillText: {fileID: 453806312860581144}
   currentKillText: {fileID: 1839760320533167970}
   missionString: "Goblinleri \xF6ld\xFCr"
@@ -10610,6 +10610,7 @@ GameObject:
   - component: {fileID: 5736231844221078811}
   - component: {fileID: 1770301281418127105}
   - component: {fileID: 2786219052733835944}
+  - component: {fileID: 8651675023977109376}
   m_Layer: 8
   m_Name: Knight
   m_TagString: Player
@@ -10677,9 +10678,6 @@ MonoBehaviour:
   image: {fileID: 8582487921427844692}
   slashEffect: {fileID: 7734979501733578567}
   inventory: {fileID: 3198104638580273380}
-  loadPointLayer:
-    serializedVersion: 2
-    m_Bits: 0
   dodgeImage: {fileID: 6297710635060346743}
   minimap: {fileID: 3313407476456946478}
   inAirTimer: 0
@@ -10701,7 +10699,6 @@ MonoBehaviour:
   isOnStairs: 0
   isAttacking: 0
   isSprinting: 0
-  isCanLoadScene: 0
   stairMovementSpeed: 10
   rotationSpeed: 15
   dodgeSpeed: 10
@@ -11042,6 +11039,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9060480235082194978, guid: 4ec07fa49b483421885b0e47464eb535, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2786219052733835944}
+    - targetCorrespondingSourceObject: {fileID: 9060480235082194978, guid: 4ec07fa49b483421885b0e47464eb535, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8651675023977109376}
   m_SourcePrefab: {fileID: 100100000, guid: 4ec07fa49b483421885b0e47464eb535, type: 3}
 --- !u!65 &1770301281418127105
 BoxCollider:
@@ -11078,3 +11078,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WoodFootsteps: {fileID: 699413825669401739}
   GrassFootsteps: {fileID: 4553490502408047437}
+--- !u!114 &8651675023977109376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9176161406404501705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702d89549ffc59c48913baf8dccb0c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  mana: 0
+  position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  isInteracting: 0
+  isDead: 0
+  isHit: 0
+  movementInput: {x: 0, y: 0}
+  cameraInput: {x: 0, y: 0}
+  moveAmount: 0
+  verticalInput: 0
+  horizontalInput: 0
+  jumpInput: 0
+  dodgeInput: 0
+  attackInput: 0
+  sprintInput: 0
+  inventoryInput: 0
+  interactInput: 0
+  isGrounded: 0
+  isJumping: 0
+  isDodging: 0
+  isAttacking: 0
+  isSprinting: 0
