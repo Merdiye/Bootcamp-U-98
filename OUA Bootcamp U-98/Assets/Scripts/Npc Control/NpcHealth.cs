@@ -71,6 +71,7 @@ public class NpcHealth : MonoBehaviour
             {
                 Debug.Log("Kill eklendi");
                 Mission.Instance.addKill();
+
             }
         }
         healthBar.SetHealth(currentHealth);

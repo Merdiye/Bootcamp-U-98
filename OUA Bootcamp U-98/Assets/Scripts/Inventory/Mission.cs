@@ -12,6 +12,7 @@ public class Mission : MonoBehaviour
     public float targetKill;
     public TextMeshProUGUI targetKillText;
     public TextMeshProUGUI currentKillText;
+    public GorevTamamlandiManager gorevTamamlandi;
 
 
     public string missionString; // Edit�rde ayarlayaca��n�z c�mle
@@ -41,6 +42,7 @@ public class Mission : MonoBehaviour
         if (currentKill >= targetKill)
         {
             Debug.Log("Görev Tamamlandı!");
+           
          
         }
     }
